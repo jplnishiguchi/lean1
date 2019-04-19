@@ -1,0 +1,89 @@
+<div class="content-panel ">
+    <h2 class="page-header">Update Page</h2>
+    <form class="form-horizontal" id="tableForm" name="tableForm" method="POST" action="/pages/update">
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Controller</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="controller" name="controller" value="<?php echo $data['controller']; ?>" placeholder="Enter controller here..">
+                <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $data['id']; ?>" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Action</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="action" name="action" value="<?php echo $data['action']; ?>" placeholder="Enter action here..">                
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Status</label>
+            <div class="col-xs-3">
+                <select name="status" required="">
+                    <option value="ACTIVE" <?php if ($data['status'] == 'ACTIVE') {echo "selected"; } ?>>Active</option>
+                    <option value="INACTIVE" <?php if ($data['status'] == 'INACTIVE') {echo "selected"; } ?>>Inactive</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Route</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="route" name="route" value="<?php echo $data['route']; ?>" placeholder="Enter route here.." >                
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Page Name</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="pagename" name="pagename" value="<?php echo $data['pagename']; ?>" placeholder="Enter page name here.." >                
+            </div>
+        </div>        
+        <div class="col-lg-offset-2">
+            <a href="/pages"  class="btn btn-default">Cancel </a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script>
+
+
+    jQuery.validator.addMethod(
+            "regexmeta",
+            function(value, element, regexp) {
+                var re = new RegExp('^[a-zA-Z0-9-_ ]+$');
+                return this.optional(element) || re.test(value);
+            },
+            "Value should only be letters and numbers only."
+            );
+	
+        $("#tableForm").validate({
+        errorClass: 'has-error',
+        validClass: 'has-success',
+        errorElement: 'span',
+        highlight: function(element, errorClass, validClass) {
+            $(element).parents("div.form-group").addClass(errorClass).removeClass(validClass);
+
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents(".form-group.has-error").removeClass(errorClass).addClass(validClass);
+        },
+        rules: {
+            controller: {
+                regexmeta: "dummy",
+                maxlength: 100
+            },
+            action: {
+                regexmeta: "dummy",
+                maxlength: 100
+            },
+            route: {
+                regexmeta: "dummy",
+                maxlength: 100
+            },
+            pagename: {
+                regexmeta: "dummy",
+                maxlength: 100
+            },
+
+        }
+    });
+    
+    </script>

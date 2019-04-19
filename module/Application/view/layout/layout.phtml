@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>LEAN1 <?php echo (strtok($_SERVER['REQUEST_URI'], '?') == '/dashboard') ? '- Welcome to TRX Platform' : ''; ?></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="/assets/styles/main.css">
+<!--        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">-->
+        <link rel="stylesheet" href="/assets/styles/jquery-ui.css">
+ 
+
+        <script src="/assets/scripts/vendor/modernizr.js"></script>
+        <script src="/assets/scripts/vendor/jquery.js"></script>
+        <script src="/assets/scripts/vendor/plugins.js"></script>
+        <script src="/assets/scripts/app.js"></script>
+        <!--<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
+        <script src="/assets/scripts/vendor/jquery-ui.js"></script>
+        <style>
+            a:hover {
+                cursor:pointer;
+            }
+        </style>
+
+    </head>
+    <body <? echo (strtok($_SERVER['REQUEST_URI'], '?') == '/dashboard') ? 'class="dashboard"' : ''; ?> >
+    <?php
+    $currentUri = strtok($_SERVER['REQUEST_URI'], '?');
+    ?>
+        <!-- navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">
+                        <h2 class="fw-700">Lean1</h2>
+                    </a>
+                </div>
+                <div class="m-nav">
+                    <?php $conf = $this->Conf_widget(); ?>
+                    <?php echo $this->Nav_widget(); ?>
+                    <?php echo $this->Login_widget(); ?>
+                </div>
+            </div>
+
+        </nav>
+        <div id="main-wrapper" class="l-main-wrapper">
+            <div class="container l-primary" id="primary">
+
+
+                <?php
+                $user = $this->identity();
+                if (isset($user)) {
+                    $dateBeforeExp = ceil((strtotime($user->pwd_exp_date) - strtotime(date('Y-m-d H:i:s'))) / 86400);
+                    if ($currentUri != '/login' && $dateBeforeExp <= $conf['expiration_notification']) {
+                        ?>
+                        <div class="alert alert-danger">
+                            <a href="/pwdreset"> Your password will expire within <?php echo $dateBeforeExp; ?>  
+                                days. Please click here to reset your password and renew the expiration date.</a>
+                        </div>
+                        <?php
+                    }
+                }
+                ?>
+
+                <div class="row content">
+                    <?php echo $this->content; ?>
+                </div>
+            </div> <!-- /#primary -->
+        </div>
+
+
+    </body>
+    
+    <div class="modal fade" id="conf_delete_dialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"><strong>Delete Confirmation</strong></h4>
+            </div>
+            <div class="modal-body">
+                <strong>Continue deletion? This action is irrevocable.</strong>
+            </div>
+            <div class="modal-footer">
+                <input type="hidden" id="delete_url_global" value=""/>
+                <button type="button" class="btn btn-default" id="delete_btn_global"><strong>Delete</strong></button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><strong>Cancel</strong></button>
+            </div>
+        </div>
+    </div>
+</div>
+    
+    <div class="modal fade" id="error_dialog" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"><strong>Error</strong></h4>
+                </div>
+                <div class="modal-body">
+                    <strong><div id="error_modal_message"></div></strong>
+                </div>
+                <div class="modal-footer">                                        
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><strong>OK</strong></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+    
+    $("#delete_btn_global").on('click', function() {
+        window.location.href = $("#delete_url_global").val();
+    });
+    
+    </script>
+</html>

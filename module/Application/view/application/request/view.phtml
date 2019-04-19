@@ -1,0 +1,93 @@
+<?php
+$sessionManager = new \Zend\Session\SessionManager();
+$sessionStorage = $sessionManager->getStorage();
+$systemRole = $sessionStorage->getMetaData('role');
+$currentEmployeeId = $sessionStorage->getMetaData('employee_id');
+?>
+
+<div class="content-panel ">
+    <h2 class="page-header">Request List</h2>
+    <div class="page-content" style="">
+        <div class="clearfix">
+            <div id="get" class="form-search">
+                <form id="search-form" method="get">
+                    <input id="pg-hidden" type="hidden" name="pg" value="1"/>
+                    <input id="report-name-hidden" type="hidden" name="report-name-hidden" value="request-getall"/>
+                    <input id="role-hidden" type="hidden" name="role-hidden" value="<?php echo $systemRole; ?>"/>
+                    <input id="current-employee" type="hidden" name="current-employee" value="<?php echo $currentEmployeeId; ?>"/>
+                    <input id="sort-col-hidden" type="hidden" name="sortcol" value="employee_id"/>
+                    <input id="sort-val-hidden" type="hidden" name="sortval" value="DESC"/>
+					<input id="role-hidden" type="hidden" name="" value="<?php echo $systemRole ?>"/>
+                    <a class="btn btn-primary pull-left" href="/request/add" style="margin-right:10px;">
+                        <i class="icon-plus"></i>
+                        Add New Request
+                    </a>
+
+					<?php
+						if($systemRole == 'system-administrator'){
+					?>
+
+                    <div class="col-xs-3">
+                        <div class="input-group">
+                            <input id="search-text-input" type="" name="/request/getall" placeholder="Enter Employee ID or Lastname" class="form-control">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="icon-search"></i> Search</button>
+                            </div><!-- /btn-group -->
+                        </div><!-- /input-group -->
+                    </div>
+
+					<?php
+						}else{
+					?>
+						 <input id="search-hidden" type="hidden" name="search" value="<?php echo $id ?>"/>
+
+					<?php
+						}
+					?>
+
+                </form>
+            </div>
+            <div class="pull-right" style="margin-top:-20px;">
+                <div id="pagination-label"></div>
+                <div id="pagination-div">
+                    <ul id="pagination-ul" class="pagination">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <table class="table table-striped table-hover wide-table">
+                <thead>
+                    <tr>
+                        <th><a class="sort-a" onclick="sortResultsBy('id')">Request ID ▼</a></th>
+                        <th><a class="sort-a" onclick="sortResultsBy('employee_id')">Employee Id ▼</a></th>
+                        <th>Last Name</th>
+                        <th>First Name</th>
+                        <th>Date</th>
+                        <th><a class="sort-a" onclick="sortResultsBy('type')">Type ▼</a></th>
+                        <th><a class="sort-a" onclick="sortResultsBy('reason')">Reason ▼</a></th>
+                        <th><a class="sort-a" onclick="sortResultsBy('start')">Start ▼</a></th>
+                        <th><a class="sort-a" onclick="sortResultsBy('end')">End ▼</a></th>
+                        <th><a class="sort-a" onclick="sortResultsBy('status')">Status ▼</a></th>
+                        <th><a class="sort-a" onclick="sortResultsBy('status_reason')">Status Reason ▼</a></th>
+                        <th><a class="sort-a" onclick="sortResultsBy('approved_by')">Approved By ▼</a></th>
+                        <th><a class="sort-a" onclick="sortResultsBy('approved_date')">Approved Date ▼</a></th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="search-tbody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+        $("#search-form").submit();
+    });
+
+</script>

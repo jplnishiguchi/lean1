@@ -1,0 +1,368 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Dashboard - Project Playdough</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+      <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="assets/styles/main.css">
+
+        <script src="assets/scripts/vendor/modernizr.js"></script>
+    </head>
+    <body class="dashboard">
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        
+
+        <!-- navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header pull-left">
+      <a class="navbar-brand" href="/">
+        <h2>Playdough</h2>
+      </a>
+    </div>
+
+    <div class="m-nav pull-left">
+      <ul class="nav navbar-nav">
+        <li class="dropdown active">
+          <a href="javascript:void();">
+            Dashboard
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu sub-menu">
+            <li class="">
+              <a href="elements.html">Elements</a>
+            </li>
+            <li class="">
+              <a href="tables.html">Tables</a>
+            </li>
+            <li class="">
+              <a href="forms.html">Forms</a>
+            </li>
+            <li class="">
+              <a href="javascript.html">JavaScript Plugins</a>
+            </li>
+            <li class="dropdown">
+              <a href="#">
+                Pages
+                <b class="caret r"></b>
+              </a>
+              <ul class="dropdown-menu sub-menu">
+                <li>
+                  <a href="restricted.html">
+                    Restricted
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">
+            Another Menu
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu sub-menu">
+            <li class="dropdown">
+              <a href="#">
+                More Menu
+                <b class="caret r"></b>
+              </a>
+              <ul class="dropdown-menu sub-menu in">
+                <li><a href="menu-01.html">Menu 01</a></li>
+                <li><a href="#">Menu 02</a></li>
+                <li><a href="#">Menu 03</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Menu 04</a></li>
+            <li><a href="#">Menu 05</a></li>
+            <li><a href="#">Menu 06 </a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation" class="dropdown-header">Administrator</li>
+            <li><a href="#">Update Database</a></li>
+            <li><a href="#">Generate Report</a></li>
+          </ul>
+        </li>
+        <li class="">
+          <a href="dropzone.html">
+            Uploader Demo
+          </a>
+        </li>
+        <li class="">
+          <a href="business-rules.html">
+            Business Rules Designer
+          </a>
+        </li>
+        <li class="">
+          <a href="js-plumb.html">
+            jQuery Plumb
+            <span class="badge badge-danger">
+              NEW!
+            </span>
+          </a>
+        </li>
+      </ul> <!-- .nav.navbar-nav -->
+    </div> <!-- .m-nav -->
+
+    <div class="my-account m-nav pull-right">
+           
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Hello there, <strong>Stego Saur</strong>!</a></li>
+        <li class="">
+          <a href="login.html">
+            Logout
+            
+          </a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+</nav>
+
+        <div id="main-wrapper" class="l-main-wrapper">
+
+          <div class="container l-primary" id="primary">
+            
+            <div class="row content">
+              
+              
+              
+              
+              <div id="breadcrumb" class="m-breadcrumb">
+                
+                <ol class="breadcrumb clearfix">
+                  <li class="active">Welcome to your Dashboard</li>
+                  <li class="active pull-right date-today">
+                    <i class="icon icon-calendar"></i> <span class="date">Monday, October 7, 2013</span>
+                  </li>
+                </ol>
+                
+              </div>
+
+              
+
+        
+
+
+<div class="dashboard-tabs-nav">
+                
+  <ul class="nav nav-tabs megatab-nav dashboard" id="myTab">
+    <li class="uploads-tab active">
+      <a href="#uploads-tab">
+        <div class="megatab-content clearfix">
+          <h2 class="megatab-title"><i class="icon icon-cloud-upload"></i> Uploads</h2>
+          <div class="stats">
+            <div class="stat unknown">
+              Unknown
+              <span class="badge">16</span>
+            </div>
+            <div class="stat error">
+              Success
+              <span class="badge badge-success">104k</span>
+            </div>
+            <div class="stat success">
+              Failed
+              <span class="badge badge-danger">23</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </li>
+    <li class="for-approval-tab">
+      <a href="#for-approval-tab">
+        <div class="megatab-content clearfix">
+          <h2 class="megatab-title"><i class="icon icon-thumbs-up"></i> For Approval</h2>
+          <div class="stats">
+            <div class="stat unknown">
+              Pending
+              <span class="badge badge-warning">23</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </li>
+    <li class="overrides-tab">
+      <a href="#overrides-tab">
+        <div class="megatab-content clearfix">
+          <h2 class="megatab-title"><i class="icon icon-random"></i> Overrides</h2>
+          <div class="stats">
+            <div class="stat unknown">
+              New
+              <span class="badge">34</span>
+            </div>
+          </div>
+        </div>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div class="dashboard-tabs">
+
+  <div class="tab-content dashboard">
+    <div class="tab-pane active fade in" id="uploads-tab">
+      
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Uploaded</th>
+            <th>Date Validated</th>
+            <th>File</th>
+            <th>Database Table</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>
+              2013-09-26 18:09:35 by admin</td>
+            <td>2013-09-26 06:52:35</td>
+            <td>20130923_ia_velocity.txt</td>
+            <td>
+            </td>
+            <td>
+              <span class="label status label-danger">Processing Failed</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              2013-09-26 18:09:35 by admin</td>
+            <td>2013-09-26 06:52:35</td>
+            <td>20130922_CSIM_details.txt</td>
+            <td>
+            </td>
+            <td>
+              <span class="label status label-danger">Processing Failed</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              2013-09-26 17:09:35 by admin</td>
+            <td>2013-09-26 05:42:35</td>
+            <td>20130926_recharge.txt</td>
+            <td>
+            </td>
+            <td>
+              <span class="label status label-danger">Processing Failed</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              2013-09-26 17:09:35 by admin</td>
+            <td></td>
+            <td>20130926_recharge.txt</td>
+            <td>
+            </td>
+            <td>
+              <span class="label status label-default">Unknown</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              2013-09-26 16:09:35 by admin</td>
+            <td></td>
+            <td>20130926_recharge.dat</td>
+            <td>
+            </td>
+            <td>
+              <span class="label status label-default">Unknown</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              2013-09-25 12:09:30 by admin</td>
+            <td>2013-09-25 12:14:30</td>
+            <td>SIMP_ACTIVATION.txt</td>
+            <td>
+            </td>
+            <td>
+              <span class="label status label-danger">Processing Failed</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              2013-09-25 12:09:30 by admin</td>
+            <td>2013-09-25 12:06:30</td>
+            <td>SIMP_OTAP.txt</td>
+            <td>
+            </td>
+            <td>
+              <span class="label status label-danger">Processing Failed</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              2013-09-25 12:09:30 by admin</td>
+            <td>2013-09-25 12:00:30</td>
+            <td>SIMP_AFFINITY.txt</td>
+            <td>
+            </td>
+            <td>
+              <span class="label status label-danger">Processing Failed</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              2013-09-25 11:09:30 by admin</td>
+            <td>2013-09-25 11:52:30</td>
+            <td>SIMP_ACTIVATION.txt</td>
+            <td>
+            </td>
+            <td>
+              <span class="label status label-danger">Processing Failed</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              2013-09-25 11:09:30 by admin</td>
+            <td>2013-09-25 11:52:30</td>
+            <td>SIMP_AFFINITY.txt</td>
+            <td>
+            </td>
+            <td>
+              <span class="label status label-danger">Processing Failed</span>
+            </td>
+          </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane fade" id="for-approval-tab">
+      
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, facere, voluptates, pariatur, velit laudantium laboriosam maiores magnam ex libero enim iste quia quam similique doloribus repudiandae incidunt ab aliquam exercitationem.</p>
+      <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia, voluptatibus, rem ipsum sapiente ipsam ratione atque aspernatur quod veritatis doloremque beatae autem alias obcaecati blanditiis vitae vero repudiandae et porro!</div>
+      <div>Explicabo, dolore soluta rerum a fugiat voluptatum nostrum velit ipsam hic amet eum eius autem eligendi asperiores obcaecati debitis beatae. Nihil, nam fugit aspernatur id incidunt illum et rerum ratione.</div>
+      <div>Commodi, delectus, fugit ab consequuntur asperiores sunt quod necessitatibus consequatur sit nesciunt sequi inventore tempora ipsum perferendis ex quia quis harum dicta fugiat non eligendi minus fuga libero laborum magni.</div>
+    </div>
+    <div class="tab-pane fade" id="overrides-tab">
+      
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, doloribus, omnis, rem, eum iure ipsam ex consequuntur praesentium blanditiis maiores tenetur deserunt sit minima. Nulla voluptates nostrum cumque consectetur maiores!</p>
+      <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, dolore, hic accusamus libero quae quas vel a deserunt nesciunt fuga minima velit nihil harum magnam magni illo saepe alias. Ut!</div>
+      <div>Culpa, possimus enim voluptate pariatur eligendi tempore est fuga cum. Numquam, doloremque, perferendis, doloribus nisi vitae vel consequuntur nostrum aspernatur soluta ut voluptate perspiciatis sapiente exercitationem ea nihil repellat nam.</div>
+    </div>
+  </div>
+</div> <!-- /.dashboard-content -->
+</div> <!-- /.content-panel -->
+
+            </div> <!-- /.row.content -->
+          </div> <!-- /#primary -->
+          
+        </div>
+        
+        <script src="assets/scripts/vendor/jquery.js"></script>
+
+        <script src="assets/scripts/vendor/plugins.js"></script>
+
+        <script src="assets/scripts/trx-app.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<div class="content-panel ">
+    <h2 class="page-header">Update Options</h2>
+    <form class="form-horizontal" id="tableForm" name="tableForm" method="POST" action="/options/update">
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Configuration</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="option_key" name="option_key" value="<?php echo $data['option_key']; ?>" placeholder="Enter controller here.." disabled="">
+                <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $data['id']; ?>" >
+                <input type="hidden" class="form-control" id="option_key_hidden" name="option_key_hidden" value="<?php echo $data['option_key']; ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Details</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="option_description" name="option_description" value="<?php echo $data['option_description']; ?>" placeholder="Enter action here.." disabled="">                
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Type</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="option_type" name="option_type" value="<?php echo $data['option_type']; ?>" placeholder="Enter action here.." disabled="">                
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Value</label>
+            <div class="col-xs-3">
+                <?php if($data['option_type'] == "boolean") { ?>
+                <select id="option_value" name="option_value" required="">
+                    <option value="TRUE" <?php if($data['option_value']=='TRUE') { ?> selected="" <?php } ?>>TRUE</option>
+                    <option value="FALSE" <?php if($data['option_value']=='FALSE') { ?> selected="" <?php } ?>>FALSE</option>
+                </select>
+                <?php } else {?>
+                <input type="text" class="form-control" id="option_value" name="option_value" value="<?php echo htmlspecialchars($data['option_value']); ?>" placeholder="Enter value here" required="">                
+                <?php } ?>
+            </div>
+        </div>        
+        <div class="col-lg-offset-2">
+            <a href="/options"  class="btn btn-default">Cancel </a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    
+    $("#tableForm").validate({
+        errorClass: 'has-error',
+        validClass: 'has-success',
+        errorElement: 'span',
+        highlight: function(element, errorClass, validClass) {
+            $(element).parents("div.form-group").addClass(errorClass).removeClass(validClass);
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents(".form-group.has-error").removeClass(errorClass).addClass(validClass);
+        },
+        rules: {
+            option_value:{
+                required: true,                
+                <?php if($data['option_type'] == "int") { ?>
+                digits: true,
+                <?php } ?>
+            }
+        }
+    });
+    
+</script>

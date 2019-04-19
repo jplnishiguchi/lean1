@@ -1,0 +1,972 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Business Rules Designer - Project TRX</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+      <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="assets/styles/main.css">
+
+        <script src="assets/scripts/vendor/modernizr.js"></script>
+    </head>
+    <body class="br-designer">
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        
+
+        <!-- navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header pull-left">
+      <a class="navbar-brand" href="/">
+        <h2>TRX</h2>
+      </a>
+    </div>
+
+    <div class="m-nav pull-left">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="javascript:void();">
+            Dashboard
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu sub-menu">
+            <li class="">
+              <a href="elements.html">Elements</a>
+            </li>
+            <li class="">
+              <a href="tables.html">Tables</a>
+            </li>
+            <li class="">
+              <a href="forms.html">Forms</a>
+            </li>
+            <li class="">
+              <a href="javascript.html">JavaScript Plugins</a>
+            </li>
+            <li class="dropdown">
+              <a href="#">
+                Pages
+                <b class="caret r"></b>
+              </a>
+              <ul class="dropdown-menu sub-menu">
+                <li>
+                  <a href="restricted.html">
+                    Restricted
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">
+            Another Menu
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu sub-menu">
+            <li class="dropdown">
+              <a href="#">
+                More Menu
+                <b class="caret r"></b>
+              </a>
+              <ul class="dropdown-menu sub-menu in">
+                <li><a href="menu-01.html">Menu 01</a></li>
+                <li><a href="#">Menu 02</a></li>
+                <li><a href="#">Menu 03</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Menu 04</a></li>
+            <li><a href="#">Menu 05</a></li>
+            <li><a href="#">Menu 06 </a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation" class="dropdown-header">Administrator</li>
+            <li><a href="#">Update Database</a></li>
+            <li><a href="#">Generate Report</a></li>
+          </ul>
+        </li>
+        <li class="">
+          <a href="dropzone.html">
+            Uploader Demo
+          </a>
+        </li>
+        <li class="active">
+          <a href="business-rules.html">
+            Business Rules Designer
+          </a>
+        </li>
+        <li class="">
+          <a href="js-plumb.html">
+            jQuery Plumb
+            <span class="badge badge-danger">
+              NEW!
+            </span>
+          </a>
+        </li>
+      </ul> <!-- .nav.navbar-nav -->
+    </div> <!-- .m-nav -->
+
+    <div class="my-account m-nav pull-right">
+           
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Hello there, <strong>Stego Saur</strong>!</a></li>
+        <li class="">
+          <a href="login.html">
+            Logout
+            
+          </a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+</nav>
+
+        <div id="main-wrapper" class="l-main-wrapper">
+
+          <div class="container l-primary" id="primary">
+            
+            <div class="row content">
+              
+              
+              <div id="breadcrumb" class="m-breadcrumb">
+                
+                <ol class="breadcrumb">
+                  <li><a href="/">Dashboard</a></li>
+                  <li class="active">Business Rules Designer</li>
+                </ol>
+                
+              </div>
+
+              
+
+              <div class="content-panel br-panel">
+
+                
+
+              
+
+        
+
+
+<div class="br-wrapper row">
+
+    <div class="col-lg-1">
+      <div class="br-add-actions">
+        <div class="btn-group-vertical ">
+          <button class="btn btn-default add-filter" data-toggle="tooltip" data-placement="right" data-html="true" title="Add Filter">
+            <i class="icon-filter"></i>
+            <!-- Filter -->
+          </button>
+          <button class="btn btn-default add-tag" data-toggle="tooltip" data-placement="right" data-html="true" title="Add Tag">
+            <i class="icon-tag"></i>
+            <!-- Tag -->
+          </button>
+          <button class="btn btn-default add-tag-between" data-toggle="tooltip" data-placement="right" data-html="true" title="Add Tags">
+            <i class="icon-tags"></i>
+            <!-- Tags(between) -->
+          </button>
+          <button class="btn btn-default add-agg-fn" data-toggle="tooltip" data-placement="right" data-html="true" title="Add Aggregate Fn">
+            <i class="icon-sigma"></i>
+            <!-- Aggregate Function -->
+          </button>
+          <button class="btn btn-default add-agg-grp" data-toggle="tooltip" data-placement="right" data-html="true" title="Add Aggregate Group">
+            <i class="icon-sigma-small"></i>
+            <!-- Aggregate Group -->
+          </button>
+        </div>
+
+        <div class="btn-group-vertical mt-10">
+          <button class="btn btn-default test-rule" data-toggle="tooltip" data-placement="right" data-html="true" title="Test Business Rule">
+            <i class="icon-beaker"></i>
+            <!-- Test Business Rule -->
+          </button>
+          <button class="btn btn-success save-rule" data-toggle="tooltip" data-placement="right" data-html="true" title="Save Business Rule">
+            <i class="icon-save"></i>
+            <!-- Save Business Rule -->
+          </button>
+        </div>
+      </div>
+    </div> <!-- /.btn-toolbar.br-add-actions -->
+
+
+
+    <div class="br-canvas col-lg-8">
+
+      <div class="row alert-container">
+          <div class="alert alert-info alert-dismissable fade in">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+            <p><i class="icon-question-sign"></i> To begin, add a rule by clicking any of the icons from the left and select the columns from the list on the right</p>
+            
+          </div>
+      </div>
+
+      <form class="form-horizontal">
+
+        <div class="form-group clearfix">
+        
+          <div class="br-title-holder">
+
+            <input type="text" name="" id="br-title" class="form-control input-lg" value="" placeholder="Business rule name" >
+
+          </div>
+
+        </div>
+
+        <div class="form-group">
+
+          <div id="br-content" class="br-content panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Rules</h3>
+            </div>
+
+            <div id="rules-container" class="panel-body">
+              <!-- Andito ang aksyon! -->
+              
+            </div>
+
+          </div> <!-- /#br-content -->
+
+        </div>
+
+
+      </form>
+
+    </div> <!-- /.col-lg-8.br-canvas -->
+
+    <div class="br-right-sidebar col-lg-3 affix-top" data-offset-top="65" data-spy="affix">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Columns</h3>
+        </div>
+        <div class="panel-body">
+          <div id="columns-list-container" class="columns-list-container">
+            <select size="5" name="aggrfilter[column][]" class="form-control columns-list">
+                        <option value="134">ia_velocity - A_NUM</option>
+                        <option value="135">ia_velocity - B_NUM</option>
+                        <option value="136">ia_velocity - B_BRAND</option>
+                        <option value="137">ia_velocity - RELOAD_DATE</option>
+                        <option value="138">ia_velocity - AMOUNT</option>
+                    </select>
+          </div>
+        </div>
+      </div>
+
+      
+
+    </div>
+
+
+</div> <!-- /.br-wrapper -->
+
+<div id="rules-tpl" class="hide">
+
+    <div class="panel panel-default rule rule-filter">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="#" class="reorder sort-handle">
+                        <i class="icon-reorder"></i>
+                    </a>
+                    <p class="panel-title rule-type-title">
+                        Filter
+                    </p>
+                </div>
+
+                <div class="col-lg-1 pull-right">
+                    <button class="btn btn-default cancel remove-rule">
+                        <i class="icon-remove"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <!-- .panel-heading -->
+        <div class="panel-body">
+            <div class="">
+                <span class="help-block pull-left">
+                    Filter my report where
+                </span>
+                <div class="col-lg-2">
+                    <select name="aggrfilter[column][]" class="form-control">
+                        <option value="sources:199">amax_agents - acc_mgr_contact_no</option>
+                        <option value="sources:200">amax_agents - acc_mgr_email_address</option>
+                        <option value="sources:198">amax_agents - acc_mgr_name</option>
+                        <option value="sources:143">amax_agents - agent_id</option>
+                        <option value="sources:147">amax_agents - agent_role</option>
+                        <option value="sources:146">amax_agents - agent_type_cd</option>
+                        <option value="sources:165">amax_agents - amax_sap_ref_code</option>
+                        <option value="sources:208">amax_agents - amax_threshold_figure</option>
+                        <option value="sources:194">amax_agents - applicable_incentives</option>
+                    </select>
+                </div>
+                <span class="help-block pull-left">
+                    is
+                </span>
+                <div class="col-lg-2">
+                    <select name="aggrfilter[operator][]" class="form-control">
+                        <option>less than</option>
+                        <option>more than</option>
+                        <option>equal to</option>
+                        <option>not equal to</option>
+                    </select>
+                </div>
+                <div class="col-lg-2">
+                    <input type="text" name="aggrfilter[value][]" class="form-control">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- .rule.rule-filter -->
+
+    <div class="panel panel-default rule rule-agg-groups">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="#" class="reorder sort-handle">
+                        <i class="icon-reorder"></i>
+                    </a>
+                    <p class="panel-title rule-type-title">
+                        Aggregate Group
+                    </p>
+                </div>
+
+                <div class="col-lg-1 pull-right">
+                    <button class="btn btn-default cancel remove-rule">
+                        <i class="icon-remove"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <!-- .panel-heading -->
+        <div class="panel-body">
+            <div class="">
+                <span class="help-block pull-left">Group my scheme by</span>
+                <div class="col-lg-3">
+                    <select name="groupby[]" class="form-control">
+                        <option value="sources:199">amax_agents - acc_mgr_contact_no</option>
+                        <option value="sources:200">amax_agents - acc_mgr_email_address</option>
+                        <option value="sources:198">amax_agents - acc_mgr_name</option>
+                        <option value="sources:143">amax_agents - agent_id</option>
+                        <option value="sources:147">amax_agents - agent_role</option>
+                        <option value="sources:146">amax_agents - agent_type_cd</option>
+                        <option value="sources:165">amax_agents - amax_sap_ref_code</option>
+                        <option value="sources:208">amax_agents - amax_threshold_figure</option>
+                        <option value="sources:194">amax_agents - applicable_incentives</option>
+         
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- .rule.rule-agg-groups -->
+
+    <div class="panel panel-default rule rule-agg-fn">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="#" class="reorder sort-handle">
+                        <i class="icon-reorder"></i>
+                    </a>
+                    <p class="panel-title rule-type-title">
+                        Aggregate Function
+                    </p>
+                </div>
+
+                <div class="col-lg-1 pull-right">
+                    <button class="btn btn-default cancel remove-rule">
+                        <i class="icon-remove"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <!-- .panel-heading -->
+        <div class="panel-body">
+            <div class="">
+                <span class="help-block pull-left">I want data that is</span>
+                <div class="col-lg-2">
+                    <select name="aggrfunct[operator][]" class="form-control">
+                        <option value="COUNT">COUNT</option>
+                        <option value="SUM">SUM</option>
+                        <option value="AVG">AVERAGE</option>
+                        <option value="MAX">MAX</option>
+                        <option value="MIN">MIN</option>
+                    </select>
+                </div>
+                <span class="help-block pull-left">of</span>
+                <div class="col-lg-2">
+                    <select name="aggrfunct[col][]" class="form-control">
+                        <option value="sources:199">amax_agents - acc_mgr_contact_no</option>
+                        <option value="sources:200">amax_agents - acc_mgr_email_address</option>
+                        <option value="sources:198">amax_agents - acc_mgr_name</option>
+                        <option value="sources:143">amax_agents - agent_id</option>
+                        <option value="sources:147">amax_agents - agent_role</option>
+                        <option value="sources:146">amax_agents - agent_type_cd</option>
+                        <option value="sources:165">amax_agents - amax_sap_ref_code</option>
+                        <option value="sources:208">amax_agents - amax_threshold_figure</option>
+                    </select>
+                </div>
+                <span class="help-block pull-left">with header called</span>
+                <div class="col-lg-2">
+                    <input type="text" name="aggrfunct[header][]" class="form-control">
+                </div>
+            </div>
+
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- .rule.rule-agg-fn -->
+
+    <!-- .rule.rule-tag-between -->
+    <div id="" class="panel panel-default rule rule-tag-between">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="#" class="reorder sort-handle">
+                        <i class="icon-reorder"></i>
+                    </a>
+                    <p class="panel-title rule-type-title">
+                        Tags (Between)
+                    </p>
+                </div>
+
+                <div class="col-lg-1 pull-right">
+                    <button class="btn btn-default cancel remove-rule">
+                        <i class="icon-remove"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- .panel-heading -->
+        <div class="panel-body">
+            <div id="" class="row between-tags">
+                <div class="between-tag between-tag-tpl clearfix">
+                    <div class="col-lg-11">
+                        <span class="help-block pull-left">
+                            Column Name
+                        </span>
+                        <div class="col-lg-4">
+                            <input type="text" name="tag[column_name][]" class="form-control">
+                            <input type="hidden" name="tag[type][]" value="between">
+                        </div>
+                        <div class="clearfix mb-10"></div>
+                        <span class="help-block pull-left">
+                            IF (
+                        </span>
+                        <div class="col-lg-4">
+                            <select name="tag[column][]" class="form-control">
+                                <option value="sources:199">amax_agents - acc_mgr_contact_no</option>
+                                <option value="sources:200">amax_agents - acc_mgr_email_address</option>
+                                <option value="sources:198">amax_agents - acc_mgr_name</option>
+                                <option value="sources:143">amax_agents - agent_id</option>
+                                <option value="sources:147">amax_agents - agent_role</option>
+                                <option value="sources:146">amax_agents - agent_type_cd</option>
+                                <option value="sources:165">amax_agents - amax_sap_ref_code</option>
+                                <option value="sources:208">amax_agents - amax_threshold_figure</option>
+                                <option value="sources:194">amax_agents - applicable_incentives</option>
+                                <option value="sources:210">amax_agents - bank_id</option>
+                                <option value="sources:188">amax_agents - barangay</option>
+                                <option value="sources:155">amax_agents - barangay_cd</option>
+                                <option value="sources:190">amax_agents - batch_id</option>
+                                <option value="sources:183">amax_agents - billing_method_cd</option>
+                                <option value="sources:180">amax_agents - brand_id</option>
+                                <option value="sources:181">amax_agents - ccb_no</option>
+                                <option value="sources:162">amax_agents - channel_type_cd</option>
+                                <option value="sources:179">amax_agents - cip_ext_ind</option>
+                                <option value="sources:154">amax_agents - city</option>
+                                <option value="sources:153">amax_agents - city_cd</option>
+                                <option value="sources:164">amax_agents - contact_no</option>
+                                <option value="sources:187">amax_agents - contact_person</option>
+                                <option value="sources:173">amax_agents - created_by</option>
+                                <option value="sources:174">amax_agents - created_tms</option>
+                                <option value="sources:185">amax_agents - credit_limit</option>
+                                <option value="sources:150">amax_agents - default_province_cd</option>
+                                <option value="sources:177">amax_agents - deleted_by</option>
+                                <option value="sources:178">amax_agents - deleted_tms</option>
+                                <option value="sources:171">amax_agents - depth</option>
+                                <option value="sources:204">amax_agents - discounts_ind</option>
+                                <option value="sources:168">amax_agents - email_address</option>
+                                <option value="sources:159">amax_agents - first_name</option>
+                                <option value="sources:172">amax_agents - iccid_source_cd</option>
+                                <option value="sources:202">amax_agents - id_no</option>
+                                <option value="sources:201">amax_agents - id_type</option>
+                                <option value="sources:184">amax_agents - interface_access_cd</option>
+                                <option value="sources:161">amax_agents - last_name</option>
+                                <option value="sources:186">amax_agents - last_status_tms</option>
+                                <option value="sources:209">amax_agents - load_threshold_figure</option>
+                                <option value="sources:206">amax_agents - loyalty_pot_ind</option>
+                                <option value="sources:166">amax_agents - lp_sap_ref_code</option>
+                                <option value="sources:160">amax_agents - middle_name</option>
+                                <option value="sources:148">amax_agents - msisdn</option>
+                                <option value="sources:149">amax_agents - msisdn_expiry_date</option>
+                                <option value="sources:157">amax_agents - name</option>
+                                <option value="sources:163">amax_agents - outlet_type_cd</option>
+                                <option value="sources:145">amax_agents - parent_agent_id</option>
+                                <option value="sources:207">amax_agents - parent_msisdn</option>
+                                <option value="sources:170">amax_agents - reason_cd</option>
+                                <option value="sources:151">amax_agents - region_cd</option>
+                                <option value="sources:152">amax_agents - reg_type_cd</option>
+                                <option value="sources:169">amax_agents - remarks</option>
+                                <option value="sources:205">amax_agents - rewards_ind</option>
+                                <option value="sources:195">amax_agents - salesman_first_name</option>
+                                <option value="sources:189">amax_agents - salesman_id</option>
+                                <option value="sources:197">amax_agents - salesman_last_name</option>
+                                <option value="sources:196">amax_agents - salesman_middle_name</option>
+                                <option value="sources:203">amax_agents - secondary_email_address</option>
+                                <option value="sources:182">amax_agents - spi_no</option>
+                                <option value="sources:158">amax_agents - status_cd</option>
+                                <option value="sources:156">amax_agents - street</option>
+                                <option value="sources:193">amax_agents - system_td</option>
+                                <option value="sources:144">amax_agents - td_agent_id</option>
+                                <option value="sources:191">amax_agents - txn_id</option>
+                                <option value="sources:175">amax_agents - updated_by</option>
+                                <option value="sources:176">amax_agents - updated_tms</option>
+                                <option value="sources:167">amax_agents - username</option>
+                                <option value="sources:192">amax_agents - username_upper</option>
+                                <option value="sources:383">ia_velocity -</option>
+                                <option value="sources:138">ia_velocity - AMOUNT</option>
+                                <option value="sources:134">ia_velocity - A_NUM</option>
+                                <option value="sources:136">ia_velocity - B_BRAND</option>
+                                <option value="sources:135">ia_velocity - B_NUM</option>
+                                <option value="sources:297">ia_velocity - CHANNEL</option>
+                                <option value="sources:384">ia_velocity - JJ_Pogi_test</option>
+                                <option value="sources:141">ia_velocity - POST_BAL</option>
+                                <option value="sources:140">ia_velocity - PRE_BAL</option>
+                                <option value="sources:137">ia_velocity - RELOAD_DATE</option>
+                                <option value="sources:142">ia_velocity - TRANS_GROUP</option>
+                                <option value="sources:139">ia_velocity - TRANS_ID</option>
+                            </select>
+                        </div>
+
+                        <span class="help-block pull-left">
+                            is
+                        </span>
+                        <div class="col-lg-2">
+                            <select name="tag[operator][]" class="form-control">
+                                <option value="between">between</option>
+                                <option value="between">not between</option>
+                            </select>
+                        </div>
+
+
+
+                        <div class="col-lg-2">
+                            <input type="text" name="tag[between_from][]" class="form-control">
+                        </div>
+                        <span class="help-block pull-left">
+                            AND
+                        </span>
+                        <div class="col-lg-2">
+                            <input type="text" name="tag[between_to][]" class="form-control">
+                        </div>
+                        <span class="help-block pull-left">
+                            )
+                        </span>
+
+                        <div class="clearfix mb-10"></div>
+                        <span class="help-block pull-left">
+                            value =
+                        </span>
+                        <div class="col-lg-2">
+                            <input type="text" name="tag[value][]" class="form-control">
+                        </div>
+
+
+
+                        <span class="help-block pull-left">
+                            else value =
+                        </span>
+                        <div class="col-lg-2">
+                            <input type="text" name="tag[elsevalue][]" class="form-control">
+                        </div>
+
+                    </div>
+                    <div class="pull-right text-right mr-10">
+                        <div class="btn-group">
+                            <button class="btn btn-xs btn-default add-more-tags" data-toggle="tooltip" data-placement="top" data-html="true" title="" data-original-title="Add more tags">
+                                <i class="icon-plus"></i>
+                            </button>
+                            <button class="btn btn-xs btn-default remove-tags" data-toggle="tooltip" data-placement="top" data-html="true" title="" data-original-title="Remove this tag">
+                                <i class="icon-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- .rule.rule-tag-between -->
+
+    <!-- .between-tag-tpl -->
+    <div class="between-tag between-tag-tpl clearfix">
+        <div class="col-lg-11">
+            <span class="help-block pull-left">
+                Column Name
+            </span>
+            <div class="col-lg-4">
+                <input type="text" name="tag[column_name][]" class="form-control">
+                <input type="hidden" name="tag[type][]" value="between">
+            </div>
+            <div class="clearfix mb-10"></div>
+            <span class="help-block pull-left">
+                IF (
+            </span>
+            <div class="col-lg-4">
+                <select name="tag[column][]" class="form-control">
+                    <option value="sources:199">amax_agents - acc_mgr_contact_no</option>
+                    <option value="sources:200">amax_agents - acc_mgr_email_address</option>
+                    <option value="sources:198">amax_agents - acc_mgr_name</option>
+                    <option value="sources:143">amax_agents - agent_id</option>
+                    <option value="sources:147">amax_agents - agent_role</option>
+                    <option value="sources:146">amax_agents - agent_type_cd</option>
+                </select>
+            </div>
+
+            <span class="help-block pull-left">
+                is
+            </span>
+            <div class="col-lg-2">
+                <select name="tag[operator][]" class="form-control">
+                    <option value="between">between</option>
+                    <option value="between">not between</option>
+                </select>
+            </div>
+
+
+
+            <div class="col-lg-2">
+                <input type="text" name="tag[between_from][]" class="form-control">
+            </div>
+            <span class="help-block pull-left">
+                AND
+            </span>
+            <div class="col-lg-2">
+                <input type="text" name="tag[between_to][]" class="form-control">
+            </div>
+            <span class="help-block pull-left">
+                )
+            </span>
+
+            <div class="clearfix mb-10"></div>
+            <span class="help-block pull-left">
+                value =
+            </span>
+            <div class="col-lg-2">
+                <input type="text" name="tag[value][]" class="form-control">
+            </div>
+
+
+
+            <span class="help-block pull-left">
+                else value =
+            </span>
+            <div class="col-lg-2">
+                <input type="text" name="tag[elsevalue][]" class="form-control">
+            </div>
+
+        </div>
+        <div class="pull-right text-right mr-10">
+            <div class="btn-group">
+                <button class="btn btn-xs btn-default add-more-tags" data-toggle="tooltip" data-placement="top" data-html="true" title="" data-original-title="Add more tags">
+                    <i class="icon-plus"></i>
+                </button>
+                <button class="btn btn-xs btn-default remove-tags" data-toggle="tooltip" data-placement="top" data-html="true" title="" data-original-title="Remove this tag">
+                    <i class="icon-minus"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- .between-tag-tpl -->
+
+
+
+    <div id="" class="panel panel-default rule rule-if-tag">
+
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-lg-6">
+                    <a href="#" class="reorder sort-handle">
+                        <i class="icon-reorder"></i>
+                    </a>
+                    <p class="panel-title rule-type-title">
+                        Tag (If)
+                    </p>
+                </div>
+
+                <div class="col-lg-1 pull-right">
+                    <button class="btn btn-default cancel remove-rule">
+                        <i class="icon-remove"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+        <!-- .panel-heading -->
+        <div class="panel-body">
+            <div id="" class="row if-tags">
+                <div class="if-tag if-tag-tpl clearfix">
+
+                    <input class="linked parent" name="tag[linked][]" type="hidden" value="0">
+
+                    <div class="col-lg-11">
+                        <span class="help-block pull-left">
+                            Column Name
+                        </span>
+                        <div class="col-lg-4">
+                            <input type="text" name="tag[column_name][]" class="form-control">
+                            <input type="hidden" name="tag[type][]" value="if">
+                        </div>
+                        <div class="clearfix mb-10"></div>
+                      
+                        <div class="col-lg-4">
+                              <select id="columns" class="multiselect-transfer" multiple="" name="columns[]">
+ <option value="sources:199">amax_agents - acc_mgr_contact_no</option>
+                                <option value="sources:200">amax_agents - acc_mgr_email_address</option>
+                                <option value="sources:198">amax_agents - acc_mgr_name</option>
+                                <option value="sources:143">amax_agents - agent_id</option>
+                                <option value="sources:147">amax_agents - agent_role</option>
+                                <option value="sources:146">amax_agents - agent_type_cd</option>
+                                <option value="sources:165">amax_agents - amax_sap_ref_code</option>
+                            </select>
+                        </div>
+
+                       
+                    </div>
+                    <div class="pull-right text-right mr-10">
+                        <div class="btn-group">
+                            <button class="btn btn-xs btn-default add-more-if-tags" data-toggle="tooltip" data-placement="top" data-html="true" title="" data-original-title="Add more tags">
+                                <i class="icon-plus"></i>
+                            </button>
+                            <button class="btn btn-xs btn-default remove-if-tags" data-toggle="tooltip" data-placement="top" data-html="true" title="" data-original-title="Remove this tag">
+                                <i class="icon-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+        <!-- /.panel-body -->
+    </div>
+    <!-- .rule.rule-if-tag -->
+
+    <!-- .if-tag-tpl -->
+    <div class="if-tag if-tag-tpl clearfix">
+        <div class="col-lg-11">
+
+            <input class="linked" name="tag[linked][]" type="hidden" value="1">
+
+            <span class="help-block pull-left">
+                Column Name
+            </span>
+            <div class="col-lg-4">
+                <input type="text" name="tag[column_name][]" class="form-control">
+                <input type="hidden" name="tag[type][]" value="if">
+            </div>
+            <div class="clearfix mb-10"></div>
+            <span class="help-block pull-left">
+                IF
+            </span>
+            <div class="col-lg-4">
+                <select name="tag[column][]" class="form-control">
+                    <option value="sources:199">amax_agents - acc_mgr_contact_no</option>
+                    <option value="sources:200">amax_agents - acc_mgr_email_address</option>
+                    <option value="sources:198">amax_agents - acc_mgr_name</option>
+                    <option value="sources:143">amax_agents - agent_id</option>
+                    <option value="sources:147">amax_agents - agent_role</option>
+                    <option value="sources:146">amax_agents - agent_type_cd</option>
+                    <option value="sources:165">amax_agents - amax_sap_ref_code</option>
+                    <option value="sources:208">amax_agents - amax_threshold_figure</option>
+                    <option value="sources:194">amax_agents - applicable_incentives</option>
+                    <option value="sources:210">amax_agents - bank_id</option>
+                    <option value="sources:188">amax_agents - barangay</option>
+                    <option value="sources:155">amax_agents - barangay_cd</option>
+                    <option value="sources:190">amax_agents - batch_id</option>
+                    <option value="sources:183">amax_agents - billing_method_cd</option>
+                    <option value="sources:180">amax_agents - brand_id</option>
+                    <option value="sources:181">amax_agents - ccb_no</option>
+                    <option value="sources:162">amax_agents - channel_type_cd</option>
+                    <option value="sources:179">amax_agents - cip_ext_ind</option>
+                    <option value="sources:154">amax_agents - city</option>
+                    <option value="sources:153">amax_agents - city_cd</option>
+                    <option value="sources:164">amax_agents - contact_no</option>
+                    <option value="sources:187">amax_agents - contact_person</option>
+                    <option value="sources:173">amax_agents - created_by</option>
+                    <option value="sources:174">amax_agents - created_tms</option>
+                    <option value="sources:185">amax_agents - credit_limit</option>
+                    <option value="sources:150">amax_agents - default_province_cd</option>
+                    <option value="sources:177">amax_agents - deleted_by</option>
+                    <option value="sources:178">amax_agents - deleted_tms</option>
+                    <option value="sources:171">amax_agents - depth</option>
+                    <option value="sources:204">amax_agents - discounts_ind</option>
+                    <option value="sources:168">amax_agents - email_address</option>
+                    <option value="sources:159">amax_agents - first_name</option>
+                    <option value="sources:172">amax_agents - iccid_source_cd</option>
+                    <option value="sources:202">amax_agents - id_no</option>
+                    <option value="sources:201">amax_agents - id_type</option>
+                    <option value="sources:184">amax_agents - interface_access_cd</option>
+                    <option value="sources:161">amax_agents - last_name</option>
+                    <option value="sources:186">amax_agents - last_status_tms</option>
+                    <option value="sources:209">amax_agents - load_threshold_figure</option>
+                    <option value="sources:206">amax_agents - loyalty_pot_ind</option>
+                    <option value="sources:166">amax_agents - lp_sap_ref_code</option>
+                    <option value="sources:160">amax_agents - middle_name</option>
+                    <option value="sources:148">amax_agents - msisdn</option>
+                    <option value="sources:149">amax_agents - msisdn_expiry_date</option>
+                    <option value="sources:157">amax_agents - name</option>
+                    <option value="sources:163">amax_agents - outlet_type_cd</option>
+                    <option value="sources:145">amax_agents - parent_agent_id</option>
+                    <option value="sources:207">amax_agents - parent_msisdn</option>
+                    <option value="sources:170">amax_agents - reason_cd</option>
+                    <option value="sources:151">amax_agents - region_cd</option>
+                    <option value="sources:152">amax_agents - reg_type_cd</option>
+                    <option value="sources:169">amax_agents - remarks</option>
+                    <option value="sources:205">amax_agents - rewards_ind</option>
+                    <option value="sources:195">amax_agents - salesman_first_name</option>
+                    <option value="sources:189">amax_agents - salesman_id</option>
+                    <option value="sources:197">amax_agents - salesman_last_name</option>
+                    <option value="sources:196">amax_agents - salesman_middle_name</option>
+                    <option value="sources:203">amax_agents - secondary_email_address</option>
+                    <option value="sources:182">amax_agents - spi_no</option>
+                    <option value="sources:158">amax_agents - status_cd</option>
+                    <option value="sources:156">amax_agents - street</option>
+                    <option value="sources:193">amax_agents - system_td</option>
+                    <option value="sources:144">amax_agents - td_agent_id</option>
+                    <option value="sources:191">amax_agents - txn_id</option>
+                    <option value="sources:175">amax_agents - updated_by</option>
+                    <option value="sources:176">amax_agents - updated_tms</option>
+                    <option value="sources:167">amax_agents - username</option>
+                    <option value="sources:192">amax_agents - username_upper</option>
+                    <option value="sources:383">ia_velocity -</option>
+                    <option value="sources:138">ia_velocity - AMOUNT</option>
+                    <option value="sources:134">ia_velocity - A_NUM</option>
+                    <option value="sources:136">ia_velocity - B_BRAND</option>
+                    <option value="sources:135">ia_velocity - B_NUM</option>
+                    <option value="sources:297">ia_velocity - CHANNEL</option>
+                    <option value="sources:384">ia_velocity - JJ_Pogi_test</option>
+                    <option value="sources:141">ia_velocity - POST_BAL</option>
+                    <option value="sources:140">ia_velocity - PRE_BAL</option>
+                    <option value="sources:137">ia_velocity - RELOAD_DATE</option>
+                    <option value="sources:142">ia_velocity - TRANS_GROUP</option>
+                    <option value="sources:139">ia_velocity - TRANS_ID</option>
+                </select>
+            </div>
+
+            <span class="help-block pull-left">
+                is
+            </span>
+            <div class="col-lg-2">
+                <select name="tag[operator][]" class="form-control">
+                    <option value="less than">less than</option>
+                    <option value="more than">more than</option>
+                    <option value="equal to">equal to</option>
+                    <option value="not equal to">not equal to</option>
+                    <option value="is null">is null</option>
+                    <option value="is not null">is not null</option>
+                </select>
+            </div>
+
+
+            <div class="col-lg-2">
+                <input type="text" name="tag[ifvalue][]" class="form-control">
+            </div>
+
+
+            <span class="help-block pull-left">
+                value =
+            </span>
+            <div class="col-lg-2">
+                <input type="text" name="tag[value][]" class="form-control">
+            </div>
+
+            <div class="clearfix mb-10"></div>
+
+            <span class="help-block pull-left">
+                else value =
+            </span>
+            <div class="col-lg-2">
+                <input type="text" name="tag[elsevalue][]" class="form-control">
+            </div>
+        </div>
+        <div class="pull-right text-right mr-10">
+            <div class="btn-group">
+                <button class="btn btn-xs btn-default add-more-if-tags" data-toggle="tooltip" data-placement="top" data-html="true" title="" data-original-title="Add more tags">
+                    <i class="icon-plus"></i>
+                </button>
+                <button class="btn btn-xs btn-default remove-if-tags" data-toggle="tooltip" data-placement="top" data-html="true" title="" data-original-title="Remove this tag">
+                    <i class="icon-minus"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- .if-tag-tpl -->
+
+</div>
+
+            </div> <!-- /.row.content -->
+          </div> <!-- /#primary -->
+          
+        </div>
+        
+        <script src="assets/scripts/vendor/jquery.js"></script>
+
+        <script src="assets/scripts/vendor/plugins.js"></script>
+
+        <script src="assets/scripts/trx-app.js"></script>
+</body>
+
+
+<script>
+   $('#columns').multiSelect({
+        selectableOptGroup: true,
+        selectableHeader: "<h4>Available Fields</h4><input type='text' class='search-input form-control mb-10' autocomplete='off' placeholder='Search...'>",
+        selectionHeader: "<h4>Chosen Fields</h4><input type='text' class='search-input form-control mb-10' autocomplete='off' placeholder='Search...'>",
+        afterInit: function(ms) {
+            var that = this,
+                    $selectableSearch = that.$selectableUl.prev(),
+                    $selectionSearch = that.$selectionUl.prev(),
+                    selectableSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selectable:not(.ms-selected)',
+                    selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
+
+            that.qs1 = $selectableSearch.quicksearch(selectableSearchString).on('keydown', function(e) {
+                if (e.which === 40) {
+                    that.$selectableUl.focus();
+                    return false;
+                }
+            });
+
+            that.qs2 = $selectionSearch.quicksearch(selectionSearchString).on('keydown', function(e) {
+                if (e.which == 40) {
+                    that.$selectionUl.focus();
+                    return false;
+                }
+            });
+        },
+        afterSelect: function() {
+            this.qs1.cache();
+            this.qs2.cache();
+        },
+        afterDeselect: function() {
+            this.qs1.cache();
+            this.qs2.cache();
+        }
+    });
+
+</script>
+
+</html>

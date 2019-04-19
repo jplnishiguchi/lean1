@@ -1,0 +1,72 @@
+
+<div class="content-panel ">
+    <h2 class="page-header">Pages List</h2>
+    <div class="page-content" style="">
+        <div class="clearfix">
+            <div id="get" class="form-search">
+                <form id="search-form" method="get">        
+                    <input id="pg-hidden" type="hidden" name="pg" value="1"/>
+                    <input id="sort-col-hidden" type="hidden" name="sortcol" value="id"/>
+                    <input id="sort-val-hidden" type="hidden" name="sortval" value="ASC"/>
+                    <input id="report-name-hidden" type="hidden" name="report-name-hidden" value="pages"/>
+                    <a class="btn btn-primary pull-left" href="/pages/add">
+                        <i class="icon-plus"></i>
+                        Add New Page
+                    </a>
+                    <div class="col-xs-3">
+                        <div class="input-group">
+                            <input type="user/search" id="search-text-input" name="search" placeholder="Search Text" class="form-control">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="icon-search"></i> Search</button>
+                            </div><!-- /btn-group -->
+                        </div><!-- /input-group -->
+                    </div>
+                </form>
+            </div>
+          
+            <div class="pull-right" style="margin-top:-20px;">                
+
+                <div id="pagination-div" class="clearfix">                    
+                    <ul id="pagination-ul" class="pagination">                        
+                    </ul>
+                </div>
+            </div>    
+        </div>
+
+        <div class="wide-table">
+            <table class="table table-striped table-hover">
+                <thead id="search-thead">
+                    <tr>                                                
+                        <th><a class="sort-a" onclick="sortResultsBy('controller')">Controller ▼</a></th>
+                        <th>Action</th>
+                        <th>Status</th>
+                        <th>Route</th>
+                        <th><a class="sort-a" onclick="sortResultsBy('pagename')">Page Name ▼</a></th>
+                        <th>Date Created</th>   
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody id="search-tbody">
+                </tbody>
+            </table>  
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#search-form").submit();
+    });
+    
+    $('input#search-text-input').bind('input', function() {
+        var c = this.selectionStart,
+                r = /[^a-z0-9 _]/gi,
+                v = $(this).val();
+        if (r.test(v)) {
+            $(this).val(v.replace(r, ''));
+            c--;
+        }
+        this.setSelectionRange(c, c);
+    });
+
+</script>

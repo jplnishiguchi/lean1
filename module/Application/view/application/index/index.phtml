@@ -1,0 +1,17 @@
+<?php
+$conf = $this->Conf_widget();
+?>
+<div id="breadcrumb" class="m-breadcrumb">
+
+  <ol class="breadcrumb clearfix">
+    <li class="active">Welcome to your Dashboard</li>
+    <li class="active pull-right date-today">
+      <i class="icon icon-calendar"></i> <span class="date"><?php echo date("l F d, Y");?></span>
+    </li>
+  </ol>
+
+</div>
+
+<div class="content-panel">    
+    <?php echo $conf['login_warning'] ?>        
+</div>

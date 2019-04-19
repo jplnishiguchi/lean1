@@ -1,0 +1,169 @@
+<?php
+//$sessionManager = new \Zend\Session\SessionManager();
+//$sessionStorage = $sessionManager->getStorage();
+//$userRole = $sessionStorage->getMetaData('role');
+//$disabled = 'disabled="disabled"';
+//if ($acl->hasResource('employee-update') && $acl->isAllowed($userRole, 'employee-update')) {
+//    $disabled = '';
+//}
+//die("AAA");
+?>
+<div class="content-panel ">
+    <h2 class="page-header">Create New Employee</h2>
+    <form class="form-horizontal" id="tableForm" name="tableForm" method="POST">
+<!--        <input type="hidden" id="id" name="id" value="" />-->
+        <div class="form-group">
+            <label for="first_name" class="col-xs-2 control-label">First Name</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="first_name" name="first_name" value=""/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="middle_name" class="col-xs-2 control-label">Middle Name</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="middle_name" name="middle_name" value="" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="last_name" class="col-xs-2 control-label">Last Name</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="last_name" name="last_name" value=""/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="gender" class="col-xs-2 control-label">Gender</label>
+            <div class="col-xs-3">
+                <select name="gender" required="" style="width:300px;">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="nickname" class="col-xs-2 control-label">Nickname</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="nickname" name="nickname" value=""/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="date_hired" class="col-xs-2 control-label">Date Hired</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="date_hired" name="date_hired" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="personal_email" class="col-xs-2 control-label">Personal Email</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="personal_email" name="personal_email" value=""/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="company_email" class="col-xs-2 control-label">Company Email</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="company_email" name="company_email" value=""/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address" class="col-xs-2 control-label">Address</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="address" name="address" value=""/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="mobile" class="col-xs-2 control-label">Contact Number</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="mobile" name="contact_number" value=""/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="salary" class="col-xs-2 control-label">Salary</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="salary" name="salary" value=""/>
+            </div>
+        </div>
+        
+        <br/><br/>
+
+        <h2 class="page-header">Associate employee with user account</h2>
+        <div class="form-group">
+            <label for="gender" class="col-xs-2 control-label">Username</label>
+            <div class="col-xs-3">
+                <select name="username" required="" style="width:300px;">
+                        <option value="">No associated user</option>
+                        <?php
+                            foreach($users as $user){
+                        ?>
+                        <option value="<?php echo $user['username'] ?>"><?php echo $user['username'] ?></option>
+                        <?php
+                            }
+                        ?>                        
+                </select>
+            </div>
+        </div>
+        
+        <br/><br/><br/>
+        <div class="col-lg-offset-2">
+            <a href="/user"  class="btn btn-default">Cancel </a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+<?php
+$conf = $this->Conf_widget();
+?>
+
+
+<script>
+    // Check all text if empty
+    // If tesbox empty, add required attribute
+    $(":text").each(function(){
+        $(this).blur(function(){
+            if($(this).val() == ""){
+                var name = $(this).attr('name');
+                $(this).prop('required',true);
+            }
+        });
+    });
+
+    $(function() {
+        $("#date_hired").datepicker({
+            dateFormat: 'yy-mm-dd',
+        });
+
+    });
+
+
+    jQuery.validator.addMethod("notEqual", function(value, element, param) {
+        return this.optional(element) || value != $(param).val();
+    }, "Username and Password should be different");
+
+
+    $("#tableForm").validate({
+        errorClass: 'has-error',
+        validClass: 'has-success',
+        errorElement: 'span',
+        highlight: function(element, errorClass, validClass) {
+            $(element).parents("div.form-group").addClass(errorClass).removeClass(validClass);
+
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents(".form-group.has-error").removeClass(errorClass).addClass(validClass);
+        },
+        rules: {
+            first_name: {
+                notEqual: ""
+            },
+            password_confirm: {
+                equalTo: "#new_password"
+            }
+
+        }
+    });
+    
+    $(document).ready(function (){
+        $("tableForm").submit(function() {
+            $(this).children('#company_email').remove();
+        });
+    });
+</script>

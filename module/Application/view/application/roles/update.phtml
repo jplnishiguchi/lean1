@@ -1,0 +1,114 @@
+<div class="content-panel ">
+    <h2 class="page-header">Update Role</h2>
+    <form class="form-horizontal" id="tableForm" name="tableForm" method="POST" action="/roles/update">
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Role Name</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="username_view" name="role" value="<?php echo $data['role']; ?>" placeholder="Enter role name here..">
+                <input type="hidden" class="form-control" id="username" name="id" value="<?php echo $data['id']; ?>" >
+            </div>
+        </div>        
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Status</label>
+            <div class="col-xs-3">
+                <select name="status" required="">
+                    <option value="ACTIVE" <?php if ($data['status'] == 'ACTIVE') {echo "selected"; } ?>>Active</option>
+                    <option value="INACTIVE" <?php if ($data['status'] == 'INACTIVE') {echo "selected"; } ?>>Inactive</option>
+                </select>
+            </div>
+        </div>
+           <div class="form-group">
+            <label for="access" class="col-xs-2 control-label">Access</label>
+            <div class="col-xs-10">
+                <div class="row">
+
+                        <?php
+                            $prevGroup = '';
+                            foreach ($allpages as $access){
+                                $selected = '';
+
+                                if($access->controller != $prevGroup) {
+                                    $groupName = strtolower(str_replace(' ','', $access->controller));
+
+                                    echo "</div><div class='row-group row-group-{$groupName} clearfix' data-cb-class='.cb-{$groupName}'>";
+                                    echo "<h4>" . $access->controller ." <small><a onclick='checkAll(\"{$groupName}\")' class='check-group'>Check All </a> / <a onclick='uncheckAll(\"{$groupName}\")' class='uncheck-group'>Uncheck All </a></small></h4>";
+
+                                    $prevGroup = $access->controller;
+                                }
+                                foreach ($pages as $roleAccess) {
+                                    if ($roleAccess == $access->id) {
+                                        $selected = 'checked="checked"';
+                                    }
+                                }
+                        ?>
+
+
+                    <div class="col-xs-6">
+                        <div class="checkbox" style="overflow: hidden">
+                            <label for="role-<?php echo $access->id ?>">
+                                <input class="cb-<?php echo strtolower(str_replace(' ','', $access->controller))?>" type="checkbox" name="access[]" id="role-<?php echo $access->id ?>" value="<?php echo $access->id ?>" <?php echo $selected;?>>
+                                <?php echo $access->pagename; ?>
+                            </label>
+                        </div>
+                    </div>
+                    <?php
+                        }
+                    ?>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-offset-2">
+            <a href="/roles"  class="btn btn-default">Cancel </a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+
+<script type="text/javascript">
+    function checkAll(groupName){
+        var classname = "cb-" + groupName;
+        $("input:checkbox."+classname).prop('checked', true);
+    }
+    
+    function uncheckAll(groupName){
+        var classname = "cb-" + groupName;
+        $("input:checkbox."+classname).prop('checked', false);
+    }
+    
+    jQuery.validator.addMethod(
+            "regexmeta",
+            function(value, element, regexp) {
+                var re = new RegExp('^[a-zA-Z0-9-_ ]+$');
+                return this.optional(element) || re.test(value);
+            },
+            "Value should only be letters and numbers only."
+            );
+
+$("#tableForm").validate({
+        errorClass: 'has-error',
+        validClass: 'has-success',
+        errorElement: 'span',
+        highlight: function(element, errorClass, validClass) {
+            $(element).parents("div.form-group").addClass(errorClass).removeClass(validClass);
+
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents(".form-group.has-error").removeClass(errorClass).addClass(validClass);
+        },
+        rules: {
+            role: {
+                regexmeta: "dummy",
+                maxlength: 200
+            },
+           
+
+        }
+    });
+</script>
+
+<?php
+//$conf = $this->Conf_widget();
+?>

@@ -1,0 +1,201 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Dropzone Demo - Project TRX</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+      <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="assets/styles/main.css">
+
+        <script src="assets/scripts/vendor/modernizr.js"></script>
+    </head>
+    <body class="">
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        
+
+        <!-- navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header pull-left">
+      <a class="navbar-brand" href="/">
+        <h2>TRX</h2>
+      </a>
+    </div>
+
+    <div class="m-nav pull-left">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="javascript:void();">
+            Dashboard
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu sub-menu">
+            <li class="">
+              <a href="elements.html">Elements</a>
+            </li>
+            <li class="">
+              <a href="tables.html">Tables</a>
+            </li>
+            <li class="">
+              <a href="forms.html">Forms</a>
+            </li>
+            <li class="">
+              <a href="javascript.html">JavaScript Plugins</a>
+            </li>
+            <li class="dropdown">
+              <a href="#">
+                Pages
+                <b class="caret r"></b>
+              </a>
+              <ul class="dropdown-menu sub-menu">
+                <li>
+                  <a href="restricted.html">
+                    Restricted
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">
+            Another Menu
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu sub-menu">
+            <li class="dropdown">
+              <a href="#">
+                More Menu
+                <b class="caret r"></b>
+              </a>
+              <ul class="dropdown-menu sub-menu in">
+                <li><a href="menu-01.html">Menu 01</a></li>
+                <li><a href="#">Menu 02</a></li>
+                <li><a href="#">Menu 03</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Menu 04</a></li>
+            <li><a href="#">Menu 05</a></li>
+            <li><a href="#">Menu 06 </a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation" class="dropdown-header">Administrator</li>
+            <li><a href="#">Update Database</a></li>
+            <li><a href="#">Generate Report</a></li>
+          </ul>
+        </li>
+        <li class="active">
+          <a href="dropzone.html">
+            Uploader Demo
+          </a>
+        </li>
+        <li class="">
+          <a href="business-rules.html">
+            Business Rules Designer
+          </a>
+        </li>
+        <li class="">
+          <a href="js-plumb.html">
+            jQuery Plumb
+            <span class="badge badge-danger">
+              NEW!
+            </span>
+          </a>
+        </li>
+      </ul> <!-- .nav.navbar-nav -->
+    </div> <!-- .m-nav -->
+
+    <div class="my-account m-nav pull-right">
+           
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Hello there, <strong>Stego Saur</strong>!</a></li>
+        <li class="">
+          <a href="login.html">
+            Logout
+            
+          </a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+</nav>
+
+        <div id="main-wrapper" class="l-main-wrapper">
+
+          <div class="container l-primary" id="primary">
+            
+            <div class="row content">
+              
+              
+              <div id="breadcrumb" class="m-breadcrumb">
+                
+                <ol class="breadcrumb">
+                  <li><a href="/">Dashboard</a></li>
+                  <li class="active">Uploader Demo</li>
+                </ol>
+                
+              </div>
+
+              
+
+              <div class="content-panel ">
+
+                
+                <h2 class="page-header">Uploader Demo</h2>
+                <p class="lead">Amazing things Dropzone JS</p>
+                
+
+              
+
+        
+
+
+<div class="alert alert-block alert-info">
+  <h4><strong>Drag and drop the file to any part of the page.</strong></h4>
+  <p>Yes! You are right! To upload a file, simply drag and drop the file from your desktop to any part of the page and the uploader will automatically run.</p>
+</div>
+
+<button id="clickable">Click me to select files</button>
+<div class="modal fade in" id="uploader-modal" tabindex="-1" role="dialog" aria-labelledby="UploaderModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><i class="icon icon-cloud-upload"></i> Upload your files</h4>
+      </div>
+      <div class="modal-body">
+
+        <div class="alert alert-info">
+          <p><i class="icon icon-info"></i>Drop the files and start uploading.</p>
+        </div>
+        <div id="previews" class="dropzone-previews"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"><i class="icon icon-cloud-upload"></i> Upload</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+</div><!-- /.content-panel -->
+
+            </div> <!-- /.row.content -->
+          </div> <!-- /#primary -->
+          
+        </div>
+        
+        <script src="assets/scripts/vendor/jquery.js"></script>
+
+        <script src="assets/scripts/vendor/plugins.js"></script>
+
+        <script src="assets/scripts/trx-app.js"></script>
+</body>
+</html>

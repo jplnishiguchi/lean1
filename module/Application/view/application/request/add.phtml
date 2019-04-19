@@ -1,0 +1,86 @@
+<div class="content-panel ">
+    <h2 class="page-header">Add Request</h2>
+    <form class="form-horizontal" id="tableForm" name="tableForm" method="POST" action="/request/add">
+        <input type="hidden" id="date" name="date" value="" />
+        <input type="hidden" id="time" name="time" value="" />
+         <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Type</label>
+            <div class="col-xs-3">
+                <select name="type" style="width: 170px" required="">
+                    <option value="Overtime">Overtime</option>
+                    <option value="Meeting">Meeting</option>
+                    <option value="Work from Home">Work from Home</option>
+                    <option value="Field Work">Field Work</option>
+                    <option value="Vacation Leave">Vacation Leave</option>
+                    <option value="Emergency Leave">Emergency Leave</option>
+                    <option value="Sick Leave">Sick Leave</option>
+                    <option value="Undertime">Undertime</option>
+                    <option value="Schedule Change">Schedule Change</option>
+                    <option value="Offset">Offset</option>                  
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Reason/Details</label>
+            <div class="col-xs-3">
+<!--                <input type="text" class="form-control" id="action" name="action" placeholder="Enter action here.." required="">-->
+                <textarea name="reason" id='reason' class='form-control' rows="5" required></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Start Date</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="start_date" name="start_date" placeholder="" required="">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">End Date</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="end_date" name="end_date" placeholder="" required="">
+            </div>
+        </div>
+        <div class="col-lg-offset-2">
+            <a href="/request/view"  class="btn btn-default">Cancel </a>
+            <button type="submit" id='submit' class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script type='text/javascript'>
+
+    $("#start_date").datepicker();
+    $("#start_date").datepicker("setDate", new Date());
+    $("#start_date").datepicker("option", "dateFormat", "yy-mm-dd");
+
+    $("#end_date").datepicker();
+    $("#end_date").datepicker("setDate", new Date());
+    $("#end_date").datepicker("option", "dateFormat", "yy-mm-dd");
+
+    window.onload = display_c();
+
+    function display_c(){
+        var refresh=1000; // Refresh rate in milli seconds
+        mytime=setTimeout('display_ct()',refresh)
+    }
+
+    function display_ct() {
+        var strcount;
+        var x = new Date();
+        var mm = x.getMonth()+1;
+        mm = (mm < 10 ? "0"+mm : mm);
+        var dd = (x.getDate() < 10 ? "0"+x.getDate() : x.getDate());
+        var yyyy = x.getFullYear();
+
+        var hh = (x.getHours() < 10 ? "0"+x.getHours() : x.getHours());
+        var ii = (x.getMinutes() < 10 ? "0"+x.getMinutes() : x.getMinutes());
+        var ss = (x.getSeconds() < 10 ? "0"+x.getSeconds() : x.getSeconds());
+
+        var date = yyyy + "-" + mm + "-" + dd;
+        var time = hh + ":" + ii + ":" + mm;
+
+        document.getElementById('date').value = date;
+        document.getElementById('time').value = time;
+        tt=display_c();
+    }
+
+</script>

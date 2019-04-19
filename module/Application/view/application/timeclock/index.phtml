@@ -1,0 +1,84 @@
+<div class="login-container">
+
+    <h2 class="page-header">Time Clock</h2>
+    <h1><div id="time_display" class="text-center"></div></h1>
+    <br />
+    <form class="form-horizontal" id="tableForm" name="tableForm" method="POST" action="/timeclock/logtime">          
+        <input type="hidden" id="time" name="time" value="" />
+        <input type="hidden" id="date" name="date" value="" />
+        <div class="form-group">
+            <label for="email" class="col-xs-3 control-label">Email</label>
+            <div class="col-xs-9">
+                <input type="text" class="form-control" id="email" name="email" placeholder="Enter email..." required="">
+            </div>
+        </div>     
+        <div class="form-group">
+            <label for="password" class="col-xs-3 control-label">Password</label>
+            <div class="col-xs-9">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password..." required="">
+            </div>
+        </div>  
+        
+        <div class="col-lg-offset-0">
+            <input type="reset" value="Reset"  class="btn btn-default">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+
+</div>
+
+<script type="text/javascript">
+    window.onload = display_c();
+
+    function display_c(){
+        var refresh=1000; // Refresh rate in milli seconds
+        mytime=setTimeout('display_ct()',refresh)
+    }
+
+    function display_ct() {
+        var strcount;
+        var x = new Date();
+        var mm = x.getMonth()+1;
+        mm = (mm < 10 ? "0"+mm : mm);
+        var dd = (x.getDate() < 10 ? "0"+x.getDate() : x.getDate());
+        var yyyy = x.getFullYear();
+        var hh = (x.getHours() < 10 ? "0"+x.getHours() : x.getHours());
+        var ii = (x.getMinutes() < 10 ? "0"+x.getMinutes() : x.getMinutes());
+        var ss = (x.getSeconds() < 10 ? "0"+x.getSeconds() : x.getSeconds());
+
+        //var x1=x.getMonth() + "-" + x.getDate() + "-" + x.getFullYear();
+        //x1 = x1 + "<br \>" + x.getHours( )+ ":" + x.getMinutes() + ":" + x.getSeconds();
+        //var date = mm + "-" + dd + "-" + yyyy;
+        var date = yyyy + "-" + mm + "-" + dd;
+        var time = hh + ":" + ii + ":" + ss;
+        var display = date + "<br \>" + time;
+
+        document.getElementById('time').value = time;
+        document.getElementById('date').value = date;
+        document.getElementById('time_display').innerHTML = display;
+        tt=display_c();
+    }
+
+    $("#tableForm").validate({
+        errorClass: 'has-error',
+        validClass: 'has-success',
+        errorElement: 'span',
+        highlight: function(element, errorClass, validClass) {
+            $(element).parents("div.form-group").addClass(errorClass).removeClass(validClass);
+
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents(".form-group.has-error").removeClass(errorClass).addClass(validClass);
+        },
+        rules: {
+            role: {
+                regexmeta: "dummy",
+                maxlength: 200
+            }
+           
+
+        }
+    });
+
+</script>
+

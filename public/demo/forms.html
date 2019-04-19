@@ -1,0 +1,611 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Forms - Project TRX</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+      <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="assets/styles/main.css">
+
+        <script src="assets/scripts/vendor/modernizr.js"></script>
+    </head>
+    <body class="">
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        
+
+        <!-- navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header pull-left">
+      <a class="navbar-brand" href="/">
+        <h2>TRX</h2>
+      </a>
+    </div>
+
+    <div class="m-nav pull-left">
+      <ul class="nav navbar-nav">
+        <li class="dropdown active">
+          <a href="javascript:void();">
+            Dashboard
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu sub-menu">
+            <li class="">
+              <a href="elements.html">Elements</a>
+            </li>
+            <li class="">
+              <a href="tables.html">Tables</a>
+            </li>
+            <li class="">
+              <a href="forms.html">Forms</a>
+            </li>
+            <li class="">
+              <a href="javascript.html">JavaScript Plugins</a>
+            </li>
+            <li class="dropdown">
+              <a href="#">
+                Pages
+                <b class="caret r"></b>
+              </a>
+              <ul class="dropdown-menu sub-menu">
+                <li>
+                  <a href="restricted.html">
+                    Restricted
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">
+            Another Menu
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu sub-menu">
+            <li class="dropdown">
+              <a href="#">
+                More Menu
+                <b class="caret r"></b>
+              </a>
+              <ul class="dropdown-menu sub-menu in">
+                <li><a href="menu-01.html">Menu 01</a></li>
+                <li><a href="#">Menu 02</a></li>
+                <li><a href="#">Menu 03</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Menu 04</a></li>
+            <li><a href="#">Menu 05</a></li>
+            <li><a href="#">Menu 06 </a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation" class="dropdown-header">Administrator</li>
+            <li><a href="#">Update Database</a></li>
+            <li><a href="#">Generate Report</a></li>
+          </ul>
+        </li>
+        <li class="">
+          <a href="dropzone.html">
+            Uploader Demo
+          </a>
+        </li>
+        <li class="">
+          <a href="business-rules.html">
+            Business Rules Designer
+          </a>
+        </li>
+        <li class="">
+          <a href="js-plumb.html">
+            jQuery Plumb
+            <span class="badge badge-danger">
+              NEW!
+            </span>
+          </a>
+        </li>
+      </ul> <!-- .nav.navbar-nav -->
+    </div> <!-- .m-nav -->
+
+    <div class="my-account m-nav pull-right">
+           
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Hello there, <strong>Stego Saur</strong>!</a></li>
+        <li class="">
+          <a href="login.html">
+            Logout
+            
+          </a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+</nav>
+
+        <div id="main-wrapper" class="l-main-wrapper">
+
+          <div class="container l-primary" id="primary">
+            
+            <div class="row content">
+              
+              
+              <div id="breadcrumb" class="m-breadcrumb">
+                
+                <ol class="breadcrumb">
+                  <li><a href="/">Dashboard</a></li>
+                  <li class="active">Forms</li>
+                </ol>
+                
+              </div>
+
+              
+
+              <div class="content-panel ">
+
+                
+                <h2 class="page-header">Forms</h2>
+                <p class="lead">All about the TRX Front-end Framework Form Elements</p>
+                
+
+              
+
+        
+
+
+<h3>Standard Form Element</h3>
+
+<div class="trx-example">
+  <form role="form" class="form-horizontal">
+    <div class="form-group">
+      <div class="col-lg-2">
+        <label for="exampleInputEmail1">Email address</label>
+      </div>
+      <div class="col-lg-4">
+        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-2">
+        <label for="exampleInputPassword1">Password</label>
+      </div>
+      <div class="col-lg-4">
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-2">
+        <label for="exampleInputFile">File input</label>
+      </div>
+      <div class="col-lg-4">
+        <input type="file" id="exampleInputFile">
+        <p class="help-block">Example block-level help text here.</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-4 col-lg-offset-2">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"> Check me out
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-offset-2">
+      <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+  </form>
+</div>
+<pre><code class="language-js">&lt;form role=<span class="string">"form"</span> class=<span class="string">"form-horizontal"</span>&gt;
+  <span class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"form-group"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-lg-2"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">"exampleInputEmail1"</span>&gt;</span>Email address<span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-lg-4"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"email"</span> <span class="attribute">class</span>=<span class="value">"form-control"</span> <span class="attribute">id</span>=<span class="value">"exampleInputEmail1"</span> <span class="attribute">placeholder</span>=<span class="value">"Enter email"</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"form-group"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-lg-2"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">"exampleInputPassword1"</span>&gt;</span>Password<span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-lg-4"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"password"</span> <span class="attribute">class</span>=<span class="value">"form-control"</span> <span class="attribute">id</span>=<span class="value">"exampleInputPassword1"</span> <span class="attribute">placeholder</span>=<span class="value">"Password"</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"form-group"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-lg-2"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">"exampleInputFile"</span>&gt;</span>File input<span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-lg-4"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"file"</span> <span class="attribute">id</span>=<span class="value">"exampleInputFile"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"help-block"</span>&gt;</span>Example block-level help text here.<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"form-group"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-lg-4 col-lg-offset-2"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"checkbox"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">label</span>&gt;</span>
+          <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span>&gt;</span> Check me out
+        <span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-lg-offset-2"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">type</span>=<span class="value">"submit"</span> <span class="attribute">class</span>=<span class="value">"btn btn-default"</span>&gt;</span>Submit<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">form</span>&gt;</span></span></code></pre>
+
+
+<h3>Form Controls</h3>
+
+<h5>Text Inputs</h5>
+<div class="trx-example">
+  <p>Most common form control, text-based input fields. Includes support for all HTML5 types: <code>text</code>, <code>password</code>, <code>datetime</code>, <code>datetime-local</code>, <code>date</code>, <code>month</code>, <code>time</code>, <code>week</code>, <code>number</code>, <code>email</code>, <code>url</code>, <code>search</code>, <code>tel</code>, and <code>color</code>. &mdash; <small class="text-muted">(Quoting from Bootstrap)</small></p>
+
+  <input type="text" class="form-control" placeholder="This is a text input">
+</div>
+<pre><code class="language-js">&lt;input type=<span class="string">"text"</span> class=<span class="string">"form-control"</span> placeholder=<span class="string">"This is a text input"</span>&gt;</code></pre>
+
+
+<h5>Textarea</h5>
+
+<div class="trx-example">
+  <textarea class="form-control" rows="3"></textarea>            
+</div>
+<pre><code class="language-js">&lt;textarea class=<span class="string">"form-control"</span> rows=<span class="string">"3"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="title">textarea</span>&gt;</span></span></code></pre>
+
+
+<h3>Checkboxes and Radios</h3>
+<div class="trx-example">
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" value="">
+      Option one is this and that&mdash;be sure to include why it's great
+    </label>
+  </div>
+
+  <div class="radio">
+    <label>
+      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+      Option one is this and that&mdash;be sure to include why it's great
+    </label>
+  </div>
+  <div class="radio">
+    <label>
+      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+      Option two can be something else and selecting it will deselect option one
+    </label>
+  </div>
+  <div class="cb-inline">
+    <label class="checkbox-inline">
+      <input type="checkbox" id="inlineCheckbox1" value="option1"> 1
+    </label>
+    <label class="checkbox-inline">
+      <input type="checkbox" id="inlineCheckbox2" value="option2"> 2
+    </label>
+    <label class="checkbox-inline">
+      <input type="checkbox" id="inlineCheckbox3" value="option3"> 3
+    </label>
+  </div>
+</div>
+
+<pre><code class="language-js">&lt;div class=<span class="string">"checkbox"</span>&gt;
+  <span class="xml"><span class="tag">&lt;<span class="title">label</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">value</span>=<span class="value">""</span>&gt;</span>
+    Option one is this and that&amp;mdash;be sure to include why it's great
+  <span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"radio"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">label</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"radio"</span> <span class="attribute">name</span>=<span class="value">"optionsRadios"</span> <span class="attribute">id</span>=<span class="value">"optionsRadios1"</span> <span class="attribute">value</span>=<span class="value">"option1"</span> <span class="attribute">checked</span>&gt;</span>
+    Option one is this and that&amp;mdash;be sure to include why it's great
+  <span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"radio"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">label</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"radio"</span> <span class="attribute">name</span>=<span class="value">"optionsRadios"</span> <span class="attribute">id</span>=<span class="value">"optionsRadios2"</span> <span class="attribute">value</span>=<span class="value">"option2"</span>&gt;</span>
+    Option two can be something else and selecting it will deselect option one
+  <span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"cb-inline"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">label</span> <span class="attribute">class</span>=<span class="value">"checkbox-inline"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">id</span>=<span class="value">"inlineCheckbox1"</span> <span class="attribute">value</span>=<span class="value">"option1"</span>&gt;</span> 1
+  <span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">label</span> <span class="attribute">class</span>=<span class="value">"checkbox-inline"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">id</span>=<span class="value">"inlineCheckbox2"</span> <span class="attribute">value</span>=<span class="value">"option2"</span>&gt;</span> 2
+  <span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">label</span> <span class="attribute">class</span>=<span class="value">"checkbox-inline"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span> <span class="attribute">id</span>=<span class="value">"inlineCheckbox3"</span> <span class="attribute">value</span>=<span class="value">"option3"</span>&gt;</span> 3
+  <span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span></code></pre>
+
+
+<h3>Select</h3>
+
+<div class="trx-example">
+  <select class="form-control">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+
+  <select multiple class="form-control">
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+  </select>
+</div>
+<pre><code class="language-js">&lt;select class=<span class="string">"form-control"</span>&gt;
+  <span class="xml"><span class="tag">&lt;<span class="title">option</span>&gt;</span>1<span class="tag">&lt;/<span class="title">option</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">option</span>&gt;</span>2<span class="tag">&lt;/<span class="title">option</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">option</span>&gt;</span>3<span class="tag">&lt;/<span class="title">option</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">option</span>&gt;</span>4<span class="tag">&lt;/<span class="title">option</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">option</span>&gt;</span>5<span class="tag">&lt;/<span class="title">option</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">select</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">select</span> <span class="attribute">multiple</span> <span class="attribute">class</span>=<span class="value">"form-control"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">option</span>&gt;</span>1<span class="tag">&lt;/<span class="title">option</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">option</span>&gt;</span>2<span class="tag">&lt;/<span class="title">option</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">option</span>&gt;</span>3<span class="tag">&lt;/<span class="title">option</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">option</span>&gt;</span>4<span class="tag">&lt;/<span class="title">option</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">option</span>&gt;</span>5<span class="tag">&lt;/<span class="title">option</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">select</span>&gt;</span></span></code></pre>
+
+
+<h3>Static Text</h3>
+<p>When you need to place a text next to a form label. Useful when you want forms not to be editable (intead of placing disabled form control.</p>
+
+<div class="trx-example">
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label class="col-lg-2 control-label">Email</label>
+      <div class="col-lg-4">
+        <p class="form-control-static">email@example.com</p>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+      <div class="col-lg-4">
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+      </div>
+    </div>
+  </form>
+</div>
+
+<pre><code class="language-js">&lt;form class=<span class="string">"form-horizontal"</span> role=<span class="string">"form"</span>&gt;
+  <span class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"form-group"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">label</span> <span class="attribute">class</span>=<span class="value">"col-lg-2 control-label"</span>&gt;</span>Email<span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-lg-4"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">p</span> <span class="attribute">class</span>=<span class="value">"form-control-static"</span>&gt;</span>email@example.com<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"form-group"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">"inputPassword"</span> <span class="attribute">class</span>=<span class="value">"col-lg-2 control-label"</span>&gt;</span>Password<span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"col-lg-4"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"password"</span> <span class="attribute">class</span>=<span class="value">"form-control"</span> <span class="attribute">id</span>=<span class="value">"inputPassword"</span> <span class="attribute">placeholder</span>=<span class="value">"Password"</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">form</span>&gt;</span></span></code></pre>
+
+
+<h3>Disabled Controls</h3>
+<div class="trx-example">
+  <form class="bs-example">
+    <fieldset disabled="">
+      <div class="form-group">
+        <label for="disabledTextInput">Disabled input</label>
+        <input type="text" id="disabledTextInput" class="form-control" placeholder="Disabled input">
+      </div>
+      <div class="form-group">
+        <label for="disabledSelect">Disabled select menu</label>
+        <select id="disabledSelect" class="form-control">
+          <option>Disabled select</option>
+        </select>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox"> Can't check this
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </fieldset>
+  </form>
+</div>
+<pre><code class="language-js">&lt;form class=<span class="string">"bs-example"</span>&gt;
+  <span class="xml"><span class="tag">&lt;<span class="title">fieldset</span> <span class="attribute">disabled</span>=<span class="value">""</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"form-group"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">"disabledTextInput"</span>&gt;</span>Disabled input<span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"text"</span> <span class="attribute">id</span>=<span class="value">"disabledTextInput"</span> <span class="attribute">class</span>=<span class="value">"form-control"</span> <span class="attribute">placeholder</span>=<span class="value">"Disabled input"</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"form-group"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">label</span> <span class="attribute">for</span>=<span class="value">"disabledSelect"</span>&gt;</span>Disabled select menu<span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">select</span> <span class="attribute">id</span>=<span class="value">"disabledSelect"</span> <span class="attribute">class</span>=<span class="value">"form-control"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">option</span>&gt;</span>Disabled select<span class="tag">&lt;/<span class="title">option</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">select</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"checkbox"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">label</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"checkbox"</span>&gt;</span> Can't check this
+      <span class="tag">&lt;/<span class="title">label</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">button</span> <span class="attribute">type</span>=<span class="value">"submit"</span> <span class="attribute">class</span>=<span class="value">"btn btn-primary"</span>&gt;</span>Submit<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">fieldset</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">form</span>&gt;</span></span></code></pre>
+
+<h3>Form states</h3>
+
+<div class="trx-example">
+  <form class="bs-example">
+    <div class="form-group has-success">
+      <label class="control-label" for="inputSuccess">Input with success</label>
+      <input type="text" class="form-control" id="inputSuccess">
+    </div>
+    <div class="form-group has-warning">
+      <label class="control-label" for="inputWarning">Input with warning</label>
+      <input type="text" class="form-control" id="inputWarning">
+    </div>
+    <div class="form-group has-error">
+      <label class="control-label" for="inputError">Input with error</label>
+      <input type="text" class="form-control" id="inputError">
+    </div>
+  </form>
+</div>
+
+<h3>Buttons</h3>
+<p>States, colors, sizes</p>
+
+<div class="trx-example">
+
+  <p>
+    <!-- Standard gray button with gradient -->
+    <button type="button" class="btn btn-default">Default</button>
+
+    <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+    <button type="button" class="btn btn-primary">Primary</button>
+
+    <!-- Indicates a successful or positive action -->
+    <button type="button" class="btn btn-success">Success</button>
+
+    <!-- Contextual button for informational alert messages -->
+    <button type="button" class="btn btn-info">Info</button>
+
+    <!-- Indicates caution should be taken with this action -->
+    <button type="button" class="btn btn-warning">Warning</button>
+
+    <!-- Indicates a dangerous or potentially negative action -->
+    <button type="button" class="btn btn-danger">Danger</button>
+
+    <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+    <button type="button" class="btn btn-link">Link</button>
+  </p>
+
+  <p>
+    <button type="button" class="btn btn-primary btn-lg">Large button</button>
+    <button type="button" class="btn btn-default btn-lg">Large button</button>
+  </p>
+  <p>
+    <button type="button" class="btn btn-primary">Default button</button>
+    <button type="button" class="btn btn-default">Default button</button>
+  </p>
+  <p>
+    <button type="button" class="btn btn-primary btn-sm">Small button</button>
+    <button type="button" class="btn btn-default btn-sm">Small button</button>
+  </p>
+  <p>
+    <button type="button" class="btn btn-primary btn-xs">Extra small button</button>
+    <button type="button" class="btn btn-default btn-xs">Extra small button</button>
+  </p>
+</div>
+
+<h3>Validation</h3>
+<p>Sample form that validates. Uses <a href="http://jqueryvalidation.org/documentation/">jQuery Validate plugin</a>.</p>
+
+<div class="trx-example">
+
+  <form id="user-login" class="form-horizontal" role="form">
+    <fieldset>
+      <legend>A form that validates email and password, ex.: user login</legend>
+      <div class="form-group">
+        <label class="col-lg-2 control-label">Email</label>
+        <div class="col-lg-4">
+          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+        <div class="col-lg-4">
+          <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+        </div>
+      </div>
+      <div class="form-group">                  
+        <label for="exampleInputFile" class="col-lg-2 control-label">File input</label>
+        <div class="col-lg-4">
+        <input class="form-control" type="file" id="exampleInputFile" name="field" id="field">                   
+        </div> 
+      </div>
+      <div class="form-group">
+        <div class="col-lg-3 col-lg-offset-2">
+          <button id="validate" type="submit" class="btn btn-primary">Validate</button>
+        </div>
+      </div>
+    </fieldset>
+  </form>
+</div>
+
+<h3>Form + Panel Combination</h3>
+<p>A form with inside a panel with action buttons bars</p>
+
+<div class="trx-example">
+  <div class="panel panel-default">
+    <form id="user-login-sample" class="form-horizontal" role="form">
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="col-lg-2 control-label">Email</label>
+          <div class="col-lg-4">
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword" class="col-lg-2 control-label">Password</label>
+          <div class="col-lg-4">
+            <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+          </div>
+        </div>
+        <div class="form-group">                  
+          <label for="exampleInputFile" class="col-lg-2 control-label">File input</label>
+          <div class="col-lg-4">
+            <input class="form-control" type="file" id="exampleInputFile" name="field" id="field">                   
+          </div> 
+        </div>
+      </div>
+      <div class="panel-footer button-actions">
+        <div class="form-group">
+          <div class="col-lg-3 col-lg-offset-2">
+            <button id="validate" type="submit" class="btn btn-primary">Validate</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<h3>Search Form</h3>
+<p>Sample search form.</p>
+
+<div class="trx-example">
+  <div id="get" class="form-search">
+    <input type="hidden" name="o" value=""/>
+    <input type="hidden" name="ot" value=""/>
+    <div class="col-xs-3">
+        <div class="input-group">
+            <input type="search" name="search" placeholder="Search Text" class="form-control">
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-default"><i class="icon-search"></i> Search</button>
+            </div><!-- /btn-group -->
+        </div><!-- /input-group -->
+    </div>
+</form>
+
+
+            </div> <!-- /.row.content -->
+          </div> <!-- /#primary -->
+          
+        </div>
+        
+        <script src="assets/scripts/vendor/jquery.js"></script>
+
+        <script src="assets/scripts/vendor/plugins.js"></script>
+
+        <script src="assets/scripts/trx-app.js"></script>
+</body>
+</html>

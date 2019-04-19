@@ -1,0 +1,115 @@
+
+<div class="alert alert-danger">
+    Please reset your password to be able to access all other pages.
+</div>
+
+<div class="content-panel ">
+    <h2 class="page-header">Password Change</h2>
+    <form class="form-horizontal" id="tableForm" name="tableForm" method="POST" action="/pwdchange">
+        <input type="hidden" class="form-control" id="username" name="username" value="<?php echo $data['username']; ?>" >
+        <div class="form-group">
+            <label for="password" class="col-xs-2 control-label">New Password</label>
+            <div class="col-xs-3">
+                <input type="password" name="password" id="password" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="confirm" class="col-xs-2 control-label">Confirm New Password</label>
+            <div class="col-xs-3">
+                <input type="password" id="password_confirm" name="password_confirm" class="form-control">
+            </div>
+        </div>
+
+
+        <div class="col-lg-offset-2">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    </form>
+</div>
+
+<?php
+$dateplus30 = date("Y-m-d", strtotime("+30 days", time()));
+$conf = $this->Conf_widget();
+?>
+
+
+<script>
+
+
+ jQuery.validator.addMethod("notEqual", function(value, element, param) {
+        return this.optional(element) || value != $(param).val();
+    }, "Username and Password should be different");
+
+
+    jQuery.validator.addMethod(
+            "regex",
+            function(value, element, regexp) {
+                var re = new RegExp(<?php echo $conf['pwd_regexp']; ?>);
+                return this.optional(element) || re.test(value);
+            },
+            "Password should contain atleast one lowercase or uppercase letter, or number, or characters like !@#$%^& "
+            );
+    
+    
+    jQuery.validator.addMethod('password_check', function(value) {
+        var resp = password_check();
+        if (resp == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }, "You can't use old passwords.");
+
+
+    function password_check() {
+
+        var username = $("#username").val();
+        var password = $("#password").val();
+
+        if (password == '') {
+            return 0;
+        } else {
+
+            var ajaxResponse;
+
+            jQuery.ajax({
+                async: false,
+                type: 'GET',
+                url: '/user/checkpassword',
+                data: 'username=' + username + '&password=' + password,
+                cache: false,
+                success: function(response) {
+                    ajaxResponse = response;
+                }
+            });
+            return ajaxResponse;
+        }
+    }
+
+
+    $("#tableForm").validate({
+        errorClass: 'has-error',
+        validClass: 'has-success',
+        errorElement: 'span',
+        highlight: function(element, errorClass, validClass) {
+            $(element).parents("div.form-group").addClass(errorClass).removeClass(validClass);
+
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents(".form-group.has-error").removeClass(errorClass).addClass(validClass);
+        },
+        rules: {
+            password: {
+                minlength: <?php echo $conf['password_length']; ?>,
+        notEqual: "#username",
+                regex: "dummy",
+                password_check: "#password"
+            },
+            password_confirm: {
+                equalTo: "#password"
+            }
+
+        }
+    });
+</script>

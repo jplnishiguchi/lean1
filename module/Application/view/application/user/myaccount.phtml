@@ -1,0 +1,132 @@
+<div class="content-panel ">
+    <h2 class="page-header">My Account</h2>
+    <form class="form-horizontal" id="tableForm" name="tableForm" method="POST" action="/user/update">
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Username</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="username_view" name="username_view" value="<?php echo $user['username']; ?>" placeholder="Enter username here.." disabled="">
+                <input type="hidden" class="form-control" id="username" name="username" value="<?php echo $user['username']; ?>" >
+            </div>
+        </div>
+		<div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Email</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="email_view" name="email_view" value="<?php echo $user['email']; ?>" placeholder="" disabled="">
+                <input type="hidden" class="form-control" id="email" name="email" value="<?php echo $user['email']; ?>" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Password Expiration</label>
+            <div class="col-xs-3">
+                <!--<input type="text" class="form-control" id="pwd_exp_date" name="pwd_exp_date" placeholder="" required="">-->
+
+                <input type="text" class="form-control" id="pwd_exp_date_view" name="pwd_exp_date_view" value="<?php echo substr($user['pwd_exp_date'], 0, -9); ?>" placeholder="Enter password expiration here.." disabled="">
+                <input type="hidden" class="form-control" id="pwd_exp_date" name="pwd_exp_date" value="<?php echo $user['pwd_exp_date']; ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Role</label>
+            <div class="col-xs-3">
+                <select name="role" required="" style="width:300px;" disabled="">
+                    <?php
+                    foreach ($roles as $role) {
+                        $selected = NULL;
+                        if ($user['role'] == $role->role) {
+                            $selected = "selected=''";
+                        }
+                        ?>
+                        <option value="<?php echo $role->role; ?>" <?php echo $selected; ?>><?php echo $role->role; ?></option>
+                        <?php
+                    }
+                    ?>
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Status</label>
+            <div class="col-xs-3">
+                <select name="status" required="" disabled="">
+                    <option value="ACTIVE" <?php if ($user['status'] == 'ACTIVE') {
+                        echo "selected";
+                    } ?>>Active</option>
+                    <option value="INACTIVE" <?php if ($user['status'] == 'INACTIVE') {
+                        echo "selected";
+                    } ?>>Inactive</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="access" class="col-xs-2 control-label">Locked</label>
+            <div class="col-xs-3">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="locked" value="yes" <?php if($user['locked']==1) { ?> checked <?php } ?> disabled="">
+                        Yes
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="locked" value="no" <?php if($user['locked']==0) { ?> checked <?php } ?> disabled="">
+                        No
+                    </label>
+                </div>
+<!--                <div class="checkbox">
+                    <label for="cb-user-locked">
+                        <input type="checkbox" name="locked" id="" value="1" />
+                        Locked
+                    </label>
+                </div>-->
+            </div>
+        </div>
+
+        <div class="col-lg-offset-2">
+            <a href="/"  class="btn btn-primary">Back </a>
+<!--            <button type="submit" class="btn btn-primary">Submit</button>-->
+        </div>
+    </form>
+</div>
+
+<?php
+$conf = $this->Conf_widget();
+?>
+
+
+<script>
+    $(function() {
+        $("#pwd_exp_date_view").datepicker({
+            dateFormat: 'yy-mm-dd',
+        });
+
+    });
+
+
+    jQuery.validator.addMethod("notEqual", function(value, element, param) {
+        return this.optional(element) || value != $(param).val();
+    }, "Username and Password should be different");
+
+
+    $("#tableForm").validate({
+        errorClass: 'has-error',
+        validClass: 'has-success',
+        errorElement: 'span',
+        highlight: function(element, errorClass, validClass) {
+            $(element).parents("div.form-group").addClass(errorClass).removeClass(validClass);
+
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents(".form-group.has-error").removeClass(errorClass).addClass(validClass);
+        },
+        rules: {
+            new_password: {
+                minlength: <?php echo $conf['password_length']; ?>,
+                notEqual: "#username"
+            },
+            password_confirm: {
+                equalTo: "#new_password"
+            }
+
+        }
+    });
+</script>

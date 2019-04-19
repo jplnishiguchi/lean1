@@ -1,0 +1,56 @@
+<div class="content-panel ">
+    <h2 class="page-header">Create new Holiday</h2>
+    <form class="form-horizontal" id="tableForm" name="tableForm" method="POST" action="/holiday/add">
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Date</label> 
+            <div class="col-xs-3"Holiday>
+                <input type="text" class="form-control" id="datepicker-from" name="date" placeholder="Enter Date" required="">
+            </div>
+        </div>                       
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Holiday</label>
+            <div class="col-xs-3"Holiday>
+                <input type="text" class="form-control" id="desc" name="holiday" placeholder="Enter description here.." required="">
+            </div>
+        </div>    
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Proclamation</label>
+            <div class="col-xs-3">
+                <select name="proclamation" required="">
+                    <option value="Regular">Regular</option>
+                    <option value="Special Non-Working">Special Non-Working</option>
+                </select>
+            </div>
+        </div>
+             <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Rate</label>
+            <div class="col-xs-3"Holiday>
+                <input type="text" class="form-control" id="desc" name="rate" placeholder="Enter rate here.." required="">
+            </div>
+        </div>
+        
+        <div class="col-lg-offset-2">
+            <a href="/holiday"  class="btn btn-default">Cancel </a>
+            <input type="reset" value="Reset"  class="btn btn-default">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    $(function() {
+		$( "#datepicker-from" ).datepicker({dateFormat: "yy-mm-dd"});
+		$( "#datepicker-to" ).datepicker({dateFormat: "yy-mm-dd"});
+
+    });
+        $(document).ready(function() {
+        $("#search-form").submit();
+    });
+
+	   $('#lblsub').click(function(event) {
+        if ($("#search-form").valid() == true) {
+            $("#search-form").submit();
+        }
+    });
+
+</script>

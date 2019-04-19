@@ -1,0 +1,224 @@
+<?php
+$sessionManager = new \Zend\Session\SessionManager();
+$sessionStorage = $sessionManager->getStorage();
+$systemRole = $sessionStorage->getMetaData('role');
+$user = $this->identity();
+?>
+
+<div class="content-panel ">
+    <h2 class="page-header">Holiday List</h2>
+    <div class="page-content" style="">
+        <div class="clearfix">
+            <div id="get" class="form-search">
+                <form id="search-form" method="get">
+                    <input id="pg-hidden" type="hidden" name="pg" value="1"/>
+                    <input id="report-name-hidden" type="hidden" name="report-name-hidden" value="holiday-getall"/>
+					<input id="role-hidden" type="hidden" name="role-hidden" value="<?php echo $systemRole; ?>"/>
+                    <input id="sort-col-hidden" type="hidden" name="sortcol" value="id"/>
+                    <input id="sort-val-hidden" type="hidden" name="sortval" value="ASC"/>
+
+					<?php
+						if($systemRole == 'system-administrator'){
+					?>
+					<a class="btn btn-primary pull-left" href="/holiday/add" style="margin-right:10px;">
+                        <i class="icon-plus"></i>
+                        Add New Holiday
+                    </a>
+                    <a class="btn btn-primary pull-left" href="/holiday/bulkadd" style="margin-right:10px;">
+                        <i class="icon-plus"></i>
+                        Add New Holiday in Bulk
+                    </a>
+                    <div class="col-xs-3">
+                        <div class="input-group">
+                            <input id="search-text-input" type="holiday/search" name="search" placeholder="Search Holiday" class="form-control">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="icon-search"></i> Search</button>
+                            </div><!-- /btn-group -->
+                        </div><!-- /input-group -->
+                    </div>
+
+<!--					<div class="col-xs-2" style="margin-right:-60px; margin-bottom:15px;">-->
+					<div class="col-xs-2" style="margin-right:-60px; margin-bottom:15px;">
+                       <div class="input-group">
+                           <input type="text" id="datepicker-from" name="date-from" placeholder="Start Date" class="form-control" style="width: 80%;">
+                           <input type="hidden" id="datepicker" name ="datefrom" placeholder="select date" class="form-control">
+                       </div>
+                   </div>
+                   <div class="col-xs-2">
+                       <div class="input-group">
+                           <input type="text" id="datepicker-to" name="date-to" placeholder="End Date" class="form-control" style="width: 80%;">
+						   <input type="hidden" id="datepicker" name ="dateto" placeholder="select date" class="form-control">
+                           <div class="input-group-btn" style="vertical-align:top">
+                               <label id="lblsub" name="lblsub" class="btn btn-default">Go</label>
+                           </div>
+                       </div>
+                   </div>
+
+					<?php
+						}else{
+					?>
+
+                    <div class="col-xs-3">
+                        <div class="input-group">
+                            <input id="search-text-input" type="holiday/search" name="search" placeholder="Search Holiday" class="form-control">
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-default"><i class="icon-search"></i> Search</button>
+                            </div><!-- /btn-group -->
+                        </div><!-- /input-group -->
+                    </div>
+
+<!--					<div class="col-xs-2" style="margin-right:-60px; margin-bottom:15px;">-->
+					<div class="col-xs-2" style="margin-right:-60px; margin-bottom:15px;">
+                       <div class="input-group">
+                           <input type="text" id="datepicker-from" name="date-from" placeholder="Start Date" class="form-control">
+                           <input type="hidden" id="datepicker" name ="datefrom" placeholder="select date" class="form-control">
+                       </div>
+                   </div>
+                   <div class="col-xs-2">
+                       <div class="input-group">
+                           <input type="text" id="datepicker-to" name="date-to" placeholder="End Date" class="form-control">
+						   <input type="hidden" id="datepicker" name ="dateto" placeholder="select date" class="form-control">
+                           <div class="input-group-btn" style="vertical-align:top">
+                               <label id="lblsub" name="lblsub" class="btn btn-default">Go</label>
+                           </div>
+                       </div>
+                   </div>
+
+					<?php
+						}
+					?>
+
+
+                </form>
+            </div>
+            <div class="pull-right" style="margin-top:-20px;">
+                <div id="pagination-label"></div>
+                <div id="pagination-div">
+                    <ul id="pagination-ul" class="pagination">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="wide-table">
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+						<th><a class="sort-a" onclick="sortResultsBy('id')">ID ▼</a></th>
+                        <th><a class="sort-a" onclick="sortResultsBy('date')">Date ▼</a></th>
+						<th><a class="sort-a" onclick="sortResultsBy('holiday')">Holiday ▼</a></th>
+                        <th><a class="sort-a" onclick="sortResultsBy('proclamation')">Proclamation ▼</a></th>
+                        <th><a class="sort-a" onclick="sortResultsBy('rate')">Rate ▼</a></th>
+						<?php
+							if($systemRole == 'system-administrator'){
+						?>
+							<th>Action</th>
+						<?php
+							}
+						?>
+                    </tr>
+                </thead>
+                <tbody id="search-tbody">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="choose_dialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-body">
+                <strong>Please select users to delete.</strong>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"><strong>OK</strong></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="confirmation_dialog" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title"><strong>Delete Confirmation</strong></h4>
+            </div>
+            <div class="modal-body">
+                <strong>Continue deletion? This action is irrevocable.</strong>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="delete_btn"><strong>Delete</strong></button>
+                <button type="button" class="btn btn-default" data-dismiss="modal"><strong>Cancel</strong></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+	$(function() {
+		$( "#datepicker-from" ).datepicker({dateFormat: "yy-mm-dd"});
+		$( "#datepicker-to" ).datepicker({dateFormat: "yy-mm-dd"});
+
+    });
+
+    $("#datepicker-from").click(function(){
+        $("#datepicker-to").prop('required',true);
+    });
+    $("#datepicker-to").click(function(){
+        $("#datepicker-from").prop('required',true);
+    });
+
+	$('#lblsub').click(function(event) {
+        if ($("#search-form").valid() == true) {
+            $("#search-form").submit();
+        }
+    });
+
+    function checkDeleteHoliday() {
+        var usernames = "";
+        $("input:checkbox[type=checkbox]:checked").each(function()
+        {
+            usernames = $(this).val() + ', ' + usernames;
+        });
+        if (usernames == "") {
+            $("#choose_dialog").modal();
+        } else {
+            $("#confirmation_dialog").modal();
+        }
+    }
+
+    $(document).ready(function() {
+        $("#search-form").submit();
+    });
+
+    $("#delete_button_all").on('click', function() {
+        checkDeleteHoliday();
+    });
+
+    $("#delete_btn").on('click', function() {
+        //$("#list_form").submit();
+        var usernames = "";
+        $("input:checkbox[type=checkbox]:checked").each(function()
+        {
+            usernames = $(this).val() + ', ' + usernames;
+        });
+        $("#usernames").val(usernames);
+        $("#userdeleteform").submit();
+    });
+//$('input#search-text-input').bind('input', function() {
+//        var c = this.selectionStart,
+//                r = /[^a-z0-9 _]/gi,
+//                v = $(this).val();
+//        if (r.test(v)) {
+//            $(this).val(v.replace(r, ''));
+//            c--;
+//        }
+//        this.setSelectionRange(c, c);
+//    });
+
+</script>

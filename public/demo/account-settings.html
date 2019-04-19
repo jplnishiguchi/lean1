@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class=no-js> <!--<![endif]-->
+    <head>
+        <meta charset=utf-8>
+        <meta http-equiv=X-UA-Compatible content="IE=edge">
+        <title>TRX - Account Settings</title>
+        <meta name=description content="">
+        <meta name=viewport content="width=device-width">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="styles/main.css">
+        <script src="scripts/vendor/modernizr.js"></script>
+    
+    <body>
+      <!--[if lt IE 10]>
+          <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+    <!-- navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role=navigation>
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class=container>
+        <div class=navbar-header>
+          <a class=navbar-brand href=#>Project <strong>Trx</strong></a>
+        </div>
+
+        <div class=m-nav>
+          <ul class="nav navbar-nav">
+            <li class=dropdown>
+              <a href=javascript:void();>
+                Dashboard
+                <b class=caret></b>
+              </a>
+              <ul class="dropdown-menu sub-menu">
+                <li>
+                  <a href=elements.html>Elements</a>
+                </li>
+                <li>
+                  <a href=tables.html>Tables</a>
+                </li>
+                <li>
+                  <a href=forms.html>Forms</a>
+                </li>
+                <li>
+                  <a href=javascript.html>JavaScript Plugins</a>
+                </li>
+              </ul>
+            </li>
+            <li class=dropdown>
+              <a href=#>
+                Another Menu
+                <b class=caret></b>
+              </a>
+              <ul class="dropdown-menu sub-menu">
+                <li class=dropdown>
+                  <a href=elements.html>
+                    More Menu
+                    <b class="caret r"></b>
+                  </a>
+                  <ul class="dropdown-menu sub-menu in">
+                    <li><a href=#>Menu 01</a></li>
+                    <li><a href=#>Menu 02</a></li>
+                    <li><a href=#>Menu 03</a></li>
+                  </ul>
+                </li>
+                <li><a href=#>Menu 04</a></li>
+                <li><a href=#>Menu 05</a></li>
+                <li><a href=#>Menu 06 </a></li>
+                <li role=presentation class=divider></li>
+                <li role=presentation class=dropdown-header>Administrator</li>
+                <li><a href=#>Update Database</a></li>
+                <li><a href=#>Generate Report</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href=#>Schemes</a>
+            </li>
+            <li>
+              <a href=#>Uploader</a>
+            </li>
+          </ul> <!-- .nav.navbar-nav -->
+        </div> <!-- .m-nav -->
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+               
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href=#>Hello there, <strong>Stego Saur</strong>!</a></li>
+            <li class=dropdown>
+              <a href=login.html>
+                Logout
+                
+              </a>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div>
+    </nav>
+
+    <div id=main-wrapper class=l-main-wrapper>
+
+      <div class="container l-primary" id=primary>
+        
+        <div class="row content">
+
+          <div id=alert-container class=m-alert-container>
+            <div class="alert alert-info alert-dismissable fade out">
+              <button type=button class=close data-dismiss=alert aria-hidden=true>&times;</button>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, consequuntur porro doloribus ducimus.
+            </div>
+          </div>
+          
+          <h2 class=page-header><strong>Settings</strong></h2>
+
+          <ul class="nav nav-tabs" id=myTab>
+              <li class=active><a href=#home>General</a></li>
+              <li><a href=#profile>Security</a></li>
+            </ul>
+
+            <div class=tab-content>
+              <div class="tab-pane active fade in" id=home>
+                <h3>General</h3>
+                <hr>
+                <form class=form-horizontal role=form>
+                  <div class=form-group>
+                    <label class="col-lg-2 control-label">Name</label>
+                    <div class=col-lg-10>
+                      <p class=form-control-static>Stego Saur</p>
+                    </div>
+                  </div>
+                  <div class=form-group>
+                    <label for=inputPassword class="col-lg-2 control-label">Username</label>
+                    <div class=col-lg-10>
+                      <p class=form-control-static>ssaur</p>
+                    </div>
+                  </div>
+                  <div class=form-group>
+                    <label for=inputPassword class="col-lg-2 control-label">Email Address</label>
+                    <div class=col-lg-10>
+                      <p class=form-control-static>ssaur@trx.com</p>
+                    </div>
+                  </div>
+                </form>
+                
+              </div>
+              <div class="tab-pane fade" id=profile>
+                <h3>Privacy</h3>
+                <form class=bs-example>
+                  <div class=checkbox>
+                    <label>
+                      <input type=checkbox>
+                      Show your birthday to public
+                    </label>
+                  </div>
+                  <div class=checkbox>
+                    <label>
+                      <input type=checkbox>
+                      Show your email address
+                    </label>
+                  </div>
+                  <div class=checkbox>
+                    <label>
+                      <input type=checkbox>
+                      Show your birthday to public
+                    </label>
+                  </div>
+                </form>
+              </div>
+            </div>
+
+        </div>
+
+      </div> <!-- /#primary -->
+      
+    </div>
+
+        <script src="scripts/vendor/jquery.js"></script>
+
+        <script src="scripts/vendor/plugins.js"></script>
+
+        <script src="scripts/app.js"></script>
+

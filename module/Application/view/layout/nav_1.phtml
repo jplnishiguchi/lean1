@@ -1,0 +1,397 @@
+<?php
+$requestUri = $_SERVER["REQUEST_URI"];
+$sessionManager = new \Zend\Session\SessionManager();
+$sessionStorage = $sessionManager->getStorage();
+$userRole = $sessionStorage->getMetaData('role');
+
+if (strlen(trim($userRole)) == 0 || !in_array($userRole, $acl->getRoles())) {
+    $userRole = 'guest';
+}
+?>
+<ul class="nav navbar-nav" id="nav">
+    <li class="dropdown">
+        <a href="#">
+            User Management
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu sub-menu in">
+
+    <?php
+    /*
+      $route = '';
+      if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)) {
+      echo '';
+      }
+     */
+    $sub = NULL;
+    $route = 'user-index';
+    if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)) {
+        $sub .= '<li><a href="/user">Search</a></li>';
+    }
+    if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)){
+        $sub .= '<li><a href="/user/loggedusers">Logged Users</a></li>';
+    }
+    $route = 'user-add';
+    if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)) {
+        $sub .= '<li><a href="/user/add">Create New</a></li>';
+    }
+    $route = 'user-bulkadd';
+    if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)) {
+        $sub .= '<li><a href="/user/bulkadd">Bulk Create</a></li>';
+    }
+
+    if (!is_null($sub)) {
+        echo ' <li class="dropdown"> <a href="#">
+            Users
+            <b class="caret r"></b>
+        </a>
+        <ul class="dropdown-menu sub-menu in">';
+
+        echo $sub;
+        echo ' </ul>
+    </li>';
+    }
+    ?>
+
+
+
+
+
+    <?php
+    $sub = NULL;
+    $route = 'roles-index';
+    if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)) {
+        $sub .= '<li><a href="/roles">Search</a></li>';
+    }
+    $route = 'roles-add';
+    if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)) {
+        $sub .= '<li><a href="/roles/add">Create New</a></li>';
+    }
+
+    if (!is_null($sub)) {
+        echo ' <li class="dropdown"> <a href="#">
+            Roles
+            <b class="caret r"></b>
+        </a>
+        <ul class="dropdown-menu sub-menu in">';
+
+        echo $sub;
+        echo ' </ul>
+    </li>';
+    }
+    ?>
+
+
+        <?php
+        $sub = NULL;
+        $route = 'pages-index';
+        if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)) {
+            $sub .= '<li><a href="/pages">Search</a></li>';
+        }
+        $route = 'pages-add';
+        if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)) {
+            $sub .= '<li><a href="/pages/add">Create New</a></li>';
+        }
+
+        if (!is_null($sub)) {
+        echo ' <li class="dropdown"> <a href="#">
+            Pages
+            <b class="caret r"></b>
+        </a>
+        <ul class="dropdown-menu sub-menu in">';
+
+        echo $sub;
+        echo ' </ul>
+    </li>';
+    }
+
+        ?>
+
+    <?php
+        $sub = NULL;
+        $route = 'options-index';
+        if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)) {
+            $sub .= '<li><a href="/options">Search</a></li>';
+        }
+
+
+        if (!is_null($sub)) {
+        echo ' <li class="dropdown"> <a href="#">
+            Options
+            <b class="caret r"></b>
+        </a>
+        <ul class="dropdown-menu sub-menu in">';
+
+        echo $sub;
+        echo ' </ul>
+    </li>';
+    }
+
+        ?>
+
+                </ul>
+    </li>    
+    
+    <li class="dropdown">
+        <a href="#">
+            HR Information System
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu sub-menu in">
+            <li class="dropdown">
+                <a href="#">
+                    HR Information
+                    <b class="caret r"></b>
+                </a>
+                <ul class="dropdown-menu sub-menu in">
+                    <li><a href="/employee">Employee Information</a></li>
+                    <li><a href="/empgroup/groups">Employee Groups</a></li>
+                    <li><a href="/empgroup/roles">Employee Roles</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">
+                    Attendance and Schedule Management
+                    <b class="caret r"></b>
+                </a>
+                <ul class="dropdown-menu sub-menu in">
+                    <li><a href="/time">Time Recording</a></li>
+                    <li><a href="/holiday">Holiday Management</a></li>                    
+                    <li><a href="#">Selfie Clock</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#">
+                    Requests Management
+                    <b class="caret r"></b>
+                </a>
+                <ul class="dropdown-menu sub-menu in">
+                    <li><a href="/request/add">Add</a></li>
+                    <li><a href="/request/view">View</a></li>
+                </ul>
+            </li>            
+        </ul>
+    </li>
+    
+    <li class="dropdown">
+        <a href="#">
+            Payroll
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu sub-menu in">
+            <li class="dropdown">
+                <a href="#">
+                    Payslip
+                    <b class="caret r"></b>
+                </a>
+<!--                <ul class="dropdown-menu sub-menu in">
+                    <li><a href="/employee">Employee Information</a></li>
+                    <li><a href="/empgroup/groups">Employee Groups</a></li>
+                    <li><a href="/empgroup/roles">Employee Roles</a></li>
+                </ul>-->
+            </li>
+            <li class="dropdown">
+                <a href="#">
+                    Allowance and Benefits
+                    <b class="caret r"></b>
+                </a>
+<!--                <ul class="dropdown-menu sub-menu in">
+                    <li><a href="/time">Time Recording</a></li>
+                    <li><a href="#">Holiday Management</a></li>                    
+                    <li><a href="#">Selfie Clock</a></li>
+                </ul>-->
+            </li>
+            <li class="dropdown">
+                <a href="#">
+                    Compensation
+                    <b class="caret r"></b>
+                </a>
+<!--                <ul class="dropdown-menu sub-menu in">
+                    <li><a href="/request/add">Add</a></li>
+                    <li><a href="/request/view">View</a></li>
+                </ul>-->
+            </li>            
+            <li class="dropdown">
+                <a href="#">
+                    Deductions
+                    <b class="caret r"></b>
+                </a>
+<!--                <ul class="dropdown-menu sub-menu in">
+                    <li><a href="/request/add">Add</a></li>
+                    <li><a href="/request/view">View</a></li>
+                </ul>-->
+            </li>
+            <li class="dropdown">
+                <a href="#">
+                    Payroll Register
+                    <b class="caret r"></b>
+                </a>
+<!--                <ul class="dropdown-menu sub-menu in">
+                    <li><a href="/request/add">Add</a></li>
+                    <li><a href="/request/view">View</a></li>
+                </ul>-->
+            </li>   
+        </ul>
+    </li>
+
+    <li class="dropdown">
+        <a href="#">
+            User Management - OLD
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu sub-menu in">
+
+    <?php
+    /*
+      $route = '';
+      if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)) {
+      echo '';
+      }
+     */
+    $sub = NULL;
+    $route = 'user-index';
+    if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)) {
+        $sub .= '<li><a href="/user">Search</a></li>';
+    }
+    if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)){
+        $sub .= '<li><a href="/user/loggedusers">Logged Users</a></li>';
+    }
+    $route = 'user-add';
+    if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)) {
+        $sub .= '<li><a href="/user/add">Create New</a></li>';
+    }
+    $route = 'user-bulkadd';
+    if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)) {
+        $sub .= '<li><a href="/user/bulkadd">Bulk Create</a></li>';
+    }
+
+    if (!is_null($sub)) {
+        echo ' <li class="dropdown"> <a href="#">
+            Users
+            <b class="caret r"></b>
+        </a>
+        <ul class="dropdown-menu sub-menu in">';
+
+        echo $sub;
+        echo ' </ul>
+    </li>';
+    }
+    ?>
+
+
+
+
+
+    <?php
+    $sub = NULL;
+    $route = 'roles-index';
+    if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)) {
+        $sub .= '<li><a href="/roles">Search</a></li>';
+    }
+    $route = 'roles-add';
+    if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)) {
+        $sub .= '<li><a href="/roles/add">Create New</a></li>';
+    }
+
+    if (!is_null($sub)) {
+        echo ' <li class="dropdown"> <a href="#">
+            Roles
+            <b class="caret r"></b>
+        </a>
+        <ul class="dropdown-menu sub-menu in">';
+
+        echo $sub;
+        echo ' </ul>
+    </li>';
+    }
+    ?>
+
+
+        <?php
+        $sub = NULL;
+        $route = 'pages-index';
+        if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)) {
+            $sub .= '<li><a href="/pages">Search</a></li>';
+        }
+        $route = 'pages-add';
+        if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)) {
+            $sub .= '<li><a href="/pages/add">Create New</a></li>';
+        }
+
+        if (!is_null($sub)) {
+        echo ' <li class="dropdown"> <a href="#">
+            Pages
+            <b class="caret r"></b>
+        </a>
+        <ul class="dropdown-menu sub-menu in">';
+
+        echo $sub;
+        echo ' </ul>
+    </li>';
+    }
+
+        ?>
+
+    <?php
+        $sub = NULL;
+        $route = 'options-index';
+        if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)) {
+            $sub .= '<li><a href="/options">Search</a></li>';
+        }
+
+
+        if (!is_null($sub)) {
+        echo ' <li class="dropdown"> <a href="#">
+            Options
+            <b class="caret r"></b>
+        </a>
+        <ul class="dropdown-menu sub-menu in">';
+
+        echo $sub;
+        echo ' </ul>
+    </li>';
+    }
+
+        ?>
+
+                </ul>
+    </li>    
+
+
+
+    <?php
+    $route = 'weblogs-index';
+        if ($acl->hasResource($route) && $acl->isAllowed($userRole, $route)) {
+            echo '<li><a href="/weblogs">Web Logs</a></li>';
+        }
+    ?>
+
+
+<li><a href="/timeclock">TIMECLOCK</a></li>
+
+
+
+
+
+
+
+
+
+
+
+        <!--            <li><a href="/transactions/transaction-details">Transaction Details</a></li>            -->
+
+
+
+
+
+
+
+<?php if ($env = getenv('APPLICATION_ENV') == 'development') : ?>
+    <li  <?php ($requestUri == 'demo') ? "class='active';" : '' ?>>
+        <a href="/demo/index.html">Playdough UI Guide</a>
+    </li>
+
+<?php endif; ?>
+
+</ul>

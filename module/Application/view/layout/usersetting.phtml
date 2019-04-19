@@ -1,0 +1,7 @@
+<ul class="nav navbar-nav navbar-right">
+  <?php if ($user = $this->identity()) { echo '<li><a href="">Hello there, <strong>'.  $this->escapeHtml($user->username) .'</strong>!</a></li>'; ?> 
+  <li class="">
+    <a href="/login/logout">Logout <i class="icon-sign-out"></i></a>
+  </li>
+</ul>
+<?php }?>

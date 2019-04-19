@@ -1,0 +1,100 @@
+<?php
+$sessionManager = new \Zend\Session\SessionManager();
+$sessionStorage = $sessionManager->getStorage();
+$systemRole = $sessionStorage->getMetaData('role');
+$userEmployeeId = $sessionStorage->getMetaData('employee_id');
+?>
+<div class="content-panel ">
+    <h2 class="page-header"> Create New Schedule for <?php echo $employee['first_name']. ' '.$employee['last_name']; ?></h2>
+    <form class="form-horizontal" id="tableForm" name="tableForm" method="POST" action="/schedules/add">          
+        <input type="hidden" name="employee_id" value="<?php echo $employee['id']; ?>">
+        <input type="hidden" name="name" value="<?php echo $employee['first_name']. ' '.$employee['last_name']; ?>">
+        <input id="user_employee_id" type="hidden" name="user_employee_id" value="<?php echo $userEmployeeId; ?>"/>
+        <div class="form-group">
+            <label for="type" class="col-xs-2 control-label">Type: </label>
+            <div class="col-xs-3">
+                <select id="type" name="type" required="">
+                    <option value="Permanent">Permanent</option>
+                    <option value="Temporary">Temporary</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="start_date" class="col-xs-2 control-label">Start Date</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="start_date" name="start_date" placeholder="MM/DD/YYYY" required="">
+            </div>
+        </div>     
+        <div class="form-group">
+            <label for="end_date" class="col-xs-2 control-label">End Date</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="end_date" name="end_date" placeholder="MM/DD/YYYY" required="">
+            </div>
+        </div>     
+        <div class="form-group">
+            <label for="start_time" class="col-xs-2 control-label">Start Time</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="start_tome" name="start_time" placeholder="HH:mm:ss" required="">
+            </div>
+        </div>     
+        <div class="form-group">
+            <label for="end_time" class="col-xs-2 control-label">End Time</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="start_tome" name="end_time" placeholder="HH:mm:ss" required="">
+            </div>
+        </div>  
+        
+        <div class="col-lg-offset-2">
+            <a href="/schedules/view/<?php echo $employee['id']; ?>"  class="btn btn-default">Cancel </a>
+            <input type="reset" value="Reset"  class="btn btn-default">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    $(function() {
+        $( "#start_date" ).datepicker();
+        $( "#end_date" ).datepicker();
+    });
+
+    function checkAll(groupName){
+        var classname = "cb-" + groupName;
+        $("input:checkbox."+classname).prop('checked', true);
+    }
+    
+    function uncheckAll(groupName){
+        var classname = "cb-" + groupName;
+        $("input:checkbox."+classname).prop('checked', false);
+    }
+    
+    jQuery.validator.addMethod(
+            "regexmeta",
+            function(value, element, regexp) {
+                var re = new RegExp('^[a-zA-Z0-9-_ ]+$');
+                return this.optional(element) || re.test(value);
+            },
+            "Value should only be letters and numbers only."
+            );
+
+$("#tableForm").validate({
+        errorClass: 'has-error',
+        validClass: 'has-success',
+        errorElement: 'span',
+        highlight: function(element, errorClass, validClass) {
+            $(element).parents("div.form-group").addClass(errorClass).removeClass(validClass);
+
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents(".form-group.has-error").removeClass(errorClass).addClass(validClass);
+        },
+        rules: {
+            role: {
+                regexmeta: "dummy",
+                maxlength: 200
+            }
+           
+
+        }
+    });
+</script>

@@ -1,0 +1,59 @@
+<?php
+//foreach ($users as $u) {
+//    echo "<br/><br/>Var dump OBJECT: ".$u->username."<br/>";
+//    var_dump($u);
+//}
+?>
+  
+<?php
+//foreach ($users as $u) {
+//    echo "<br/><br/>Var dump OBJECT: ".$u->username."<br/>";
+//    var_dump($u);
+//}
+//?>
+  
+<h3>Search</h3>
+
+<div class="trx-example">
+    <div id="get" class="form-search">
+      <form id="pdt-search-form" method="get">        
+        <input id="pdt-pg-hidden" type="hidden" name="pg" value="1"/>
+        <div class="col-xs-3">
+            <div class="input-group">
+                <input type="search" name="search" placeholder="Search Text" class="form-control">
+                <div class="input-group-btn">
+                    <button type="submit" class="btn btn-default"><i class="icon-search"></i> Search</button>
+                </div><!-- /btn-group -->
+            </div><!-- /input-group -->
+        </div>
+      </form>
+    </div>
+</div>
+
+<h3>Search Result</h3>
+<div class="trx-example">
+  <table>
+   <!-- <thead>
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Username</th>
+      </tr>
+    </thead> -->
+    <tbody id="pdt-search-tbody">
+      
+    </tbody>
+  </table>  
+  <div id="pdt-pagination-div">
+    <ul id="pdt-pagination-ul" class="pagination">
+      <!--<li><a href="#">&laquo;</a></li>
+      <li><a href="#">1</a></li>
+      <li><a href="#">2</a></li>
+      <li><a href="#">3</a></li>
+      <li><a href="#">4</a></li>
+      <li><a href="#">5</a></li>
+      <li><a href="#">&raquo;</a></li>-->
+    </ul>
+  </div>
+</div>

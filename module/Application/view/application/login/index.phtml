@@ -1,0 +1,108 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>ERP - Login</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+      <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="assets/styles/main.css">
+
+        <script src="assets/scripts/vendor/modernizr.js"></script>
+    </head>
+    <body class="login">
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <?php
+$form = $this->data['form'];
+$form->setAttribute('action', $this->url('login', array('controller' => 'user', 'action' => 'login')));
+$form->prepare();
+
+$conf = $this->Conf_widget();
+?>
+        
+ <div id="login-container" class="login-container">
+
+     <div class="login-form-wrap clearfix">
+
+        <h2 class="text-center app-name">
+            Welcome to <span class="fw-700" style="font-family:Arial">LEAN1</span>
+        </h2>
+
+        <?php if(count($this->data['error_messages']) > 0 ){?>
+        <div id="notice-container" class="alert alert-danger">
+                <?php foreach ($this->data['error_messages'] as $message) {
+                    echo "$message <br/>";
+                }?>
+        </div>
+        <?php }?>
+
+
+         <form action="/login" method="post" name="auth" id="auth">
+            <h4 class="form-signin-heading">Sign in here</h4>
+
+            <div class="form-group">
+                <?php
+                $element  = $form->get('username');
+                $messages = $element->getMessages(); $error = 0;
+                if(count($messages) > 0) $error = 1;
+                ?>
+                
+              <input type="text" class="form-control" name="username" placeholder="Username or Email address" value="<?php if (isset($ispwdchange)) { echo $username; } else {echo $form->getInputFilter()->getValue('username'); }?>" autofocus="" required>
+
+            </div>
+            <?php
+                $element  = $form->get('password');
+                $messages = $element->getMessages(); $error = 0;
+                if(count($messages) > 0) $error = 1;
+            ?>
+            <div class="form-group">
+              <input type="password" name="password" class="form-control" placeholder="Password" value="<?php echo $form->getInputFilter()->getValue('password');?>" required>
+            </div>
+            <div class="form-group">
+                <div class="pull-left checkbox">
+                    <label class="">
+                      <input type="hidden" name="rememberme" value="0">
+                      <input type="checkbox" <?php if($form->getInputFilter()->getValue('rememberme') == 1) echo "checked='checked'"; ?> name="rememberme" value="1"> Remember me
+                    </label>
+                </div>
+            </div>
+            <input class="btn btn-default pull-right" name="submit" type="submit" id="submitbutton" value="Login">
+        </form>
+         <p class="mt-10" style="color:#fff;">
+             <small>
+                 <?php //echo $conf['login_warning'] ?>
+                 
+                 <!--<span style="text-decoration: underline"><strong>Only authorized users are allowed to access this system.</strong></span>
+                 The programs and data stored in this system are licensed, private property of Globe Telecom. All login attempts, access and system activities are recorded and verified. If you are not an authorized user, <span style="text-decoration: underline"><strong>do not attempt to login</strong></span>.-->
+             </small>
+         </p>
+      </div>
+ </div> <!-- .login-container -->
+
+
+        
+
+
+
+
+<div class="noise"></div>
+
+            </div> <!-- /.row.content -->
+          </div> <!-- /#primary -->
+          
+        </div>
+        
+        <script src="assets/scripts/vendor/jquery.js"></script>
+
+        <script src="assets/scripts/vendor/plugins.js"></script>
+
+        <script src="assets/scripts/trx-app.js"></script>
+</body>
+</html>

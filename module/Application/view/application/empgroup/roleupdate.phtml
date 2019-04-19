@@ -1,0 +1,78 @@
+<div class="content-panel ">
+    <h2 class="page-header">Update Employee Role</h2>
+    <form class="form-horizontal" id="tableForm" name="tableForm" method="POST" action="/empgroup/roleupdate">
+        <div class="form-group">
+            <input type="hidden" id="name-hidden" name="name-hidden" value="<?php echo $data['name']?>"/>
+            <input type="hidden" id="id-hidden" name="id" value="<?php echo $data['id']?>"/>
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Group Name</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="group-name" name="name" placeholder="Enter group name here.." required="" value="<?php echo $data['name']; ?>">
+            </div>
+        </div>                               
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Description</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="desc" name="description" placeholder="Enter description here.." required="" value="<?php echo $data['description']; ?>">
+            </div>
+        </div>                    
+        <div class="col-lg-offset-2">
+            <a href="/empgroup/roles"  class="btn btn-default">Cancel </a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    
+    jQuery.validator.addMethod('name_check', function(value) {
+        var old_name = $("#name-hidden").val();
+        if(value === old_name) return true;
+        var resp = name_check(value);
+        if (resp) {
+            return false;
+        } else {
+            return true;
+        }
+    }, "Role name already exists");
+    
+     function name_check(name) {
+
+        if (name == '') {
+            return 0;
+        } else {
+
+            var ajaxResponse;
+
+            jQuery.ajax({
+                async: false,
+                type: 'GET',
+                url: '/empgroup/rolecheck',
+                data: 'name=' + name,
+                cache: false,
+                success: function(response) {
+                    ajaxResponse = response;
+                }
+            });
+            return ajaxResponse;
+        }
+    }
+    
+    $("#tableForm").validate({
+        errorClass: 'has-error',
+        validClass: 'has-success',
+        errorElement: 'span',
+        highlight: function(element, errorClass, validClass) {
+            $(element).parents("div.form-group").addClass(errorClass).removeClass(validClass);
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents(".form-group.has-error").removeClass(errorClass).addClass(validClass);
+        },
+        rules: {            
+            name: {
+                maxlength: 30,
+                name_check: "dummy"                
+            }
+        }
+    });
+    
+</script>

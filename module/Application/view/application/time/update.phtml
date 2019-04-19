@@ -1,0 +1,93 @@
+<div class="content-panel ">
+    <h2 class="page-header">Update Time Logs</h2>
+    <form class="form-horizontal" id="tableForm" name="tableForm" method="POST" action="/time/update">
+          <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $data['id']; ?>">
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Employee_id</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="employee_view" name="employee_view" value="<?php echo $data['employee_id']; ?>" placeholder="" disabled="">
+                <input type="hidden" class="form-control" id="employee_id" name="employee_id" value="<?php echo $data['employee_id']; ?>">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Last Name</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="last_name_view" name="last_name_view" value="<?php echo $data['last_name']; ?>" placeholder="" disabled="">
+                <input type="hidden" class="form-control" id="last_name" name="last_name" value="<?php echo $data['last_name']; ?>">
+            </div>
+        </div>
+           <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">First Name</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="first_name_view" name="first_name_view" value="<?php echo $data['first_name']; ?>" placeholder="" disabled="">
+                <input type="hidden" class="form-control" id="first_name" name="first_name" value="<?php echo $data['first_name']; ?>" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Date</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="date_view" name="date_view" value="<?php echo $data['date']; ?>" placeholder="" disabled="">
+                <input type="hidden" class="form-control" id="date" name="date" value="<?php echo $data['date']; ?>">
+            </div>
+        </div>
+         <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Clock In</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="clock_in" name="clock_in" value="<?php echo $data['clock_in']; ?>" placeholder="">
+            </div>
+        </div>
+           <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Clock Out</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="clock_out" name="clock_out" value="<?php echo $data['clock_out']; ?>" placeholder="">
+            </div>
+        </div>
+        <div class="col-lg-offset-2">
+            <a href="/time"  class="btn btn-default">Cancel </a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+<?php
+$conf = $this->Conf_widget();
+?> 
+
+
+<script>
+    $(function() {
+        $("#pwd_exp_date_view").datepicker({
+            dateFormat: 'yy-mm-dd',
+        });
+
+    });
+
+
+    jQuery.validator.addMethod("notEqual", function(value, element, param) {
+        return this.optional(element) || value != $(param).val();
+    }, "Username and Password should be different");
+
+
+    $("#tableForm").validate({
+        errorClass: 'has-error',
+        validClass: 'has-success',
+        errorElement: 'span',
+        highlight: function(element, errorClass, validClass) {
+            $(element).parents("div.form-group").addClass(errorClass).removeClass(validClass);
+
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents(".form-group.has-error").removeClass(errorClass).addClass(validClass);
+        },
+        rules: {
+            new_password: {
+                minlength: <?php echo $conf['password_length']; ?>,
+                notEqual: "#username"
+            },
+            password_confirm: {
+                equalTo: "#new_password"
+            }
+
+        }
+    });
+</script>

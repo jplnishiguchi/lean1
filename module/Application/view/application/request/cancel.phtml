@@ -1,0 +1,74 @@
+<div class="content-panel ">
+    <h2 class="page-header">Cancel Request of <?php echo $employee['first_name']. ' '.$employee['last_name']; ?></h2>
+    <form class="form-horizontal" id="tableForm" name="tableForm" method="POST" action="/request/cancel">
+        <input type="hidden" name="request_id" id="request_id" value="<?php echo $request['id']; ?>" />
+        <input type="hidden" id="approve_time" name="approve_time" value="" />
+        <input type="hidden" id="approve_date" name="approve_date" value="" />
+        <input type="hidden" name="employee_name" id="employee_name" value="<?php echo $employee['first_name']. ' '.$employee['last_name']; ?>" />
+        <div class="form-group">
+            <label for="type" class="col-xs-2 control-label">Type</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="type" name="type" value="<?php echo $request['type']; ?>" disabled>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Reason/Details</label>
+            <div class="col-xs-3">
+				<textarea name="reason" id='reason' class='form-control' rows="5" disabled><?php echo $request['reason']; ?></textarea>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Start Date</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="start_date" name="start_date" value="<?php echo $request['start']; ?>" disabled>
+            </div>
+        </div>
+		<div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">End Date</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="end_date" name="end_date" value="<?php echo $request['end']; ?>" disabled>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Cancellation Reason/Details</label>
+            <div class="col-xs-3">
+                <textarea name="status_reason" id='status_reason' class='form-control' rows="5" placeholder="Enter cancellation reason..." required></textarea>
+            </div>
+        </div>
+        <div class="col-lg-offset-2">
+            <a href="/request/view"  class="btn btn-default">Cancel </a>
+            <button type="submit" id='submit' class="btn btn-primary">Submit Cancellation</button>
+        </div>
+    </form>
+</div>
+
+<script type='text/javascript'>
+    window.onload = display_c();
+
+    function display_c(){
+        var refresh=1000; // Refresh rate in milli seconds
+        mytime=setTimeout('display_ct()',refresh)
+    }
+
+    function display_ct() {
+        var strcount;
+        var x = new Date();
+        var mm = x.getMonth()+1;
+        mm = (mm < 10 ? "0"+mm : mm);
+        var dd = (x.getDate() < 10 ? "0"+x.getDate() : x.getDate());
+        var yyyy = x.getFullYear();
+        var hh = (x.getHours() < 10 ? "0"+x.getHours() : x.getHours());
+        var ii = (x.getMinutes() < 10 ? "0"+x.getMinutes() : x.getMinutes());
+        var ss = (x.getSeconds() < 10 ? "0"+x.getSeconds() : x.getSeconds());
+
+        //var x1=x.getMonth() + "-" + x.getDate() + "-" + x.getFullYear();
+        //x1 = x1 + "<br \>" + x.getHours( )+ ":" + x.getMinutes() + ":" + x.getSeconds();
+        //var date = mm + "-" + dd + "-" + yyyy;
+        var date = yyyy + "-" + mm + "-" + dd;
+        var time = hh + ":" + ii + ":" + ss;
+
+        document.getElementById('approve_time').value = time;
+        document.getElementById('approve_date').value = date;
+        tt=display_c();
+    }
+</script>

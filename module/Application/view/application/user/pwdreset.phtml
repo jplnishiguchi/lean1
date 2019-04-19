@@ -1,0 +1,130 @@
+<div class="content-panel ">
+    <h2 class="page-header">Reset Password</h2>
+    <form class="form-horizontal" id="tableForm" name="tableForm" method="POST" action="/user/pwdreset?username=<?php echo $user['username']; ?>">
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Username</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="username_view" name="username_view" value="<?php echo $user['username']; ?>" readonly="">
+                <input type="hidden" class="form-control" id="username" name="username" value="<?php echo $user['username']; ?>" >
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-xs-2 control-label">Password</label>
+            <div class="col-xs-3">
+                <input type="password" name="new_password" id="new_password" class="form-control" required >
+                <!--<p class="help-block">No password change if this is blank.</p>-->
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="confirm" class="col-xs-2 control-label">Confirm Password</label>
+            <div class="col-xs-3">
+                <input type="password" id="password_confirm" name="password_confirm" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Password Expiration</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="pwd_exp_date" name="pwd_exp_date" placeholder="" required="">
+            </div>
+        </div>
+
+        <div class="col-lg-offset-2">
+            <a href="/user"  class="btn btn-default">Cancel </a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+<?php
+$conf = $this->Conf_widget();
+$dateplus30 = date("Y-m-d", strtotime("+30 days", time()));
+?>
+
+<script>
+    $(function() {
+        $("#pwd_exp_date").datepicker();
+        $("#pwd_exp_date").datepicker("setDate", "<?php echo date("Y-m-d", strtotime($dateplus30)); ?>");
+        $("#pwd_exp_date").datepicker("option", "dateFormat", "yy-mm-dd");
+        //$("#pwd_exp_date").prop('readOnly', true); 
+    });
+
+
+    jQuery.validator.addMethod("notEqual", function(value, element, param) {
+        return this.optional(element) || value != $(param).val();
+    }, "Username and Password should be different");
+
+
+    jQuery.validator.addMethod(
+            "regex",
+            function(value, element, regexp) {
+                var re = new RegExp(<?php echo $conf['pwd_regexp']; ?>);
+                return this.optional(element) || re.test(value);
+            },
+            "Password should contain atleast one lowercase or uppercase letter, or number, or characters like !@#$%^& "
+            );
+
+    jQuery.validator.addMethod('password_check', function(value) {
+        var resp = password_check();
+        if (resp == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }, "You can't use old passwords.");
+
+
+    function password_check() {
+
+        var username = $("#username").val();
+        var password = $("#new_password").val();
+
+        if (password == '') {
+            return 0;
+        } else {
+
+            var ajaxResponse;
+
+            jQuery.ajax({
+                async: false,
+                type: 'GET',
+                url: '/user/checkpassword',
+                data: 'username=' + username + '&password=' + password,
+                cache: false,
+                success: function(response) {
+                    ajaxResponse = response;
+                }
+            });
+            return ajaxResponse;
+        }
+    }
+
+    $("#tableForm").validate({
+        errorClass: 'has-error',
+        validClass: 'has-success',
+        errorElement: 'span',
+        highlight: function(element, errorClass, validClass) {
+            $(element).parents("div.form-group").addClass(errorClass).removeClass(validClass);
+
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents(".form-group.has-error").removeClass(errorClass).addClass(validClass);
+        },
+        rules: {
+            new_password: {
+                minlength: <?php echo $conf['password_length']; ?>,
+                notEqual: "#username",
+                regex: "dummy",
+                password_check: "#new_password"
+            },
+            password_confirm: {
+                equalTo: "#new_password"
+            }
+
+        }
+    });
+
+
+
+</script>

@@ -1,0 +1,436 @@
+<div class="content-panel ">
+    <!--<h2 class="page-header">Create New User</h2>-->
+    
+    <h2 class="page-header">Create New User Account</h2>
+
+    <form class="form-horizontal" id="tableForm" name="tableForm" method="POST" action="/user/add">
+        <!-- fake fields are a workaround for chrome autofill getting the wrong fields -->
+        <input style="display:none" type="text" name="fakeusernameremembered"/>
+<input style="display:none" type="password" name="fakepasswordremembered"/>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Username</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter username here.." required="" autocomplete="off">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Email</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="email" name="email" placeholder="Enter email here.." required="" autocomplete="off">
+				<span name="emailspan" id="emailspan" class="bar"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-xs-2 control-label">Password</label>
+            <div class="col-xs-3">
+                <input type="password" name="password" id="password" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="confirm" class="col-xs-2 control-label">Confirm Password</label>
+            <div class="col-xs-3">
+                <input type="password" id="password_confirm" name="password_confirm" class="form-control">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Password Expiration</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="pwd_exp_date" name="pwd_exp_date" placeholder="" required="">
+            </div>
+        </div>        
+
+        <div class="form-group">
+        <label for="exampleInputEmail1" class="col-xs-2 control-label">System Role</label>
+            <div class="col-xs-3">
+                <select name="role" required="" style="width:300px;">	
+                    <option value="system-administrator">System Administrator</option>
+                    <option value="regular-user">Regular User</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Status</label>
+            <div class="col-xs-3">
+                <select name="status" required="">
+                    <option value="ACTIVE">Active</option>
+                    <option value="INACTIVE">Inactive</option>
+                </select>
+            </div>
+        </div>
+<br/><br/>
+<!--
+<h2 class="page-header">Employee Information</h2>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Employee Number</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="employee_number" name="emp[employee_number]" placeholder="" required="" autocomplete="off">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">First Name</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="first_name" name="emp[first_name]" placeholder="" required="" autocomplete="off">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Middle Name</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="middle_name" name="emp[middle_name]" placeholder="" required="" autocomplete="off">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Last Name</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="last_name" name="emp[last_name]" placeholder="" required="" autocomplete="off">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Nickname</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="nickname" name="emp[nickname]" placeholder="" required="" autocomplete="off">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Gender</label>
+            <div class="col-xs-3">
+                <select name="emp[gender]" required="">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+        </div>        
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Employment Status</label>
+            <div class="col-xs-3">
+                <select name="emp[employment_status]" required="">
+                    <option value="Consultant">Consultant</option>
+                    <option value="Freelance">Freelance</option>
+                    <option value="Contractual">Contractual</option>
+                    <option value="Probationary">Probationary</option>
+                    <option value="Regular">Regular</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="start_date" class="col-xs-2 control-label">Date Hired</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="date_hired" name="emp[date_hired]" placeholder="MM/DD/YYYY" required="">
+            </div>
+        </div>     
+
+        <div class="form-group">
+        <label for="exampleInputEmail1" class="col-xs-2 control-label">Employee Group</label>
+            <div class="col-xs-3">
+                <select name="emp[group]" required="" style="width:300px;">	
+                    <?php
+                    foreach ($eggroups as $eggroup) {
+                        ?>
+                        <option value="<?php echo $eggroup; ?>"><?php echo $eggroup; ?></option>
+                        <?php
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+        <label for="exampleInputEmail1" class="col-xs-2 control-label">Employee Role</label>
+            <div class="col-xs-3">
+                <select name="emp[role]" required="" style="width:300px;">	
+                    <?php
+                    foreach ($egroles as $egrole) {
+                        ?>
+                        <option value="<?php echo $egrole; ?>"><?php echo $egrole; ?></option>
+                        <?php
+                    }
+                    ?>
+                </select>
+            </div>
+        </div>        
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Shift</label>
+            <div class="col-xs-3">
+                <select name="emp[shift]" required="">
+                    <option value="Regular">Regular</option>                    
+                    <option value="Flex">Flex</option>  
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Personal Email</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="emp-email" name="emp[personal_email]" placeholder="Enter email here.." required="" autocomplete="off">
+                <span name="emailspan" id="emailspan" class="bar"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Address</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="address" name="emp[address]" placeholder="" required="" autocomplete="off">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Telephone</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="telephone" name="emp[telephone]" placeholder="" required="" autocomplete="off">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Mobile</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="mobile" name="emp[mobile]" placeholder="" required="" autocomplete="off">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Emergency Contact Name</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="emergency_contact_name" name="emp[emergency_contact_name]" placeholder="" required="" autocomplete="off">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Emergency Contact Phone</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="emergency_contact_phone" name="emp[emergency_contact_phone]" placeholder="" required="" autocomplete="off">
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Salary</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="salary" name="emp[salary]" placeholder="" required="" autocomplete="off">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="salary" class="col-xs-2 control-label">SSS</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="sss" name="emp[sss]" required=""  value="" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="salary" class="col-xs-2 control-label">HDMF</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="hdmf" name="emp[hdmf]" required=""  value="" />
+            </div>
+        </div>
+        <?php
+        $options = [
+            'Regular',
+            'Consultant'
+        ];
+        ?>
+        <div class="form-group">
+            <label for="shift" class="col-xs-2 control-label">Tax Type</label>
+            <div class="col-xs-3">
+                <select name="emp[tax_type]" required="" style="width:300px;" <?php echo $disabled; ?>>
+                    <?php foreach($options as $option) { ?>
+                        <option value="<?php echo $option; ?>"><?php echo $option; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
+
+        <?php
+        $options = [
+            'Single w/o Dependent(s)',
+            'Single w/o Dependent(s)',
+            'Married w/ Dependent(s) 1-4',
+        ];
+        ?>
+        <div class="form-group">
+            <label for="tax_status" class="col-xs-2 control-label">Tax Status</label>
+            <div class="col-xs-3">
+                <select name="emp[tax_status]" required="" style="width:300px;" <?php echo $disabled; ?>>
+                    <?php foreach($options as $option) { ?>
+                        <option value="<?php echo $option; ?>"><?php echo $option; ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Sick Leaves</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="sick_leaves" name="emp[sick_leaves]" placeholder="" required="" autocomplete="off">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Vacation Leaves</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="vacation_leaves" name="emp[vacation_leaves]" placeholder="" required="" autocomplete="off">
+            </div>
+        </div>-->
+
+        
+        <div class="col-lg-offset-2">
+            <a href="/user"  class="btn btn-default">Cancel </a>
+            <input type="reset" value="Reset"  class="btn btn-default">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+<?php
+$dateplus30 = date("Y-m-d", strtotime("+30 days", time()));
+$conf = $this->Conf_widget();
+?>
+
+
+<script type="text/javascript">
+    
+    $(function() {
+        $( "#date_hired" ).datepicker();        
+    });
+    
+    $(function() {
+        $("#pwd_exp_date").datepicker();
+        $("#pwd_exp_date").datepicker("setDate", "<?php echo $dateplus30; ?>");
+        $("#pwd_exp_date").datepicker("option", "dateFormat", "yy-mm-dd");
+    });
+
+	/*$('#email').blur(function(){
+		var emailreg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+		var emailadd = $('#email').val();
+		var URL = '/user/checkemail';
+		var dataString = 'email=' + emailadd;
+
+			if(!emailreg.test(emailadd)){
+				$("#emailspan").html('<font color="#cc0000">Please enter valid Email address</font>');
+				$("#submit").prop("disabled", true);
+			}else{
+				$("#emailspan").html('<font color="#cc0000"></font>');
+				$("#submit").prop("disabled", false);
+			}
+
+		$.ajax({
+			type: "POST",
+			url: URL,
+			data: dataString,
+			cache: false,
+			success: function(resp) {
+			  if (resp != 0){
+				$("#emailspan").html('<font color="#cc0000">Email address is already in use.</font>');
+				$("#submit").prop("disabled", true);
+			  }else{
+			  }
+
+			}
+		});
+
+	});
+    */
+
+    jQuery.validator.addMethod("notEqual", function(value, element, param) {
+        return this.optional(element) || value != $(param).val();
+    }, "Username and Password should be different");
+
+    jQuery.validator.addMethod('username_check', function(value) {
+        var resp = username_check(value);
+        if (resp == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }, "Username already exists");
+
+    jQuery.validator.addMethod(
+            "regex",
+            function(value, element, regexp) {
+                var re = new RegExp(<?php echo $conf['pwd_regexp']; ?>);
+                return this.optional(element) || re.test(value);
+            },
+            "Password should contain atleast one lowercase or uppercase letter, or number, or characters like !@#$%^& "
+            );
+
+
+    jQuery.validator.addMethod(
+            "regexmeta",
+            function(value, element, regexp) {
+                var re = new RegExp('^[a-zA-Z0-9-_ ]+$');
+                return this.optional(element) || re.test(value);
+            },
+            "Value should only be letters and numbers only."
+            );
+
+    $("#tableForm").validate({
+        errorClass: 'has-error',
+        validClass: 'has-success',
+        errorElement: 'span',
+        highlight: function(element, errorClass, validClass) {
+            $(element).parents("div.form-group").addClass(errorClass).removeClass(validClass);
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents(".form-group.has-error").removeClass(errorClass).addClass(validClass);
+        },
+        rules: {
+            password: {
+                minlength: <?php echo $conf['password_length']; ?>,
+                notEqual: "#username",
+                regex: "dummy"
+
+
+            },
+            password_confirm: {
+                equalTo: "#password"
+            },
+            username: {
+                maxlength: 30,
+                username_check: "dummy",
+                regexmeta: "dummy"
+            }
+
+        }
+    });
+
+    //$('#username').keyup(username_check);
+    function username_check(username) {
+
+        if (username == '') {
+            return 0;
+        } else {
+
+            var ajaxResponse;
+
+            jQuery.ajax({
+                async: false,
+                type: 'GET',
+                url: '/user/checkusername',
+                data: 'username=' + username,
+                cache: false,
+                success: function(response) {
+                    ajaxResponse = response;
+                }
+            });
+            return ajaxResponse;
+        }
+    }
+
+
+
+if ($.browser.webkit) {
+    $('input[name="password"]').attr('autocomplete', 'off');
+    $('input[name="username"]').attr('autocomplete', 'off');
+}
+
+
+</script>

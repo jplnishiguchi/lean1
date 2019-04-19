@@ -1,0 +1,164 @@
+<?php
+$sessionManager = new \Zend\Session\SessionManager();
+$sessionStorage = $sessionManager->getStorage();
+$userRole = $sessionStorage->getMetaData('role');
+$disabled = 'disabled="disabled"';
+if ($acl->hasResource('employee-update') && $acl->isAllowed($userRole, 'employee-update')) {
+    $disabled = '';
+}
+?>
+<div class="content-panel ">
+    <h2 class="page-header">Update Employee</h2>
+    <form class="form-horizontal" id="tableForm" name="tableForm" method="POST">
+        <input type="hidden" id="id" name="id" value="<?php echo !empty($employee->id) ? $employee->id : ''; ?>" <?php echo $disabled; ?>/>
+        <input type="hidden" id="assocuser" name="assocuser" value="<?php echo $assocuser?>" />
+        <div class="form-group">
+            <label for="first_name" class="col-xs-2 control-label">First Name</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="first_name" name="first_name" value="<?php echo !empty($employee->first_name) ? $employee->first_name : ''; ?>" <?php echo $disabled; ?>/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="middle_name" class="col-xs-2 control-label">Middle Name</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="middle_name" name="middle_name" value="<?php echo !empty($employee->middle_name) ? $employee->middle_name : ''; ?>" <?php echo $disabled; ?>/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="last_name" class="col-xs-2 control-label">Last Name</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="last_name" name="last_name" value="<?php echo !empty($employee->last_name) ? $employee->last_name : ''; ?>" <?php echo $disabled; ?>/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="gender" class="col-xs-2 control-label">Gender</label>
+            <div class="col-xs-3">
+                <select name="gender" required="" style="width:300px;" <?php echo $disabled; ?>>
+                        <option value="male" <?php echo !empty($employee->gender) && $employee->gender == 'Male' ? 'selected="selected"' : ''; ?>>Male</option>
+                        <option value="female" <?php echo !empty($employee->gender) && $employee->gender == 'Female' ? 'selected="selected"' : ''; ?>>Female</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="nickname" class="col-xs-2 control-label">Nickname</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="nickname" name="nickname" value="<?php echo !empty($employee->nickname) ? $employee->nickname : ''; ?>" <?php echo $disabled; ?>/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="personal_email" class="col-xs-2 control-label">Personal Email</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="personal_email" name="personal_email" value="<?php echo !empty($employee->personal_email) ? $employee->personal_email : ''; ?>" <?php echo $disabled; ?>/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="company_email" class="col-xs-2 control-label">Company Email</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="company_email" name="company_email" value="<?php echo !empty($employee->company_email) ? $employee->company_email : ''; ?>"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="address" class="col-xs-2 control-label">Address</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="address" name="address" value="<?php echo !empty($employee->address) ? $employee->address : ''; ?>" <?php echo $disabled; ?>/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="mobile" class="col-xs-2 control-label">Contact number</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="contact_number" name="contact_number" value="<?php echo !empty($employee->contact_number) ? $employee->contact_number : ''; ?>" <?php echo $disabled; ?>/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="salary" class="col-xs-2 control-label">Salary</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="salary" name="salary" value="<?php echo !empty($employee->salary) ? $employee->salary : ''; ?>" <?php echo $disabled; ?>/>
+            </div>
+        </div>
+        <br/>
+         <h2 class="page-header">Associate employee with user account</h2>
+        <div class="form-group">
+            <label for="gender" class="col-xs-2 control-label">Username</label>
+            <div class="col-xs-3">
+                <select name="username" required="" style="width:300px;">
+                        <option value="">No associated user</option>
+                        <?php if(!empty($assocuser)) { ?>
+                        <option value="<?php echo $assocuser ?>" selected=""><?php echo $assocuser ?></option>
+                        <?php } ?>
+                        <?php
+                            foreach($userlist as $user){
+                        ?>
+                        <option value="<?php echo $user['username'] ?>"><?php echo $user['username'] ?></option>
+                        <?php
+                            }
+                        ?>                        
+                </select>
+            </div>
+        </div>
+         <br/><br/>
+        <div class="col-lg-offset-2">
+            <a href="/user"  class="btn btn-default">Cancel </a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+<?php
+$conf = $this->Conf_widget();
+?>
+
+
+<script>
+    // Check all text if empty
+    // If tesbox empty, add required attribute
+    $(":text").each(function(){
+        $(this).blur(function(){
+            if($(this).val() == ""){
+                var name = $(this).attr('name');
+                $(this).prop('required',true);
+            }
+        });
+    });
+
+    $(function() {
+        $("#date_hired").datepicker({
+            dateFormat: 'yy-mm-dd',
+        });
+
+    });
+
+
+    jQuery.validator.addMethod("notEqual", function(value, element, param) {
+        return this.optional(element) || value != $(param).val();
+    }, "Username and Password should be different");
+
+
+    $("#tableForm").validate({
+        errorClass: 'has-error',
+        validClass: 'has-success',
+        errorElement: 'span',
+        highlight: function(element, errorClass, validClass) {
+            $(element).parents("div.form-group").addClass(errorClass).removeClass(validClass);
+
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents(".form-group.has-error").removeClass(errorClass).addClass(validClass);
+        },
+        rules: {
+            first_name: {
+                notEqual: ""
+            },
+            password_confirm: {
+                equalTo: "#new_password"
+            }
+
+        }
+    });
+    
+    $(document).ready(function (){
+        $("tableForm").submit(function() {
+            $(this).children('#company_email').remove();
+        });
+    });
+</script>

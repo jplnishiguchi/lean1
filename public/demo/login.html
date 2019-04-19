@@ -1,0 +1,78 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>TRX - Login</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+      <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="assets/styles/main.css">
+
+        <script src="assets/scripts/vendor/modernizr.js"></script>
+    </head>
+    <body class="login">
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        
+
+        <div id="login-container" class="login-container">
+
+    <div class="login-form-wrap clearfix">
+
+      <h2 class="text-center app-name">Welcome to <span class="fw-700">TRX</span></h2>
+
+      <div id="notice-container" class="alert alert-danger">
+        Invalid username and password.
+      </div>
+
+      <form action="/login" method="post" name="auth" id="auth" novalidate="novalidate">
+          <h4 class="form-signin-heading">Sign in here</h4>
+
+          <div class="form-group">
+              <input type="text" class="form-control" name="username" placeholder="Username or Email address" value="" autofocus="" required="">
+
+          </div>
+          <div class="form-group">
+              <input type="password" name="password" class="form-control" placeholder="Password" value="" required="">
+          </div>
+          <div class="form-group">
+              <div class="pull-left checkbox">
+                  <label class="">
+                      <input type="hidden" name="rememberme" value="0">
+                      <input type="checkbox" name="rememberme" value="1">Remember me
+                  </label>
+              </div>
+          </div>
+          <input class="btn btn-default  pull-right" name="submit" type="submit" id="submitbutton" value="Login">
+      </form>
+    </div>
+
+</div>
+
+        
+
+        
+
+
+
+
+<div class="noise"></div>
+
+            </div> <!-- /.row.content -->
+          </div> <!-- /#primary -->
+          
+        </div>
+        
+        <script src="assets/scripts/vendor/jquery.js"></script>
+
+        <script src="assets/scripts/vendor/plugins.js"></script>
+
+        <script src="assets/scripts/trx-app.js"></script>
+</body>
+</html>

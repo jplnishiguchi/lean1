@@ -1,0 +1,570 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>JavaScript Plugins - Project TRX</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+      <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="assets/styles/main.css">
+
+        <script src="assets/scripts/vendor/modernizr.js"></script>
+    </head>
+    <body class="">
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        
+
+        <!-- navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header pull-left">
+      <a class="navbar-brand" href="/">
+        <h2>TRX</h2>
+      </a>
+    </div>
+
+    <div class="m-nav pull-left">
+      <ul class="nav navbar-nav">
+        <li class="dropdown active">
+          <a href="javascript:void();">
+            Dashboard
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu sub-menu">
+            <li class="">
+              <a href="elements.html">Elements</a>
+            </li>
+            <li class="">
+              <a href="tables.html">Tables</a>
+            </li>
+            <li class="">
+              <a href="forms.html">Forms</a>
+            </li>
+            <li class="">
+              <a href="javascript.html">JavaScript Plugins</a>
+            </li>
+            <li class="dropdown">
+              <a href="#">
+                Pages
+                <b class="caret r"></b>
+              </a>
+              <ul class="dropdown-menu sub-menu">
+                <li>
+                  <a href="restricted.html">
+                    Restricted
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">
+            Another Menu
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu sub-menu">
+            <li class="dropdown">
+              <a href="#">
+                More Menu
+                <b class="caret r"></b>
+              </a>
+              <ul class="dropdown-menu sub-menu in">
+                <li><a href="menu-01.html">Menu 01</a></li>
+                <li><a href="#">Menu 02</a></li>
+                <li><a href="#">Menu 03</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Menu 04</a></li>
+            <li><a href="#">Menu 05</a></li>
+            <li><a href="#">Menu 06 </a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation" class="dropdown-header">Administrator</li>
+            <li><a href="#">Update Database</a></li>
+            <li><a href="#">Generate Report</a></li>
+          </ul>
+        </li>
+        <li class="">
+          <a href="dropzone.html">
+            Uploader Demo
+          </a>
+        </li>
+        <li class="">
+          <a href="business-rules.html">
+            Business Rules Designer
+          </a>
+        </li>
+        <li class="">
+          <a href="js-plumb.html">
+            jQuery Plumb
+            <span class="badge badge-danger">
+              NEW!
+            </span>
+          </a>
+        </li>
+      </ul> <!-- .nav.navbar-nav -->
+    </div> <!-- .m-nav -->
+
+    <div class="my-account m-nav pull-right">
+           
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Hello there, <strong>Stego Saur</strong>!</a></li>
+        <li class="">
+          <a href="login.html">
+            Logout
+            
+          </a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+</nav>
+
+        <div id="main-wrapper" class="l-main-wrapper">
+
+          <div class="container l-primary" id="primary">
+            
+            <div class="row content">
+              
+              
+              <div id="breadcrumb" class="m-breadcrumb">
+                
+                <ol class="breadcrumb">
+                  <li><a href="/">Dashboard</a></li>
+                  <li class="active">JavaScript Plugins</li>
+                </ol>
+                
+              </div>
+
+              
+
+              <div class="content-panel ">
+
+                
+                <h2 class="page-header">JavaScript Plugins</h2>
+                <p class="lead">All about the TRX Front-end Framework JavaScript Plugins</p>
+                
+
+              
+
+        
+
+
+<h3>Modal</h3>
+<div class="trx-example">
+  <!-- Button trigger modal -->
+  <p>Click to launch the Modal box demos</p>
+  <div class="btn-toolbar">
+    <div class="btn-group btn-group-lg">
+      <a data-toggle="modal" href="#basicModal" class="btn btn-primary btn-lg">Basic Modal</a>
+      <a data-toggle="modal" href="#standardModal" class="btn btn-primary btn-lg">Standard Modal</a>
+      <a data-toggle="modal" href="#modal1" class="btn btn-primary btn-lg">Modal Variation 1</a>
+      <a data-toggle="modal" href="#modal2" class="btn btn-primary btn-lg">Modal Variation 2</a>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div class="modal" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, ad, suscipit, similique eum quas nihil explicabo repellat sed non ipsa modi maxime hic laudantium nobis error eaque possimus fugit ab.
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <div class="modal fade" id="standardModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal title</h4>
+        </div>
+        <div class="modal-body">
+          There is no way you can close this modal without clicking on the Cancel or close button or pressing the ESC key.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal Variation #1</h4>
+        </div>
+        <div class="modal-body">
+          After showing the modal, if will fire an event `shown.bs.modal` which you can hook to other amazing things.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <div class="modal fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Modal Variation #2</h4>
+        </div>
+        <div class="modal-body">
+          After hiding the modal, if will fire an event `hidden.bs.modal` which you can hook to other amazing things.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+</div> <!-- // Modal Examples -->
+
+<h3>Tabs</h3>
+<div class="trx-example">
+  <ul class="nav nav-tabs" id="myTab">
+    <li class="active"><a href="#home">Home</a></li>
+    <li><a href="#profile">Profile</a></li>
+    <li><a href="#messages">Messages</a></li>
+    <li><a href="#settings">Settings</a></li>
+  </ul>
+
+  <div class="tab-content">
+    <div class="tab-pane active fade in" id="home">
+      <h3>Home Tab</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam, voluptate eius in voluptatem maiores saepe ipsum. Ratione, alias, autem libero totam quisquam fugit culpa porro consequatur corporis velit tenetur id.</p>
+    </div>
+    <div class="tab-pane fade" id="profile">
+      <h3>Profile Tab</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, facere, voluptates, pariatur, velit laudantium laboriosam maiores magnam ex libero enim iste quia quam similique doloribus repudiandae incidunt ab aliquam exercitationem.</p>
+    </div>
+    <div class="tab-pane fade" id="messages">
+      <h3>Messages Tab</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, doloribus, omnis, rem, eum iure ipsam ex consequuntur praesentium blanditiis maiores tenetur deserunt sit minima. Nulla voluptates nostrum cumque consectetur maiores!</p>
+    </div>
+    <div class="tab-pane fade" id="settings">
+      <h3>Settings Tab</h3>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, expedita suscipit libero culpa blanditiis quos eaque aut. Commodi, facilis odio reprehenderit neque nemo debitis nihil deleniti nam accusantium repudiandae. Totam!
+      </p>
+    </div>
+  </div>
+</div>
+
+<h3>Buttons</h3>
+<div class="trx-example">
+  <h4>
+    Button waiting text
+  </h4>
+  <p>
+    <button id="uploading-btn" type="button" data-loading-text="Uploading..." data-complete-text="File uploaded!" class="btn btn-primary">
+      Upload files
+    </button>
+  </p>
+
+  <h4>
+    Button toggle / Checkbox type
+  </h4>
+
+  <div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-default">
+      <input type="checkbox"> Option 1
+    </label>
+    <label class="btn btn-default">
+      <input type="checkbox"> Option 2
+    </label>
+    <label class="btn btn-default">
+      <input type="checkbox"> Option 3
+    </label>
+  </div>
+
+  <div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-primary">
+      <input type="checkbox"> Option 1
+    </label>
+    <label class="btn btn-primary">
+      <input type="checkbox"> Option 2
+    </label>
+    <label class="btn btn-primary">
+      <input type="checkbox"> Option 3
+    </label>
+  </div>
+
+  <h4>Radio-type</h4>
+  <div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-primary">
+      <input type="radio" name="options" id="option1"> Option 1
+    </label>
+    <label class="btn btn-primary">
+      <input type="radio" name="options" id="option2"> Option 2
+    </label>
+    <label class="btn btn-primary">
+      <input type="radio" name="options" id="option3"> Option 3
+    </label>
+  </div>
+</div> <!-- // Buttons Examples -->
+
+<h3>Collapsible Panels</h3>
+
+<div class="trx-example">
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          Collapsible Group Item #1
+          <a class="accordion-toggle pull-right" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+            <i class="glyphicon"></i>
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in">
+        <div class="panel-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+            Collapsible Group Item #2
+          </a>
+        </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse">
+        <div class="panel-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+            Collapsible Group Item #3
+          </a>
+        </h4>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse">
+        <div class="panel-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<pre><code class="language-js">&lt;div class=<span class="string">"panel-group"</span> id=<span class="string">"accordion"</span>&gt;
+  <span class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"panel panel-default"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"panel-heading"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">h4</span> <span class="attribute">class</span>=<span class="value">"panel-title"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"accordion-toggle"</span> <span class="attribute">data-toggle</span>=<span class="value">"collapse"</span> <span class="attribute">data-parent</span>=<span class="value">"#accordion"</span> <span class="attribute">href</span>=<span class="value">"#collapseOne"</span>&gt;</span>
+          Collapsible Group Item #1
+        <span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">h4</span>&gt;</span>b
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"collapseOne"</span> <span class="attribute">class</span>=<span class="value">"panel-collapse collapse in"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"panel-body"</span>&gt;</span>
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"panel panel-default"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"panel-heading"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">h4</span> <span class="attribute">class</span>=<span class="value">"panel-title"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"accordion-toggle"</span> <span class="attribute">data-toggle</span>=<span class="value">"collapse"</span> <span class="attribute">data-parent</span>=<span class="value">"#accordion"</span> <span class="attribute">href</span>=<span class="value">"#collapseTwo"</span>&gt;</span>
+          Collapsible Group Item #2
+        <span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">h4</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"collapseTwo"</span> <span class="attribute">class</span>=<span class="value">"panel-collapse collapse"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"panel-body"</span>&gt;</span>
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"panel panel-default"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"panel-heading"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">h4</span> <span class="attribute">class</span>=<span class="value">"panel-title"</span>&gt;</span>
+        <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"accordion-toggle"</span> <span class="attribute">data-toggle</span>=<span class="value">"collapse"</span> <span class="attribute">data-parent</span>=<span class="value">"#accordion"</span> <span class="attribute">href</span>=<span class="value">"#collapseThree"</span>&gt;</span>
+          Collapsible Group Item #3
+        <span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+      <span class="tag">&lt;/<span class="title">h4</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">id</span>=<span class="value">"collapseThree"</span> <span class="attribute">class</span>=<span class="value">"panel-collapse collapse"</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"panel-body"</span>&gt;</span>
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+      <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span></code></pre>
+
+
+<h3>Multiselect</h3>
+<p>Complete documentation can be found <a href="http://loudev.com/">here</a>.</p>
+<div class="trx-example">
+  <select class="multiselect-transfer" multiple="" name="columns[]">
+    <optgroup id="ia_velocity_group" label="ia_velocity">
+      <option id="opt_134" value="134">A_NUM</option>
+      <option id="opt_135" value="135">B_NUM</option>
+      <option id="opt_136" value="136">B_BRAND</option>
+      <option id="opt_137" value="137">RELOAD_DATE</option>
+      <option id="opt_138" value="138">AMOUNT</option>
+      <option id="opt_139" value="139">TRANS_ID</option>
+      <option id="opt_140" value="140">PRE_BAL</option>
+      <option id="opt_141" value="141">POST_BAL</option>
+      <option id="opt_142" value="142">TRANS_GROUP</option>
+      <option id="opt_297" value="297">CHANNEL</option>
+      <option id="opt_383" value="383"></option>
+      <option id="opt_384" value="384">JJ_Pogi_test</option>
+    </optgroup>
+    <optgroup label="amax_agents">
+      <option id="opt_143" value="143">agent_id</option>
+      <option id="opt_144" value="144">td_agent_id</option>
+      <option id="opt_145" value="145">parent_agent_id</option>
+      <option id="opt_146" value="146">agent_type_cd</option>
+      <option id="opt_147" value="147">agent_role</option>
+      <option id="opt_148" value="148">msisdn</option>
+      <option id="opt_149" value="149">msisdn_expiry_date</option>
+      <option id="opt_150" value="150">default_province_cd</option>
+      <option id="opt_151" value="151">region_cd</option>
+      <option id="opt_152" value="152">reg_type_cd</option>
+      <option id="opt_153" value="153">city_cd</option>
+      <option id="opt_154" value="154">city</option>
+      <option id="opt_155" value="155">barangay_cd</option>
+      <option id="opt_156" value="156">street</option>
+      <option id="opt_157" value="157">name</option>
+      <option id="opt_158" value="158">status_cd</option>
+      <option id="opt_159" value="159">first_name</option>
+      <option id="opt_160" value="160">middle_name</option>
+      <option id="opt_161" value="161">last_name</option>
+      <option id="opt_162" value="162">channel_type_cd</option>
+      <option id="opt_163" value="163">outlet_type_cd</option>
+      <option id="opt_164" value="164">contact_no</option>
+      <option id="opt_165" value="165">amax_sap_ref_code</option>
+      <option id="opt_166" value="166">lp_sap_ref_code</option>
+      <option id="opt_167" value="167">username</option>
+      <option id="opt_168" value="168">email_address</option>
+      <option id="opt_169" value="169">remarks</option>
+      <option id="opt_170" value="170">reason_cd</option>
+      <option id="opt_171" value="171">depth</option>
+      <option id="opt_172" value="172">iccid_source_cd</option>
+      <option id="opt_173" value="173">created_by</option>
+      <option id="opt_174" value="174">created_tms</option>
+      <option id="opt_175" value="175">updated_by</option>
+      <option id="opt_176" value="176">updated_tms</option>
+      <option id="opt_177" value="177">deleted_by</option>
+      <option id="opt_178" value="178">deleted_tms</option>
+      <option id="opt_179" value="179">cip_ext_ind</option>
+      <option id="opt_180" value="180">brand_id</option>
+      <option id="opt_181" value="181">ccb_no</option>
+      <option id="opt_182" value="182">spi_no</option>
+      <option id="opt_183" value="183">billing_method_cd</option>
+      <option id="opt_184" value="184">interface_access_cd</option>
+      <option id="opt_185" value="185">credit_limit</option>
+      <option id="opt_186" value="186">last_status_tms</option>
+      <option id="opt_187" value="187">contact_person</option>
+      <option id="opt_188" value="188">barangay</option>
+      <option id="opt_189" value="189">salesman_id</option>
+      <option id="opt_190" value="190">batch_id</option>
+      <option id="opt_191" value="191">txn_id</option>
+      <option id="opt_192" value="192">username_upper</option>
+      <option id="opt_193" value="193">system_td</option>
+      <option id="opt_194" value="194">applicable_incentives</option>
+      <option id="opt_195" value="195">salesman_first_name</option>
+      <option id="opt_196" value="196">salesman_middle_name</option>
+      <option id="opt_197" value="197">salesman_last_name</option>
+      <option id="opt_198" value="198">acc_mgr_name</option>
+      <option id="opt_199" value="199">acc_mgr_contact_no</option>
+      <option id="opt_200" value="200">acc_mgr_email_address</option>
+      <option id="opt_201" value="201">id_type</option>
+      <option id="opt_202" value="202">id_no</option>
+      <option id="opt_203" value="203">secondary_email_address</option>
+      <option id="opt_204" value="204">discounts_ind</option>
+      <option id="opt_205" value="205">rewards_ind</option>
+      <option id="opt_206" value="206">loyalty_pot_ind</option>
+      <option id="opt_207" value="207">parent_msisdn</option>
+      <option id="opt_208" value="208">amax_threshold_figure</option>
+      <option id="opt_209" value="209">load_threshold_figure</option>
+      <option id="opt_210" value="210">bank_id</option>
+    </optgroup>
+  </select>
+
+  <a href="#" class="btn btn-danger disabledNrefresh mt-10">disabledNrefresh A_NUM</a>
+</div> 
+
+<pre><code class="language-js">&lt;select id=<span class="string">"multiselect"</span> class=<span class="string">"multiselect-transfer"</span> multiple=<span class="string">""</span> name=<span class="string">"columns[]"</span>&gt;
+  ...
+<span class="xml"><span class="tag">&lt;/<span class="title">select</span>&gt;</span>
+
+<span class="comment">&lt;!-- Put This on your &lt;script&gt; tag --&gt;</span>
+<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">
+  $(<span class="string">'.multiselect-transfer'</span>).multiSelect({
+    selectableOptGroup: <span class="literal">true</span>,
+    selectableHeader: <span class="string">"&lt;h3&gt;Source&lt;/h3&gt;"</span>,
+    selectionHeader: <span class="string">"&lt;h3&gt;Destination&lt;/h3&gt;"</span>,
+    selectableHeader: <span class="string">"&lt;input type='text' class='search-input' autocomplete='off' placeholder='try \"12\"'&gt;"</span>,
+    selectionHeader: <span class="string">"&lt;input type='text' class='search-input' autocomplete='off' placeholder='try \"4\"'&gt;"</span>,
+    afterInit: <span class="keyword">function</span>(ms){
+        <span class="keyword">var</span> that = <span class="keyword">this</span>,
+            $selectableSearch = that.$selectableUl.prev(),
+            $selectionSearch = that.$selectionUl.prev(),
+            selectableSearchString = <span class="string">'#'</span>+that.$container.attr(<span class="string">'id'</span>)+<span class="string">' .ms-elem-selectable:not(.ms-selected)'</span>,
+            selectionSearchString = <span class="string">'#'</span>+that.$container.attr(<span class="string">'id'</span>)+<span class="string">' .ms-elem-selection.ms-selected'</span>;
+
+        that.qs1 = $selectableSearch.quicksearch(selectableSearchString).on(<span class="string">'keydown'</span>, <span class="keyword">function</span>(e){
+          <span class="keyword">if</span> (e.which === <span class="number">40</span>){
+            that.$selectableUl.focus();
+            <span class="keyword">return</span> <span class="literal">false</span>;
+          }
+        });
+
+        that.qs2 = $selectionSearch.quicksearch(selectionSearchString).on(<span class="string">'keydown'</span>, <span class="keyword">function</span>(e){
+              <span class="keyword">if</span> (e.which == <span class="number">40</span>){
+                that.$selectionUl.focus();
+                <span class="keyword">return</span> <span class="literal">false</span>;
+              }
+            });
+    },
+    afterSelect: <span class="keyword">function</span>(){
+        <span class="keyword">this</span>.qs1.cache();
+        <span class="keyword">this</span>.qs2.cache();
+    },
+    afterDeselect: <span class="keyword">function</span>(){
+        <span class="keyword">this</span>.qs1.cache();
+        <span class="keyword">this</span>.qs2.cache();
+    }
+  });
+</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span></span></code></pre>
+
+
+</div> <!-- /.content-panel -->
+
+            </div> <!-- /.row.content -->
+          </div> <!-- /#primary -->
+          
+        </div>
+        
+        <script src="assets/scripts/vendor/jquery.js"></script>
+
+        <script src="assets/scripts/vendor/plugins.js"></script>
+
+        <script src="assets/scripts/trx-app.js"></script>
+</body>
+</html>

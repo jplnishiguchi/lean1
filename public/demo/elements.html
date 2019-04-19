@@ -1,0 +1,476 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>HTML Elements - Project TRX</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+      <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="stylesheet" href="assets/styles/main.css">
+
+        <script src="assets/scripts/vendor/modernizr.js"></script>
+    </head>
+    <body class="">
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        
+
+        <!-- navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header pull-left">
+      <a class="navbar-brand" href="/">
+        <h2>TRX</h2>
+      </a>
+    </div>
+
+    <div class="m-nav pull-left">
+      <ul class="nav navbar-nav">
+        <li class="dropdown active">
+          <a href="javascript:void();">
+            Dashboard
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu sub-menu">
+            <li class="">
+              <a href="elements.html">Elements</a>
+            </li>
+            <li class="">
+              <a href="tables.html">Tables</a>
+            </li>
+            <li class="">
+              <a href="forms.html">Forms</a>
+            </li>
+            <li class="">
+              <a href="javascript.html">JavaScript Plugins</a>
+            </li>
+            <li class="dropdown">
+              <a href="#">
+                Pages
+                <b class="caret r"></b>
+              </a>
+              <ul class="dropdown-menu sub-menu">
+                <li>
+                  <a href="restricted.html">
+                    Restricted
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">
+            Another Menu
+            <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu sub-menu">
+            <li class="dropdown">
+              <a href="#">
+                More Menu
+                <b class="caret r"></b>
+              </a>
+              <ul class="dropdown-menu sub-menu in">
+                <li><a href="menu-01.html">Menu 01</a></li>
+                <li><a href="#">Menu 02</a></li>
+                <li><a href="#">Menu 03</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Menu 04</a></li>
+            <li><a href="#">Menu 05</a></li>
+            <li><a href="#">Menu 06 </a></li>
+            <li role="presentation" class="divider"></li>
+            <li role="presentation" class="dropdown-header">Administrator</li>
+            <li><a href="#">Update Database</a></li>
+            <li><a href="#">Generate Report</a></li>
+          </ul>
+        </li>
+        <li class="">
+          <a href="dropzone.html">
+            Uploader Demo
+          </a>
+        </li>
+        <li class="">
+          <a href="business-rules.html">
+            Business Rules Designer
+          </a>
+        </li>
+        <li class="">
+          <a href="js-plumb.html">
+            jQuery Plumb
+            <span class="badge badge-danger">
+              NEW!
+            </span>
+          </a>
+        </li>
+      </ul> <!-- .nav.navbar-nav -->
+    </div> <!-- .m-nav -->
+
+    <div class="my-account m-nav pull-right">
+           
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Hello there, <strong>Stego Saur</strong>!</a></li>
+        <li class="">
+          <a href="login.html">
+            Logout
+            
+          </a>
+        </li>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+</nav>
+
+        <div id="main-wrapper" class="l-main-wrapper">
+
+          <div class="container l-primary" id="primary">
+            
+            <div class="row content">
+              
+              
+              <div id="breadcrumb" class="m-breadcrumb">
+                
+                <ol class="breadcrumb">
+                  <li><a href="/">Dashboard</a></li>
+                  <li class="active">Front-end Elements</li>
+                </ol>
+                
+              </div>
+
+              
+
+              <div class="content-panel ">
+
+                
+                <h2 class="page-header">Front-end Elements</h2>
+                <p class="lead">All about the TRX Front-end Framework Front-end Elements</p>
+                
+
+              
+
+        
+
+<style>
+  .bs-glyphicons {
+    padding-left: 0;
+    padding-bottom: 1px;
+    margin-bottom: 20px;
+    list-style: none;
+    overflow: hidden;
+  }
+  .bs-glyphicons li {
+    float: left;
+    width: 10%;
+    height: 115px;
+    padding: 10px;
+    margin: 0 -1px -1px 0;
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: center;
+    border: 1px solid #ddd;
+  }
+  .bs-glyphicons .glyphicon {
+    display: block;
+    margin: 5px auto 10px;
+    font-size: 24px;
+  }
+  .bs-glyphicons li:hover {
+    background-color: rgba(86,61,124,.1);
+  }
+</style>
+
+
+
+
+
+
+
+<h3>Pagination</h3>
+<div class="trx-example">
+  <ul class="pagination">
+    <li class="disabled"><a href="#">&laquo;</a></li>
+    <li class="disabled"><a href="#">‹</a></li>
+    <li><a href="#">1</a></li>
+    <li class="active"><span href="#">2</span></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">›</a></li>
+    <li><a href="#">&raquo;</a></li>
+  </ul>
+</div>
+<pre><code class="language-js">&lt;div class=<span class="string">"trx-example"</span>&gt;
+  <span class="xml"><span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"pagination"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>&amp;laquo;<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>1<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>2<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>3<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>4<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>5<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">li</span>&gt;</span><span class="tag">&lt;<span class="title">a</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>&amp;raquo;<span class="tag">&lt;/<span class="title">a</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">ul</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span></code></pre>
+
+
+<h3>Badges</h3>
+<div class="trx-example">
+  <a href="#">Inbox <span class="badge">17</span></a>
+</div>
+<pre><code class="language-js">&lt;a href=<span class="string">"#"</span>&gt;Inbox &lt;span class=<span class="string">"badge"</span>&gt;<span class="number">17</span>&lt;<span class="regexp">/span&gt;&lt;/</span>a&gt;</code></pre>
+
+
+<h3>Labels</h3>
+<div class="trx-example">
+  <div>
+    <h1>Example heading <span class="label label-default">New</span></h1>
+    <h2>Example heading <span class="label label-default">New</span></h2>
+    <h3>Example heading <span class="label label-default">New</span></h3>
+    <h4>Example heading <span class="label label-default">New</span></h4>
+    <h5>Example heading <span class="label label-default">New</span></h5>
+    <h6>Example heading <span class="label label-default">New</span></h6>
+  </div>
+  <span class="label label-default">Default</span>
+  <span class="label label-primary">Primary</span>
+  <span class="label label-success">Success</span>
+  <span class="label label-info">Info</span>
+  <span class="label label-warning">Warning</span>
+  <span class="label label-danger">Danger</span>
+</div>  
+
+<pre><code class="language-js">&lt;div&gt;
+  <span class="xml"><span class="tag">&lt;<span class="title">h1</span>&gt;</span>Example heading <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"label label-default"</span>&gt;</span>New<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">h1</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">h2</span>&gt;</span>Example heading <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"label label-default"</span>&gt;</span>New<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">h2</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">h3</span>&gt;</span>Example heading <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"label label-default"</span>&gt;</span>New<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">h3</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">h4</span>&gt;</span>Example heading <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"label label-default"</span>&gt;</span>New<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">h4</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">h5</span>&gt;</span>Example heading <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"label label-default"</span>&gt;</span>New<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">h5</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">h6</span>&gt;</span>Example heading <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"label label-default"</span>&gt;</span>New<span class="tag">&lt;/<span class="title">span</span>&gt;</span><span class="tag">&lt;/<span class="title">h6</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"label label-default"</span>&gt;</span>Default<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+<span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"label label-primary"</span>&gt;</span>Primary<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+<span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"label label-success"</span>&gt;</span>Success<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+<span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"label label-info"</span>&gt;</span>Info<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+<span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"label label-warning"</span>&gt;</span>Warning<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+<span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"label label-danger"</span>&gt;</span>Danger<span class="tag">&lt;/<span class="title">span</span>&gt;</span></span></code></pre>
+
+  
+
+<h3>Alert Boxes</h3>
+<div class="trx-example">
+  <div class="alert alert-success">
+    Lorem ipsum dolor sit amet, <a href="#" class="alert-link">consectetur</a>.
+  </div>
+  <div class="alert alert-info">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veniam, consequuntur porro doloribus ducimus.
+  </div>
+  <div class="alert alert-warning">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, dicta, cupiditate at quas nostrum id illum.
+  </div>
+  <div class="alert alert-danger">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, quaerat laudantium provident atque dolorum.
+  </div>
+  <div class="alert alert-info alert-dismissable fade">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>For you information,</strong> You can close this alert box using the <strong>close</strong> button on the right.
+  </div>
+  <div class="alert alert-block alert-danger fade in">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+    <h4>Oh snap! You got an error!</h4>
+    <p>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.</p>
+    <p>
+      <a class="btn btn-danger" href="#">Take this action</a> <a class="btn btn-default" href="#">Or do this</a>
+    </p>
+  </div>
+</div>
+
+<pre><code class="language-js">&lt;div class=<span class="string">"alert alert-info alert-dismissable fade"</span>&gt;
+  <span class="xml"><span class="tag">&lt;<span class="title">button</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">class</span>=<span class="value">"close"</span> <span class="attribute">data-dismiss</span>=<span class="value">"alert"</span> <span class="attribute">aria-hidden</span>=<span class="value">"true"</span>&gt;</span>&amp;times;<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">strong</span>&gt;</span>For you information,<span class="tag">&lt;/<span class="title">strong</span>&gt;</span> You can close this alert box using the <span class="tag">&lt;<span class="title">strong</span>&gt;</span>close<span class="tag">&lt;/<span class="title">strong</span>&gt;</span> button on the right.
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"alert alert-block alert-danger fade in"</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">button</span> <span class="attribute">type</span>=<span class="value">"button"</span> <span class="attribute">class</span>=<span class="value">"close"</span> <span class="attribute">data-dismiss</span>=<span class="value">"alert"</span> <span class="attribute">aria-hidden</span>=<span class="value">"true"</span>&gt;</span>×<span class="tag">&lt;/<span class="title">button</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">h4</span>&gt;</span>Oh snap! You got an error!<span class="tag">&lt;/<span class="title">h4</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">p</span>&gt;</span>Change this and that and try again. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum.<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">p</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"btn btn-danger"</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>Take this action<span class="tag">&lt;/<span class="title">a</span>&gt;</span> <span class="tag">&lt;<span class="title">a</span> <span class="attribute">class</span>=<span class="value">"btn btn-default"</span> <span class="attribute">href</span>=<span class="value">"#"</span>&gt;</span>Or do this<span class="tag">&lt;/<span class="title">a</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span></code></pre>
+
+
+<h3>Progress Bars</h3>
+<div class="trx-example">
+  <div class="progress">
+    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+      <span class="sr-only">40% Complete (success)</span>
+    </div>
+  </div>
+  <div class="progress">
+    <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+      <span class="sr-only">20% Complete</span>
+    </div>
+  </div>
+  <div class="progress">
+    <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+      <span class="sr-only">60% Complete (warning)</span>
+    </div>
+  </div>
+  <div class="progress">
+    <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+      <span class="sr-only">80% Complete</span>
+    </div>
+  </div>
+</div>
+<pre><code class="language-js">&lt;div class=<span class="string">"progress"</span>&gt;
+  <span class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"progress-bar progress-bar-success"</span> <span class="attribute">role</span>=<span class="value">"progressbar"</span> <span class="attribute">aria-valuenow</span>=<span class="value">"40"</span> <span class="attribute">aria-valuemin</span>=<span class="value">"0"</span> <span class="attribute">aria-valuemax</span>=<span class="value">"100"</span> <span class="attribute">style</span>=<span class="value">"width: 40%"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">span</span> <span class="attribute">class</span>=<span class="value">"sr-only"</span>&gt;</span>40% Complete (success)<span class="tag">&lt;/<span class="title">span</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span></code></pre>
+
+<h3>Tables</h3>
+<div class="trx-example">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Username</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Marc</td>
+        <td>Cometa</td>
+        <td>@mcometa</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Anne</td>
+        <td>Gelito</td>
+        <td>@fabuluscat</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Friendster</td>
+        <td>Official</td>
+        <td>@friendster</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<pre><code class="language-js">&lt;table class=<span class="string">"table table-hover"</span>&gt;
+  <span class="xml"><span class="tag">&lt;<span class="title">thead</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">tr</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">th</span>&gt;</span>#<span class="tag">&lt;/<span class="title">th</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">th</span>&gt;</span>First Name<span class="tag">&lt;/<span class="title">th</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">th</span>&gt;</span>Last Name<span class="tag">&lt;/<span class="title">th</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">th</span>&gt;</span>Username<span class="tag">&lt;/<span class="title">th</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">tr</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">thead</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">tbody</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">tr</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">td</span>&gt;</span>1<span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">td</span>&gt;</span>Marc<span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">td</span>&gt;</span>Cometa<span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">td</span>&gt;</span>@mcometa<span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">tr</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">tr</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">td</span>&gt;</span>2<span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">td</span>&gt;</span>Anne<span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">td</span>&gt;</span>Gelito<span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">td</span>&gt;</span>@fabuluscat<span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">tr</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">tr</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">td</span>&gt;</span>3<span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">td</span>&gt;</span>Friendster<span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">td</span>&gt;</span>Official<span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+      <span class="tag">&lt;<span class="title">td</span>&gt;</span>@friendster<span class="tag">&lt;/<span class="title">td</span>&gt;</span>
+    <span class="tag">&lt;/<span class="title">tr</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">tbody</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">table</span>&gt;</span></span></code></pre>
+
+
+<h3>Panels</h3>
+<div class="trx-example">
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Panel with content</div>
+    <div class="panel-body">
+      <p>Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, delectus, quam, nulla, debitis amet velit ullam neque facere odit quis corporis quas accusantium quasi excepturi quod fugit sint cum aut.</p>
+    </div>
+    <div class="panel-footer">Panel footer</div>
+  </div>
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Panel with tables</div>
+    <div class="panel-body">
+      <p>Some default panel content here. Nulla vitae elit libero, a pharetra augue. Aenean lacinia bibendum nulla sed consectetur. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+    </div>
+
+    <!-- Table -->
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Marc</td>
+          <td>Cometa</td>
+          <td>@mcometa</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Anne</td>
+          <td>Gelito</td>
+          <td>@fabuluscat</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Friendster</td>
+          <td>Official</td>
+          <td>@friendster</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<pre><code class="language-js">&lt;div class=<span class="string">"panel panel-default"</span>&gt;
+  <span class="xml"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"panel-body"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">p</span>&gt;</span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat, delectus, quam, nulla, debitis amet velit ullam neque facere odit quis corporis quas accusantium quasi excepturi quod fugit sint cum aut.<span class="tag">&lt;/<span class="title">p</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"panel-footer"</span>&gt;</span>Panel footer<span class="tag">&lt;/<span class="title">div</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span></code></pre>
+
+
+</div> <!-- /.content-panel -->
+
+            </div> <!-- /.row.content -->
+          </div> <!-- /#primary -->
+          
+        </div>
+        
+        <script src="assets/scripts/vendor/jquery.js"></script>
+
+        <script src="assets/scripts/vendor/plugins.js"></script>
+
+        <script src="assets/scripts/trx-app.js"></script>
+</body>
+</html>
