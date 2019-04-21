@@ -98,8 +98,6 @@ class UserController extends AbstractActionController {
 	}
 
     public function addAction() {
-                error_reporting(E_ALL);
-        ini_set('display_errors', 1);
         $request = new Request();
         $posts = $request->getPost()->toArray();
 
@@ -292,7 +290,6 @@ class UserController extends AbstractActionController {
     }
 
     public function pwdresetAction() {
-        ini_set('display_errors', 1);
         $request = new Request();
         $config = $this->getServiceLocator()->get('Config');
         $this->_userClass = new User($config);

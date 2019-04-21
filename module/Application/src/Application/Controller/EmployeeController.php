@@ -14,9 +14,7 @@ use Utilities\Playdough\Loggedusers;
 
 class EmployeeController extends AbstractActionController {
 
-    public function indexAction() {
-                error_reporting(E_ALL);
-        ini_set('display_errors', 1);
+    public function indexAction() {      
         $auth = $this->getServiceLocator()->get('AuthService');
         
         $role = $auth->getIdentity()->role;
@@ -65,8 +63,6 @@ class EmployeeController extends AbstractActionController {
     }
     
     public function myprofileAction() {
-                error_reporting(E_ALL);
-        ini_set('display_errors', 1);
         $auth = $this->getServiceLocator()->get('AuthService');
         
         $role = $auth->getIdentity()->role;
@@ -94,8 +90,6 @@ class EmployeeController extends AbstractActionController {
      * @todo:validators
      */
     public function updateAction() {
-         error_reporting(E_ALL);
-        ini_set('display_errors', 1);
         $request = new Request();
         $config = $this->getServiceLocator()->get('Config');
         
@@ -133,8 +127,6 @@ class EmployeeController extends AbstractActionController {
     }
     
     public function addAction() {
-                error_reporting(E_ALL);
-        ini_set('display_errors', 1);
         $request = new Request();
         $posts = $request->getPost()->toArray();
 

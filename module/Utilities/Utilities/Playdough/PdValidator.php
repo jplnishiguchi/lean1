@@ -66,7 +66,8 @@ class PdValidator {
                 }
             }
             else if($name=="password" || $name=="password_confirm" || $name=="new_password"){
-                if(!preg_match("/[a-zA-Z\d!@#$%^&]{1}/", $value) || strlen($value) < (int) $this->_options['password_length']){
+                //if(!preg_match("/[a-zA-Z\d!@#$%^&]{1}/", $value) || strlen($value) < (int) $this->_options['password_length']){
+                if(!preg_match('/^(?=.*\d)(?=.*[A-Za-z])[0-9A-Za-z!@#$%]{8,15}$/', $value)) {
                     $invalidParams[] = $name;
                 }
             }

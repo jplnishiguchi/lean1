@@ -8,12 +8,12 @@ $env = getenv('APPLICATION_ENV') ? : 'production';
 /**
  * should be configured in server
  */
-/*if($env != 'production'){
-    error_reporting(E_ALL);
+if($env != 'production'){
+    error_reporting(E_ERROR);
     ini_set('display_errors', 1);
 } else{
     ini_set('display_errors', 0);
-}*/
+}
         
         
 chdir(dirname(__DIR__));
