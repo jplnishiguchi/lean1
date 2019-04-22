@@ -97,6 +97,20 @@ return array(
                     ),
                 ),
             ),
+            'reftable' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/reftable[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Reftable',
+                        'action' => 'sss',
+                    ),
+                ),
+            ),
 	     'transactions' => array(
                 'type' => 'segment',
                 'options' => array(
@@ -338,6 +352,7 @@ return array(
             'Application\Controller\Empgroup' => 'Application\Controller\EmpgroupController',
             'Application\Controller\Timeclock' => 'Application\Controller\TimeclockController',
             'Application\Controller\Holiday' => 'Application\Controller\HolidayController',
+            'Application\Controller\Reftable' => 'Application\Controller\ReftableController',
         ),
     ),
     'view_manager' => array(

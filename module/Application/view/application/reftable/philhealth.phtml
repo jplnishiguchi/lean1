@@ -1,0 +1,181 @@
+<div class="content-panel ">
+    <!--<h2 class="page-header">Create New User</h2>-->        
+    <form class="form-horizontal" id="tableForm" name="tableForm" method="POST" action="/user/add">        
+
+
+<h2 class="page-header">Philhealth Reference Values</h2>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Employer Share</label>
+            <div class="col-xs-3">
+                <h4><?php echo $data['employer_share']*100 ?> %</h4>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Employee Share</label>
+            <div class="col-xs-3">
+                <h4><?php echo $data['employee_share']*100 ?> %</h4>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Premium Minimum</label>
+            <div class="col-xs-3">
+                <h4><?php echo number_format((float)$data['premium_minimum'], 2, '.', '') ?></h4>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Premium Maximum</label>
+            <div class="col-xs-3">
+                <h4><?php echo number_format((float)$data['premium_maximum'], 2, '.', '') ?></h4>
+            </div>
+        </div>
+    </form>
+</div>
+
+<?php
+$dateplus30 = date("Y-m-d", strtotime("+30 days", time()));
+$conf = $this->Conf_widget();
+?>
+
+
+<script type="text/javascript">
+    
+    $(function() {
+        $( "#date_hired" ).datepicker();        
+    });
+    
+    $(function() {
+        $("#pwd_exp_date").datepicker();
+        $("#pwd_exp_date").datepicker("setDate", "<?php echo $dateplus30; ?>");
+        $("#pwd_exp_date").datepicker("option", "dateFormat", "yy-mm-dd");
+    });
+
+	/*$('#email').blur(function(){
+		var emailreg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+		var emailadd = $('#email').val();
+		var URL = '/user/checkemail';
+		var dataString = 'email=' + emailadd;
+
+			if(!emailreg.test(emailadd)){
+				$("#emailspan").html('<font color="#cc0000">Please enter valid Email address</font>');
+				$("#submit").prop("disabled", true);
+			}else{
+				$("#emailspan").html('<font color="#cc0000"></font>');
+				$("#submit").prop("disabled", false);
+			}
+
+		$.ajax({
+			type: "POST",
+			url: URL,
+			data: dataString,
+			cache: false,
+			success: function(resp) {
+			  if (resp != 0){
+				$("#emailspan").html('<font color="#cc0000">Email address is already in use.</font>');
+				$("#submit").prop("disabled", true);
+			  }else{
+			  }
+
+			}
+		});
+
+	});
+    */
+
+    jQuery.validator.addMethod("notEqual", function(value, element, param) {
+        return this.optional(element) || value != $(param).val();
+    }, "Username and Password should be different");
+
+    jQuery.validator.addMethod('username_check', function(value) {
+        var resp = username_check(value);
+        if (resp == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }, "Username already exists");
+
+    jQuery.validator.addMethod(
+            "regex",
+            function(value, element, regexp) {
+                var re = new RegExp(<?php echo $conf['pwd_regexp']; ?>);
+                return this.optional(element) || re.test(value);
+            },
+            "Password should contain atleast one lowercase or uppercase letter, or number, or characters like !@#$%^& "
+            );
+
+
+    jQuery.validator.addMethod(
+            "regexmeta",
+            function(value, element, regexp) {
+                var re = new RegExp('^[a-zA-Z0-9-_ ]+$');
+                return this.optional(element) || re.test(value);
+            },
+            "Value should only be letters and numbers only."
+            );
+
+    $("#tableForm").validate({
+        errorClass: 'has-error',
+        validClass: 'has-success',
+        errorElement: 'span',
+        highlight: function(element, errorClass, validClass) {
+            $(element).parents("div.form-group").addClass(errorClass).removeClass(validClass);
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents(".form-group.has-error").removeClass(errorClass).addClass(validClass);
+        },
+        rules: {
+            password: {
+                minlength: <?php echo $conf['password_length']; ?>,
+                notEqual: "#username",
+                regex: "dummy"
+
+
+            },
+            password_confirm: {
+                equalTo: "#password"
+            },
+            username: {
+                maxlength: 30,
+                username_check: "dummy",
+                regexmeta: "dummy"
+            }
+
+        }
+    });
+
+    //$('#username').keyup(username_check);
+    function username_check(username) {
+
+        if (username == '') {
+            return 0;
+        } else {
+
+            var ajaxResponse;
+
+            jQuery.ajax({
+                async: false,
+                type: 'GET',
+                url: '/user/checkusername',
+                data: 'username=' + username,
+                cache: false,
+                success: function(response) {
+                    ajaxResponse = response;
+                }
+            });
+            return ajaxResponse;
+        }
+    }
+
+
+
+if ($.browser.webkit) {
+    $('input[name="password"]').attr('autocomplete', 'off');
+    $('input[name="username"]').attr('autocomplete', 'off');
+}
+
+
+</script>

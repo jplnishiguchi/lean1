@@ -12,54 +12,19 @@ use Zend\Http\PhpEnvironment\Request;
 use Utilities\Playdough\User;
 use Utilities\Playdough\Loggedusers;
 
-class EmployeeController extends AbstractActionController {
+use Database\Model\EmployeeJapTable;
 
-    public function indexAction() {      
-        $auth = $this->getServiceLocator()->get('AuthService');
+
+class ReftableController extends AbstractActionController {
+
+    public function sssAction() {      
+        $empTable = new EmployeeJapTable($this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));
         
-        $role = $auth->getIdentity()->role;
-        $params = $this->params()->fromQuery();
-            
-        // for view single record. If not sys-admin or sys-admin but there's id param
-        if($role != "system-administrator" || ($role == "system-administrator" && !empty($params['id']))) {
-            $empClass = new EmployeeJap($this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));
-            $data = [];
-                    
-            // If sys-admin and there's id param
-            // /employee?id=1
-            if($role == "system-administrator"  && !empty($params['id']) && $params['id']!="me"){
-                $empId = $params['id'];
-                $data = $empClass->getEmployeeObject($params['id']);
-            }
-            // if not sys-admin. Get employee details from identity
-            // /employee 
-            else if($role != "system-administrator" || $params['id']=="me"){
-                $empId = $auth->getIdentity()->employee_id;
-                if(empty($empId)){
-                    $view = new ViewModel(array(
-                        'data' => array(
-                            'msg' => 'No associated employee yet for this account.',                    
-                            )
-                        )
-                        );
-                    $view->setTemplate('application/employee/notice.phtml'); // path to phtml file under view folder
-                    return $view;
-                }
-                
-                 $data = $empClass->getEmployeeObject($empId);
-            }
-            
-            $config = $this->getServiceLocator()->get('Config');
-            $userUtil = new User($config);            
-            $user = $userUtil->getAssociatedUser($empId);
-            $data['username'] = !empty($user) ? $user['username'] : "";
-
-            $view = new ViewModel(array(
-                "data" => $data,
-            ));            
-            $view->setTemplate('application/employee/index-single.phtml');
-            return $view;
-        }        
+        $result = $empTable->getSssTableData();
+        
+        echo "<pre>";
+        print_r($result);
+        die();
     }
     
     public function myprofileAction() {

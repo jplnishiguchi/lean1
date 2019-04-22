@@ -15,6 +15,8 @@ use Utilities\Empgroup;
 use Utilities\EmployeeJap;
 use Utilities\Playdough\Loggedusers;
 use Database\Model\LogsObject;
+use Database\Model\EmployeeJapTable;
+
 
 class UserController extends AbstractActionController {
 
@@ -49,7 +51,7 @@ class UserController extends AbstractActionController {
         $whereArray = NULL;
         $columns = array(
             "username",
-		   "email",
+            "email",
             "pwd_exp_date",
             'status',
             "role",
@@ -538,6 +540,17 @@ class UserController extends AbstractActionController {
             $rolesClass = new Roles($this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'), $config['roles']);
             $rolesList = $rolesClass->getAllRoles();
             $userData = $this->_userClass->table->getUserObject($username);
+            
+            $empId = $userData['employee_id'];
+            $empDisplay = "";
+            
+            if(!empty($empId)){
+                $empTable = new EmployeeJapTable($this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));
+                $empObj = $empTable->getObject($empId);
+                $empDisplay = $empObj['first_name']." ".$empObj['last_name']." [ID: ".$empObj['id']."]";
+                $userData['emp_display'] = $empDisplay;
+
+            }
             return (array(
                 'user' => $userData,
                 'roles' => $rolesList

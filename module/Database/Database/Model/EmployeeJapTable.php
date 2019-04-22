@@ -5,6 +5,8 @@ namespace Database\Model;
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\Sql\Select;
 use Zend\Db\Sql\Expression;
+use Zend\Db\ResultSet\ResultSet;
+
 
 class EmployeeJapTable {
 
@@ -81,8 +83,9 @@ class EmployeeJapTable {
         $this->tableGateway->update($set, $where);
     }
 
-    public function insert($set) {
+    public function insert($set) {        
         $this->tableGateway->insert($set);
+        return $this->tableGateway->lastInsertValue;
     }
 
     public function delete($username) {
@@ -104,6 +107,56 @@ class EmployeeJapTable {
         $dbRow = $this->getByField('option_key', $optionKey);
 
         return $dbRow;
+    }
+    
+    /**************** References table *****************/
+    
+    public function getSssTableData(){
+        $adapter = $this->_adapter;
+        $sql = "SELECT * FROM sss";
+        
+        $statement = $adapter->createStatement($sql);
+        $results = $statement->execute();
+        $resultSet = new ResultSet;
+        $resultSet->initialize($results);
+        $resultSet = $resultSet->toArray();
+        return $resultSet;
+    }
+    
+    public function getTaxTableData(){
+        $adapter = $this->_adapter;
+        $sql = "SELECT * FROM tax_table";
+        
+        $statement = $adapter->createStatement($sql);
+        $results = $statement->execute();
+        $resultSet = new ResultSet;
+        $resultSet->initialize($results);
+        $resultSet = $resultSet->toArray();
+        return $resultSet;
+    }
+    
+    public function getHdmfTableData(){
+        $adapter = $this->_adapter;
+        $sql = "SELECT * FROM hdmf";
+        
+        $statement = $adapter->createStatement($sql);
+        $results = $statement->execute();
+        $resultSet = new ResultSet;
+        $resultSet->initialize($results);
+        $resultSet = $resultSet->toArray();
+        return $resultSet;
+    }
+    
+    public function getPhilhealthTableData(){
+        $adapter = $this->_adapter;
+        $sql = "SELECT * FROM philhealth";
+        
+        $statement = $adapter->createStatement($sql);
+        $results = $statement->execute();
+        $resultSet = new ResultSet;
+        $resultSet->initialize($results);
+        $resultSet = $resultSet->toArray();
+        return $resultSet[0];
     }
 
 }

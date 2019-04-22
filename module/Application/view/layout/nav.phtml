@@ -69,6 +69,37 @@ if (strlen(trim($userRole)) == 0 || !in_array($userRole, $acl->getRoles())) {
         </ul>
     </li>
     
+    <?php if($userRole=='system-administrator'){ ?>
+    <li class="dropdown">
+        <a href="#">
+            Reference Tables
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu sub-menu in">
+            <li>
+                <a href="/reftable/tax">
+                    Tax
+                </a>
+            </li>          
+            <li>
+                <a href="/reftable/hdmf">
+                    HDMF
+                </a>
+            </li>          
+            <li class="dropdown">
+                <a href="/reftable/sss">
+                    SSS
+                </a>
+            </li>
+            <li class="dropdown">
+                <a href="/reftable/philhealth">
+                    Philhealth
+                </a>
+            </li>            
+        </ul>
+    </li>
+    <?php } ?>
+    
     <?php if ($env = getenv('APPLICATION_ENV') == 'development') : ?>
     <li class="dropdown">
         <a href="#">

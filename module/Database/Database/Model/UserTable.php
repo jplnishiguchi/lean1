@@ -62,6 +62,7 @@ class UserTable {
             $results = $statement->execute(array('newuser'=>$newUser,'empid'=>$empId));
         }
         
+        
         return true;
         
 //        $sql = "SELECT * FROM playdough_login WHERE employee_id = :empId";
@@ -166,7 +167,7 @@ class UserTable {
     }
 
     public function insert($set) {
-        $this->tableGateway->insert($set);
+        return $this->tableGateway->insert($set);
     }
 
     public function deleteUser($username) {
