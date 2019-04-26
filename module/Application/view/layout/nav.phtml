@@ -69,6 +69,32 @@ if (strlen(trim($userRole)) == 0 || !in_array($userRole, $acl->getRoles())) {
         </ul>
     </li>
     
+    <li class="dropdown">
+        <a href="#">
+            Payslips
+            <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu sub-menu in">
+            <li>
+                <a href="#">
+                    View My Payslips
+                </a>
+            </li>
+            <?php if($userRole=='system-administrator'){ ?>
+            <li class="dropdown">
+                <a href="/pay/paylist">
+                    View Pay List
+                </a>
+            </li>
+            <li class="dropdown">
+                <a href="/pay/createpay">
+                    Create Pay
+                </a>
+            </li>
+            <?php } ?>
+        </ul>
+    </li>
+    
     <?php if($userRole=='system-administrator'){ ?>
     <li class="dropdown">
         <a href="#">
@@ -101,7 +127,7 @@ if (strlen(trim($userRole)) == 0 || !in_array($userRole, $acl->getRoles())) {
     <?php } ?>
     
     <?php if ($env = getenv('APPLICATION_ENV') == 'development') : ?>
-    <li class="dropdown">
+<!--    <li class="dropdown">
         <a href="#">
             Payroll - OLD
             <b class="caret"></b>
@@ -112,55 +138,55 @@ if (strlen(trim($userRole)) == 0 || !in_array($userRole, $acl->getRoles())) {
                     Payslip
                     <b class="caret r"></b>
                 </a>
-<!--                <ul class="dropdown-menu sub-menu in">
+                <ul class="dropdown-menu sub-menu in">
                     <li><a href="/employee">Employee Information</a></li>
                     <li><a href="/empgroup/groups">Employee Groups</a></li>
                     <li><a href="/empgroup/roles">Employee Roles</a></li>
-                </ul>-->
+                </ul>
             </li>
             <li class="dropdown">
                 <a href="#">
                     Allowance and Benefits
                     <b class="caret r"></b>
                 </a>
-<!--                <ul class="dropdown-menu sub-menu in">
+                <ul class="dropdown-menu sub-menu in">
                     <li><a href="/time">Time Recording</a></li>
                     <li><a href="#">Holiday Management</a></li>                    
                     <li><a href="#">Selfie Clock</a></li>
-                </ul>-->
+                </ul>
             </li>
             <li class="dropdown">
                 <a href="#">
                     Compensation
                     <b class="caret r"></b>
                 </a>
-<!--                <ul class="dropdown-menu sub-menu in">
+                <ul class="dropdown-menu sub-menu in">
                     <li><a href="/request/add">Add</a></li>
                     <li><a href="/request/view">View</a></li>
-                </ul>-->
+                </ul>
             </li>            
             <li class="dropdown">
                 <a href="#">
                     Deductions
                     <b class="caret r"></b>
                 </a>
-<!--                <ul class="dropdown-menu sub-menu in">
+                <ul class="dropdown-menu sub-menu in">
                     <li><a href="/request/add">Add</a></li>
                     <li><a href="/request/view">View</a></li>
-                </ul>-->
+                </ul>
             </li>
             <li class="dropdown">
                 <a href="#">
                     Payroll Register
                     <b class="caret r"></b>
                 </a>
-<!--                <ul class="dropdown-menu sub-menu in">
+                <ul class="dropdown-menu sub-menu in">
                     <li><a href="/request/add">Add</a></li>
                     <li><a href="/request/view">View</a></li>
-                </ul>-->
+                </ul>
             </li>   
         </ul>
-    </li>
+    </li>-->
 
     <li class="dropdown">
         <a href="#">
@@ -285,7 +311,7 @@ if (strlen(trim($userRole)) == 0 || !in_array($userRole, $acl->getRoles())) {
                 </ul>
     </li>    
     
-    <li class="dropdown">
+<!--    <li class="dropdown">
         <a href="#">
             Employees - OLD
             <b class="caret"></b>
@@ -324,7 +350,7 @@ if (strlen(trim($userRole)) == 0 || !in_array($userRole, $acl->getRoles())) {
                 </ul>
             </li>            
         </ul>
-    </li>
+    </li>-->
 
     <li  <?php ($requestUri == 'demo') ? "class='active';" : '' ?>>
         <a href="/demo/index.html">Playdough UI Guide</a>

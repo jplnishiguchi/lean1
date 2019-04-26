@@ -1,88 +1,36 @@
 <div class="content-panel ">
     <!--<h2 class="page-header">Create New User</h2>-->        
-
     <form class="form-horizontal" id="tableForm" name="tableForm" method="POST" action="/user/add">        
 
-<h2 class="page-header">Employee Information</h2>
+
+<h2 class="page-header">Philhealth Reference Values</h2>
 
         <div class="form-group">
-            <label for="exampleInputEmail1" class="col-xs-2 control-label">Employee Number</label>
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Employer Share</label>
             <div class="col-xs-3">
-                <h4><?php echo $data['employee_number'] ?></h4>
+                <h4><?php echo $data['employer_share']*100 ?> %</h4>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="exampleInputEmail1" class="col-xs-2 control-label">First Name</label>
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Employee Share</label>
             <div class="col-xs-3">
-                <h4><?php echo $data['first_name'] ?></h4>
+                <h4><?php echo $data['employee_share']*100 ?> %</h4>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="exampleInputEmail1" class="col-xs-2 control-label">Middle Name</label>
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Premium Minimum</label>
             <div class="col-xs-3">
-                <h4><?php echo $data['middle_name'] ?></h4>
+                <h4><?php echo number_format((float)$data['premium_minimum'], 2, '.', '') ?></h4>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="exampleInputEmail1" class="col-xs-2 control-label">Last Name</label>
+            <label for="exampleInputEmail1" class="col-xs-2 control-label">Premium Maximum</label>
             <div class="col-xs-3">
-                <h4><?php echo $data['last_name'] ?></h4>
+                <h4><?php echo number_format((float)$data['premium_maximum'], 2, '.', '') ?></h4>
             </div>
-        </div>
-
-        <div class="form-group">
-            <label for="exampleInputEmail1" class="col-xs-2 control-label">Nickname</label>
-            <div class="col-xs-3">
-                <h4><?php echo $data['nickname'] ?></h4>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="exampleInputEmail1" class="col-xs-2 control-label">Gender</label>
-            <div class="col-xs-3">
-                <h4><?php echo $data['gender'] ?></h4>
-            </div>
-        </div>        
-
-        <div class="form-group">
-            <label for="start_date" class="col-xs-2 control-label">Date Hired</label>
-            <div class="col-xs-3">
-                <h4><?php echo $data['date_hired'] ?></h4>
-            </div>
-        </div>     
-
-        <div class="form-group">
-            <label for="exampleInputEmail1" class="col-xs-2 control-label">Address</label>
-            <div class="col-xs-3">
-                <h4><?php echo $data['address'] ?></h4>
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label for="exampleInputEmail1" class="col-xs-2 control-label">Contact Number</label>
-            <div class="col-xs-3">
-                <h4><?php echo $data['contact_number'] ?></h4>
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <label for="exampleInputEmail1" class="col-xs-2 control-label">Daily Rate</label>
-            <div class="col-xs-3">
-                <h4><?php echo $data['salary'] ?></h4>
-            </div>
-        </div>   
-        <div class="form-group">
-            <label for="exampleInputEmail1" class="col-xs-2 control-label">Associated user account</label>
-            <div class="col-xs-3">
-                <h4><?php echo $data['username'] ?></h4>
-            </div>
-        </div>   
-        <div class="col-lg-offset-2">
-            <a href="/"  class="btn btn-primary">Back </a>
-<!--            <button type="submit" class="btn btn-primary">Submit</button>-->
         </div>
     </form>
 </div>

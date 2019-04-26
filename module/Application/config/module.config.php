@@ -111,6 +111,20 @@ return array(
                     ),
                 ),
             ),
+            'pay' => array(
+                'type' => 'segment',
+                'options' => array(
+                    'route' => '/pay[/:action][/:id]',
+                    'constraints' => array(
+                        'action' => '[a-zA-Z][a-zA-Z0-9_-]*',
+                        'id' => '[0-9]+',
+                    ),
+                    'defaults' => array(
+                        'controller' => 'Application\Controller\Pay',
+                        'action' => 'sss',
+                    ),
+                ),
+            ),
 	     'transactions' => array(
                 'type' => 'segment',
                 'options' => array(
@@ -353,6 +367,8 @@ return array(
             'Application\Controller\Timeclock' => 'Application\Controller\TimeclockController',
             'Application\Controller\Holiday' => 'Application\Controller\HolidayController',
             'Application\Controller\Reftable' => 'Application\Controller\ReftableController',
+            'Application\Controller\Pay' => 'Application\Controller\PayController',
+
         ),
     ),
     'view_manager' => array(

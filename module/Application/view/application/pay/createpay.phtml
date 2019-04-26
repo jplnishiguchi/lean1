@@ -1,0 +1,138 @@
+<?php
+//$sessionManager = new \Zend\Session\SessionManager();
+//$sessionStorage = $sessionManager->getStorage();
+//$userRole = $sessionStorage->getMetaData('role');
+//$disabled = 'disabled="disabled"';
+//if ($acl->hasResource('employee-update') && $acl->isAllowed($userRole, 'employee-update')) {
+//    $disabled = '';
+//}
+//die("AAA");
+?>
+<div class="content-panel ">
+    <h2 class="page-header">Create Pay</h2>
+    <form class="form-horizontal" id="tableForm" name="tableForm" method="POST">
+<!--        <input type="hidden" id="id" name="id" value="" />-->
+        <div class="form-group">
+            <label for="gender" class="col-xs-2 control-label">Employee</label>
+            <div class="col-xs-3">
+                <select name="employee_id" required="" style="width:300px;">
+                        <?php foreach($employees as $emp){ ?>
+                        <option value="<?php echo $emp['id'] ?>"><?php echo $emp['last_name'].", ".$emp['first_name'] ?></option>
+                        <?php } ?>                        
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="gender" class="col-xs-2 control-label">Year</label>
+            <div class="col-xs-3">
+                <select name="year" required="" style="width:300px;">
+                        <?php 
+                        $years = array_reverse(range(date('Y')+1, date('Y')));
+                        foreach($years as $year){ 
+                        ?>
+                        <option value="<?php echo $year ?>"><?php echo $year ?></option>
+                        <?php } ?>                        
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="gender" class="col-xs-2 control-label">Month</label>
+            <div class="col-xs-3">
+                <select name="month" required="" style="width:300px;">
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>                    
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="gender" class="col-xs-2 control-label">Pay Period</label>
+            <div class="col-xs-3">
+                <select name="pay_period" required="" style="width:300px;">
+                    <option value="1">First pay period</option>
+                    <option value="2">Second pay period</option>                    
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="first_name" class="col-xs-2 control-label">Days of work</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="first_name" name="days_of_work" value=""/>
+            </div>
+        </div>
+        
+        <br/>
+        <div class="col-lg-offset-2">
+            <a href="/pay/paylist"  class="btn btn-default">Cancel </a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+<?php
+$conf = $this->Conf_widget();
+?>
+
+
+<script>
+    // Check all text if empty
+    // If tesbox empty, add required attribute
+    $(":text").each(function(){
+        $(this).blur(function(){
+            if($(this).val() == ""){
+                var name = $(this).attr('name');
+                $(this).prop('required',true);
+            }
+        });
+    });
+
+    $(function() {
+        $("#date_hired").datepicker({
+            dateFormat: 'yy-mm-dd',
+        });
+
+    });
+
+
+    jQuery.validator.addMethod("notEqual", function(value, element, param) {
+        return this.optional(element) || value != $(param).val();
+    }, "Username and Password should be different");
+
+
+    $("#tableForm").validate({
+        errorClass: 'has-error',
+        validClass: 'has-success',
+        errorElement: 'span',
+        highlight: function(element, errorClass, validClass) {
+            $(element).parents("div.form-group").addClass(errorClass).removeClass(validClass);
+
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents(".form-group.has-error").removeClass(errorClass).addClass(validClass);
+        },
+        rules: {
+            first_name: {
+                notEqual: ""
+            },
+            password_confirm: {
+                equalTo: "#new_password"
+            }
+
+        }
+    });
+    
+    $(document).ready(function (){
+        $("tableForm").submit(function() {
+            $(this).children('#company_email').remove();
+        });
+    });
+</script>

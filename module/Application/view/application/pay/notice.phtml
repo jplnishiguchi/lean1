@@ -1,0 +1,20 @@
+<div class="modal fade" id="modalsave" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Employee Notification</h4>
+            </div>
+            <div class="modal-body">
+                <?php echo $data['msg']; ?>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" onClick="javascript:window.location='/employee';">OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<a data-toggle="modal" data-backdrop="static" data-keyboard="false" href="#modalsave" id="saveModal"></a>
+
+<script type="text/javascript">
+    $('#saveModal').click();
+</script>

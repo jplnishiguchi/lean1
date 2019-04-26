@@ -478,9 +478,9 @@ function parseResultOutput(records) {
         tableOutput += "<tr>";
 
 
-        if (reportType === 'user') {
-            tableOutput += '<td><input type="checkbox" name="userdelete[]" value="' + row.username + '"></td>';
-        }
+//        if (reportType === 'user') {
+//            tableOutput += '<td><input type="checkbox" name="userdelete[]" value="' + row.username + '"></td>';
+//        }
 
         $.each(row, function(x, column) {
             if (!((reportType == "pages" || reportType == "roles" || reportType == "options" || reportType == 'schedules' || reportType == 'time' || reportType == 'holiday') && (x === "id"))
