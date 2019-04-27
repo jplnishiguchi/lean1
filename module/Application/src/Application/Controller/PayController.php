@@ -71,6 +71,20 @@ class PayController extends AbstractActionController {
     public function mypayslipsAction(){
         $auth = $this->getServiceLocator()->get('AuthService');
         $empId = $auth->getIdentity()->employee_id;
+        
+        if(empty($empId)){
+            $view = new ViewModel(
+                    array(
+                'data' => array(
+                    'msg' => 'No employee associated to this account yet.'
+                    ),
+                )
+            );
+
+            $view->setTemplate('application/pay/notice2.phtml'); // path to phtml file under view folder
+            return $view;
+        }
+            
 
         $empTable = new EmployeeJapTable($this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));        
         $result = $empTable->getPayslipList(array("employee_id"=>$empId));        
@@ -103,34 +117,40 @@ class PayController extends AbstractActionController {
         
         if($excess){
             if($rest && $regularHoliday){
-                $totalPay*=3.38;
                 if($night){
                     $totalPay*=3.718;
+                }else{
+                    $totalPay*=3.38;
                 }
-            }else if($rest && $special){
-                $totalPay*=1.95;
+            }else if($rest && $special){                
                 if($night){
                     $totalPay*=2.145;
+                }else{
+                    $totalPay*=1.95;
                 }
-            }else if($regularHoliday){
-                $totalPay*=2.6;
+            }else if($regularHoliday){                
                 if($night){
                     $totalPay*=2.86;
+                }else{
+                    $totalPay*=2.6;
                 }
-            }else if($special){
-                $totalPay*=1.69;
+            }else if($special){                
                 if($night){
                     $totalPay*=1.859;
+                }else{
+                    $totalPay*=1.69;
                 }
-            }else if($rest){
-                $totalPay*=1.69;
+            }else if($rest){                
                 if($night){
                     $totalPay*=1.859;
+                }else{
+                    $totalPay*=1.69;
                 }
-            }else if($regular){
-                $totalPay*=1.25;
+            }else if($regular){                
                 if($night){
                     $totalPay*=1.375;
+                }else{
+                    $totalPay*=1.25;
                 }
             }
         }else{
@@ -293,6 +313,44 @@ class PayController extends AbstractActionController {
         }
     }
     
+    public function adddeductionAction(){
+        $request = new Request();
+        if($request->isPost()) {            
+            $posts = $request->getPost()->toArray();
+            
+            $empTable = new EmployeeJapTable($this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));
+            $result = $empTable->getPayList(array("pay_id"=>$posts['pay_id']))[0];
+
+            $posts['daily_rate'] = $result['salary'];                                                
+          
+            $data['pay_id'] = $posts['pay_id'];            
+            $data['type'] = $posts['type'];
+            $data['amount'] = $posts['amount'];
+            
+            $empTable->createDeduction($data);            
+             $view = new ViewModel(
+                    array(
+                'data' => array(
+                    'msg' => 'Deduction was successfully created.'
+                    ),
+                )
+            );
+
+            $view->setTemplate('application/pay/notice.phtml'); // path to phtml file under view folder
+            return $view;
+        }else{
+            $payId = $request->getQuery("id");
+        
+            $empTable = new EmployeeJapTable($this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));        
+            $result = $empTable->getPayList(array("pay_id"=>$payId));
+
+            $view = new ViewModel(array(
+                'data'=>$result[0]
+            ));                    
+            return $view;     
+        }
+    }
+    
     public function generateAction(){
         $request = new Request();
         $payId = $request->getQuery("id");
@@ -341,6 +399,16 @@ class PayController extends AbstractActionController {
         $data['total_undertime'] = $totalUt;
         $taxable-=$totalUt;
         unset($data['undertime']);
+        
+        $data['deduction'] = $empTable->getDeduction($payId);
+       
+        $totalDec = 0;
+        foreach($data['deduction'] as $row){
+            $totalDec+= $row['amount'];
+        }
+        $data['total_deduction'] = $totalDec;
+        $taxable-=$totalDec;
+        unset($data['deduction']);
         
         $monthlyComp = $data['daily_rate']*20;
         $data['total_govt'] = 0;
@@ -415,6 +483,14 @@ class PayController extends AbstractActionController {
         $data['total_overtime'] = $totalOt;
         $taxable+=$totalOt;
         
+        $data['deduction'] = $empTable->getDeduction($payId);
+        $totalDec = 0;
+        foreach($data['deduction'] as $row){
+            $totalDec+= $row['amount'];
+        }
+        $data['total_deduction'] = $totalDec;
+        $taxable-=$totalDec;
+        
         $data['undertime'] = $empTable->getUndertime($payId);
         $totalUt = 0;
         foreach($data['undertime'] as $row){
@@ -463,6 +539,8 @@ class PayController extends AbstractActionController {
         $result['overtime'] = $empTable->getOvertime($payId);
         $result['undertime'] = $empTable->getUndertime($payId);
         $result['allowance'] = $empTable->getAllowance($payId);
+        $result['deduction'] = $empTable->getDeduction($payId);
+
         
         $view = new ViewModel(array(
             'data'=>$result
@@ -481,6 +559,7 @@ class PayController extends AbstractActionController {
         $result['overtime'] = $empTable->getOvertime($payId);
         $result['undertime'] = $empTable->getUndertime($payId);
         $result['allowance'] = $empTable->getAllowance($payId);
+        $result['deduction'] = $empTable->getDeduction($payId);
         
         $view = new ViewModel(array(
             'data'=>$result,

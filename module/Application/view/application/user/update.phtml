@@ -27,19 +27,9 @@
         <div class="form-group">
             <label for="exampleInputEmail1" class="col-xs-2 control-label">Role</label>
             <div class="col-xs-3">
-                <select name="role" required="" style="width:300px;">
-                    <?php
-                    foreach ($roles as $role) {
-                        $selected = NULL;
-                        if ($user['role'] == $role->role) {
-                            $selected = "selected=''";
-                        }
-                        ?>
-                        <option value="<?php echo $role->role; ?>" <?php echo $selected; ?>><?php echo $role->role; ?></option>
-                        <?php
-                    }
-                    ?>
-
+                <select name="role" required="" style="width:300px;">	
+                    <option value="system-administrator">System Administrator</option>
+                    <option value="regular-user">Regular User</option>
                 </select>
             </div>
         </div>

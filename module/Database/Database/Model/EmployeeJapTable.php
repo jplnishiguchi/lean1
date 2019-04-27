@@ -333,6 +333,27 @@ class EmployeeJapTable {
         return $resultSet;                
     }
     
+    public function createDeduction($set) {     
+        $otGateway = new TableGateway("deduction", $this->_adapter);
+
+        $otGateway->insert($set);
+        return $otGateway->lastInsertValue;
+    }
+    
+    public function getDeduction($payId){
+        $adapter = $this->_adapter;
+        $sql = "SELECT * FROM deduction WHERE pay_id=:payid";
+        
+        $statement = $adapter->createStatement($sql);
+        $statement->prepare();
+        $results = $statement->execute(array("payid"=>$payId));
+        $resultSet = new ResultSet;
+        $resultSet->initialize($results);
+        $resultSet = $resultSet->toArray();
+        
+        return $resultSet;                
+    }
+    
     public function createPayslip($set) {     
         $otGateway = new TableGateway("payslip", $this->_adapter);
         $otGateway->insert($set);

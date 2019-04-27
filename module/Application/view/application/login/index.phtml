@@ -54,7 +54,7 @@ $conf = $this->Conf_widget();
                 if(count($messages) > 0) $error = 1;
                 ?>
                 
-              <input type="text" class="form-control" name="username" placeholder="Username or Email address" value="<?php if (isset($ispwdchange)) { echo $username; } else {echo $form->getInputFilter()->getValue('username'); }?>" autofocus="" required>
+              <input type="text" class="form-control" name="username" placeholder="Username" value="<?php if (isset($ispwdchange)) { echo $username; } else {echo $form->getInputFilter()->getValue('username'); }?>" autofocus="" required>
 
             </div>
             <?php
