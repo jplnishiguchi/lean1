@@ -188,10 +188,10 @@ class EmployeeJapTable {
     
     public function getPayList($params = []){
         $adapter = $this->_adapter;
-        $sql = "SELECT * FROM employees INNER JOIN pay ON pay.employee_id=employees.id";
+        $sql = "SELECT * FROM employees INNER JOIN pay ON pay.employee_id=employees.id WHERE status='pending' ";
         $input = array();
         if(isset($params['pay_id'])){
-            $sql.=" WHERE pay.id=:payid";
+            $sql.=" AND pay.id=:payid";
             $input['payid']=$params['pay_id'];
         }       
         
@@ -289,5 +289,81 @@ class EmployeeJapTable {
         $resultSet = $resultSet->toArray();
         
         return $resultSet;                
+    }
+    
+    public function createUndertime($set) {     
+        $otGateway = new TableGateway("undertime", $this->_adapter);
+
+        $otGateway->insert($set);
+        return $otGateway->lastInsertValue;
+    }
+    
+    public function getUndertime($payId){
+        $adapter = $this->_adapter;
+        $sql = "SELECT * FROM undertime WHERE pay_id=:payid";
+        
+        $statement = $adapter->createStatement($sql);
+        $statement->prepare();
+        $results = $statement->execute(array("payid"=>$payId));
+        $resultSet = new ResultSet;
+        $resultSet->initialize($results);
+        $resultSet = $resultSet->toArray();
+        
+        return $resultSet;                
+    }
+    
+    public function createAllowance($set) {     
+        $otGateway = new TableGateway("allowance", $this->_adapter);
+
+        $otGateway->insert($set);
+        return $otGateway->lastInsertValue;
+    }
+    
+    public function getAllowance($payId){
+        $adapter = $this->_adapter;
+        $sql = "SELECT * FROM allowance WHERE pay_id=:payid";
+        
+        $statement = $adapter->createStatement($sql);
+        $statement->prepare();
+        $results = $statement->execute(array("payid"=>$payId));
+        $resultSet = new ResultSet;
+        $resultSet->initialize($results);
+        $resultSet = $resultSet->toArray();
+        
+        return $resultSet;                
+    }
+    
+    public function createPayslip($set) {     
+        $otGateway = new TableGateway("payslip", $this->_adapter);
+        $otGateway->insert($set);
+        
+        $payGateway = new TableGateway("pay", $this->_adapter);
+        $data = array("status"=>"generated");
+        $payGateway->update($data,"id=".$set['pay_id']);
+        
+        return $otGateway->lastInsertValue;
+    }
+    
+    public function getPayslipList($params = []){
+        $adapter = $this->_adapter;
+        $sql = "SELECT * FROM payslip";
+        
+        $input = array();
+        if(isset($params['payslip_id'])){
+            $sql.=" WHERE payslip.id=:payslipid";
+            $input['payslipid']=$params['payslip_id'];
+        }  
+        if(isset($params['employee_id'])){
+            $sql.=" WHERE payslip.employee_id=:employeeid";
+            $input['employeeid']=$params['employee_id'];
+        }  
+        
+        $statement = $adapter->createStatement($sql);
+        $statement->prepare();
+        $results = $statement->execute($input);
+        $resultSet = new ResultSet;
+        $resultSet->initialize($results);
+        $resultSet = $resultSet->toArray();
+        return $resultSet;
     }
 }

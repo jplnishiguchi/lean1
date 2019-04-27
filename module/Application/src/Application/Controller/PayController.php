@@ -36,7 +36,7 @@ class PayController extends AbstractActionController {
                 )
             );
 
-            $view->setTemplate('application/index/notice.phtml'); // path to phtml file under view folder
+            $view->setTemplate('application/pay/notice.phtml'); // path to phtml file under view folder
             return $view;
         }
         else{
@@ -55,6 +55,31 @@ class PayController extends AbstractActionController {
         $view = new ViewModel(array(
             "data" => $result
         ));                    
+        return $view;     
+    }
+    
+    public function paysliplistAction(){
+        $empTable = new EmployeeJapTable($this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));        
+        $result = $empTable->getPayslipList();
+      
+        $view = new ViewModel(array(
+            "data" => $result
+        ));                    
+        return $view;     
+    }
+    
+    public function mypayslipsAction(){
+        $auth = $this->getServiceLocator()->get('AuthService');
+        $empId = $auth->getIdentity()->employee_id;
+
+        $empTable = new EmployeeJapTable($this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));        
+        $result = $empTable->getPayslipList(array("employee_id"=>$empId));        
+        
+        $view = new ViewModel(array(
+            "data" => $result,
+            "mypayslip" => true
+        ));             
+        $view->setTemplate('application/pay/paysliplist.phtml'); // path to phtml file under view folder
         return $view;     
     }
     
@@ -176,7 +201,7 @@ class PayController extends AbstractActionController {
                 )
             );
 
-            $view->setTemplate('application/index/notice.phtml'); // path to phtml file under view folder
+            $view->setTemplate('application/pay/notice.phtml'); // path to phtml file under view folder
             return $view;
         }else{
             $payId = $request->getQuery("id");
@@ -190,6 +215,168 @@ class PayController extends AbstractActionController {
             return $view;     
         }
         
+    }
+    
+    public function addutAction(){
+        $request = new Request();
+        if($request->isPost()) {            
+            $posts = $request->getPost()->toArray();
+            
+            $empTable = new EmployeeJapTable($this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));
+            $result = $empTable->getPayList(array("pay_id"=>$posts['pay_id']))[0];
+
+            $posts['daily_rate'] = $result['salary'];                                                
+          
+            $data['pay_id'] = $posts['pay_id'];            
+            $data['hours'] = $posts['hours'];
+            $data['total_ut'] = $posts['hours']*$posts['daily_rate']/8;
+            
+            $empTable->createUndertime($data);            
+             $view = new ViewModel(
+                    array(
+                'data' => array(
+                    'msg' => 'Undertime was successfully created.'
+                    ),
+                )
+            );
+
+            $view->setTemplate('application/pay/notice.phtml'); // path to phtml file under view folder
+            return $view;
+        }else{
+            $payId = $request->getQuery("id");
+        
+            $empTable = new EmployeeJapTable($this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));        
+            $result = $empTable->getPayList(array("pay_id"=>$payId));
+
+            $view = new ViewModel(array(
+                'data'=>$result[0]
+            ));                    
+            return $view;     
+        }
+    }
+    
+    public function addallowanceAction(){
+        $request = new Request();
+        if($request->isPost()) {            
+            $posts = $request->getPost()->toArray();
+            
+            $empTable = new EmployeeJapTable($this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));
+            $result = $empTable->getPayList(array("pay_id"=>$posts['pay_id']))[0];
+
+            $posts['daily_rate'] = $result['salary'];                                                
+          
+            $data['pay_id'] = $posts['pay_id'];            
+            $data['type'] = $posts['type'];
+            $data['amount'] = $posts['amount'];
+            
+            $empTable->createAllowance($data);            
+             $view = new ViewModel(
+                    array(
+                'data' => array(
+                    'msg' => 'Allowance was successfully created.'
+                    ),
+                )
+            );
+
+            $view->setTemplate('application/pay/notice.phtml'); // path to phtml file under view folder
+            return $view;
+        }else{
+            $payId = $request->getQuery("id");
+        
+            $empTable = new EmployeeJapTable($this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));        
+            $result = $empTable->getPayList(array("pay_id"=>$payId));
+
+            $view = new ViewModel(array(
+                'data'=>$result[0]
+            ));                    
+            return $view;     
+        }
+    }
+    
+    public function generateAction(){
+        $request = new Request();
+        $payId = $request->getQuery("id");
+        
+        $empTable = new EmployeeJapTable($this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));        
+        $result = $empTable->getPreviewData($payId);        
+        
+        $data = array();
+        $data['pay_id']=$payId;
+        $data['employee_id'] = $result['employee_id'];
+        $data['employee_number'] = $result['employee_number'];
+        $data['name'] = $result['last_name'].", ".$result['first_name']." ".$result['middle_name'];
+        
+        $payPeriod = date('F', mktime(0, 0, 0, $result['month'], 10));
+        if($result['pay_period']==1){
+            $payPeriod.=" 1 to 15";
+        }
+        else{
+            $lastDay = date("d", mktime(0, 0, 0, $result['month']+1,0,date("Y")));
+
+            $payPeriod.= " 16 to ".$lastDay;
+        }
+        $payPeriod = " ".$payPeriod.", ".$result['year'];
+        $data['pay_period'] = $payPeriod;
+        $data['days_of_work'] = $result['days_of_work'];
+        $data['daily_rate'] = $result['salary'];
+        $data['total_regular_wage'] = $data['days_of_work']*$data['daily_rate'];        
+        
+        $taxable = $data['total_regular_wage'];
+        
+        $data['overtime'] = $empTable->getOvertime($payId);
+        $totalOt = 0;
+        foreach($data['overtime'] as $row){
+            $totalOt+= $row['total_pay'];
+        }
+        $data['total_overtime'] = $totalOt;
+        $taxable+=$totalOt;
+        unset($data['overtime']);
+        
+        $data['undertime'] = $empTable->getUndertime($payId);
+       
+        $totalUt = 0;
+        foreach($data['undertime'] as $row){
+            $totalUt+= $row['total_ut'];
+        }
+        $data['total_undertime'] = $totalUt;
+        $taxable-=$totalUt;
+        unset($data['undertime']);
+        
+        $monthlyComp = $data['daily_rate']*20;
+        $data['total_govt'] = 0;
+        if($result['pay_period']==2){   
+            $data['sss'] = $empTable->getSssContri($monthlyComp)*0.4;
+            $data['philhealth'] = $empTable->getPhilhealthContri($monthlyComp);
+            $data['hdmf'] = 100;
+            $taxable = $taxable - $data['sss'] - $data['philhealth'] - $data['hdmf'];
+            $data['total_govt'] = $data['sss']+$data['philhealth']+$data['hdmf'];
+        }
+        
+        $data['taxable'] = $taxable;
+        $data['tax'] = $empTable->getTax($taxable);
+        $data['income_less_tax'] = $data['taxable']-$data['tax'];               
+        
+        $data['allowance'] = $empTable->getAllowance($payId);
+        $totalAllowance = 0;
+        foreach($data['allowance'] as $row){
+            $totalAllowance+= $row['amount'];
+        }
+        $data['total_allowance'] = $totalAllowance;
+        unset($data['allowance']);
+        
+        $data['net_income'] = $data['income_less_tax']+$totalAllowance;
+        
+        $empTable->createPayslip($data);
+        
+        $view = new ViewModel(
+                array(
+            'data' => array(
+                'msg' => 'Payslip was successfully generated.'
+                ),
+            )
+        ); 
+        $view->setTemplate('application/pay/notice.phtml'); // path to phtml file under view folder
+        return $view;
     }
     
     public function previewAction(){
@@ -228,20 +415,76 @@ class PayController extends AbstractActionController {
         $data['total_overtime'] = $totalOt;
         $taxable+=$totalOt;
         
-        $monthlyComp = $data['daily_rate']*20;
+        $data['undertime'] = $empTable->getUndertime($payId);
+        $totalUt = 0;
+        foreach($data['undertime'] as $row){
+            $totalUt+= $row['total_ut'];
+        }
+        $data['total_undertime'] = $totalUt;
+        $taxable-=$totalUt;                
+        
+        $monthlyComp = $data['daily_rate']*20;        
+        $data['total_govt'] = 0;
         if($result['pay_period']==2){            
             $data['sss'] = $empTable->getSssContri($monthlyComp)*0.4;
             $data['philhealth'] = $empTable->getPhilhealthContri($monthlyComp);
             $data['hdmf'] = 100;
             $taxable = $taxable - $data['sss'] - $data['philhealth'] - $data['hdmf'];
+            $data['total_govt'] = $data['sss']+$data['philhealth']+$data['hdmf'];
         }
         
         $data['taxable'] = $taxable;
         $data['tax'] = $empTable->getTax($taxable);
-        $data['net_income'] = $data['taxable']-$data['tax'];               
+        $data['income_less_tax'] = $data['taxable']-$data['tax'];               
+        
+        $data['allowance'] = $empTable->getAllowance($payId);
+        $totalAllowance = 0;
+        foreach($data['allowance'] as $row){
+            $totalAllowance+= $row['amount'];
+        }
+        $data['total_allowance'] = $totalAllowance;
+        
+        $data['net_income'] = $data['income_less_tax']+$totalAllowance;
                       
         $view = new ViewModel(array(
             'data'=>$data
+        ));  
+        $view->setTemplate('application/pay/payslip.phtml');
+        return $view;     
+    }
+    
+    public function viewpayslipAction(){
+        $request = new Request();
+        $payslipId = $request->getQuery("id");
+        
+        $empTable = new EmployeeJapTable($this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));        
+        $result = $empTable->getPayslipList(array("payslip_id"=>$payslipId))[0];        
+        $payId = $result['pay_id'];
+        $result['overtime'] = $empTable->getOvertime($payId);
+        $result['undertime'] = $empTable->getUndertime($payId);
+        $result['allowance'] = $empTable->getAllowance($payId);
+        
+        $view = new ViewModel(array(
+            'data'=>$result
+        ));  
+        $view->setTemplate('application/pay/payslip.phtml');
+        return $view;     
+    }
+    
+    public function viewmypayslipAction(){
+        $request = new Request();
+        $payslipId = $request->getQuery("id");
+        
+        $empTable = new EmployeeJapTable($this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));        
+        $result = $empTable->getPayslipList(array("payslip_id"=>$payslipId))[0];        
+        $payId = $result['pay_id'];
+        $result['overtime'] = $empTable->getOvertime($payId);
+        $result['undertime'] = $empTable->getUndertime($payId);
+        $result['allowance'] = $empTable->getAllowance($payId);
+        
+        $view = new ViewModel(array(
+            'data'=>$result,
+            'mypayslip'=>true
         ));  
         $view->setTemplate('application/pay/payslip.phtml');
         return $view;     

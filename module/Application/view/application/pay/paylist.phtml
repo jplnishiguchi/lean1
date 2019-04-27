@@ -12,15 +12,15 @@
     <div class="wide-table">
             <table class="table table-striped table-hover">
                 <thead id="search-thead">
-                    <tr>                        
+                    <tr>    
+                        <th>Pay ID</th>
                         <th>Employee</th>
                         <th>Year</th>
                         <th>Month</th>
                         <th>Pay Period</th>
                         <th>Days of work</th>
                         <th>Adjust Pay</th>
-                        <th>Payslip Action</th>
-                        <!--<th>Action</th>-->
+                        <th>Payslip Action</th>                        
                     </tr>
                 </thead>
                 <tbody id="search-tbody">
@@ -36,7 +36,8 @@
                             $payPeriod.= " 16 to ".$lastDay;
                         }
                 ?>
-                    <tr>                        
+                    <tr>     
+                        <td><?php echo $row['id'] ?></td>
                         <td><?php echo $row['last_name'].", ".$row['first_name'] ?></td>
                         <td><?php echo $row['year'] ?></td>
                         <td><?php echo date('F', mktime(0, 0, 0, $row['month'], 10)) ?> </td>
@@ -44,8 +45,12 @@
                         <td><?php echo $row['days_of_work'] ?></td>
                         <td>
                             <a href="/pay/addot?id=<?php echo $row['id']?>">Add Overtime </a>| 
-                            Add undertime | Add allowance</td>
-                        <td><a href="/pay/preview?id=<?php echo $row['id']?>">Preview Payslip</a> | Generate payslip</td>
+                            <a href="/pay/addut?id=<?php echo $row['id']?>">Add Undertime </a>| 
+                            <a href="/pay/addallowance?id=<?php echo $row['id']?>">Add Allowance </a> 
+                        <td>
+                            <a href="/pay/preview?id=<?php echo $row['id']?>">Preview Payslip</a> | 
+                            <a href="/pay/generate?id=<?php echo $row['id']?>">Generate Payslip</a>
+                        </td>
                     </tr>
                 <?php } ?>
                 </tbody>

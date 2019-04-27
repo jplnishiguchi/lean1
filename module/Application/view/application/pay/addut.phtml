@@ -1,0 +1,110 @@
+<?php
+//$sessionManager = new \Zend\Session\SessionManager();
+//$sessionStorage = $sessionManager->getStorage();
+//$userRole = $sessionStorage->getMetaData('role');
+//$disabled = 'disabled="disabled"';
+//if ($acl->hasResource('employee-update') && $acl->isAllowed($userRole, 'employee-update')) {
+//    $disabled = '';
+//}
+//die("AAA");
+?>
+<div class="content-panel ">
+    <h2 class="page-header">Add Undertime</h2>
+    <form class="form-horizontal" id="tableForm" name="tableForm" method="POST">
+        <input type="hidden" id="id" name="pay_id" value="<?php echo $data['id']?>" />
+        <div class="form-group">
+            <label for="gender" class="col-xs-2 control-label">Employee</label>
+            <div class="col-xs-3">
+                <h4><?php echo $data['last_name'].", ".$data['first_name'] ?></h4>                
+            </div>
+        </div>
+         <div class="form-group">
+            <?php
+                $payPeriod = date('F', mktime(0, 0, 0, $data['month'], 10));
+                if($data['pay_period']==1){
+                    $payPeriod.=" 1 to 15";
+                }
+                else{
+                    $lastDay = date("d", mktime(0, 0, 0, $data['month']+1,0,date("Y")));
+
+                    $payPeriod.= " 16 to ".$lastDay;
+                }
+                $payPeriod = $payPeriod.", ".$data['year'];
+            ?>
+            <label for="gender" class="col-xs-2 control-label">Pay Period</label>
+            <div class="col-xs-3">
+                <h4><?php echo $payPeriod ?></h4>                
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="first_name" class="col-xs-2 control-label">Number of hours</label>
+            <div class="col-xs-3">
+                <input type="text" class="form-control" id="hours" name="hours" value=""/>
+            </div>
+        </div>        
+        <br/>
+        <div class="col-lg-offset-2">
+            <a href="/pay/paylist"  class="btn btn-default">Cancel</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+</div>
+
+<?php
+$conf = $this->Conf_widget();
+?>
+
+
+<script>
+    // Check all text if empty
+    // If tesbox empty, add required attribute
+    $(":text").each(function(){
+        $(this).blur(function(){
+            if($(this).val() == ""){
+                var name = $(this).attr('name');
+                $(this).prop('required',true);
+            }
+        });
+    });
+
+    $(function() {
+        $("#date_hired").datepicker({
+            dateFormat: 'yy-mm-dd',
+        });
+
+    });
+
+
+    jQuery.validator.addMethod("notEqual", function(value, element, param) {
+        return this.optional(element) || value != $(param).val();
+    }, "Username and Password should be different");
+
+
+    $("#tableForm").validate({
+        errorClass: 'has-error',
+        validClass: 'has-success',
+        errorElement: 'span',
+        highlight: function(element, errorClass, validClass) {
+            $(element).parents("div.form-group").addClass(errorClass).removeClass(validClass);
+
+        },
+        unhighlight: function(element, errorClass, validClass) {
+            $(element).parents(".form-group.has-error").removeClass(errorClass).addClass(validClass);
+        },
+        rules: {
+            first_name: {
+                notEqual: ""
+            },
+            password_confirm: {
+                equalTo: "#new_password"
+            }
+
+        }
+    });
+    
+    $(document).ready(function (){
+        $("tableForm").submit(function() {
+            $(this).children('#company_email').remove();
+        });
+    });
+</script>

@@ -1,0 +1,58 @@
+<div class="content-panel ">
+    <h2 class="page-header">
+        <?php if(isset($mypayslip)) { 
+            echo "My Payslips";
+        }else {
+            echo "Payslip List";
+        }
+?>
+        
+    </h2>
+    <div class="page-content" style="">
+    
+    <div class="wide-table">
+            <table class="table table-striped table-hover">
+                <thead id="search-thead">
+                    <tr>    
+                        <th>Payslip ID</th>
+                        <th>Employee</th>                        
+                        <th>Pay Period</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="search-tbody">
+                <?php 
+                    foreach($data as $row){                                                 
+                ?>
+                    <tr>     
+                        <td><?php echo $row['id'] ?></td>
+                        <td><?php echo $row['name'] ?></td>                        
+                        <td><?php echo $row['pay_period'] ?></td>                        
+                        <td>
+                            <?php if(isset($mypayslip)){ ?>
+                            <a href="/pay/viewmypayslip?id=<?php echo $row['id']?>">View Payslip</a>
+                            <?php }else {?>  
+                            <a href="/pay/viewpayslip?id=<?php echo $row['id']?>">View Payslip</a>
+                            <?php } ?>
+                        </td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>  
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+  
+$('input#search-text-input').bind('input', function() {
+        var c = this.selectionStart,
+                r = /[^a-z0-9 _]/gi,
+                v = $(this).val();
+        if (r.test(v)) {
+            $(this).val(v.replace(r, ''));
+            c--;
+        }
+        this.setSelectionRange(c, c);
+    });
+</script>
