@@ -68,6 +68,30 @@ class PayController extends AbstractActionController {
         return $view;     
     }
     
+    public function reportAction(){
+        $empTable = new EmployeeJapTable($this->getServiceLocator()->get('Zend\Db\Adapter\Adapter'));    
+        $request = new Request();
+
+        $params = array();
+        $selected_pay_period = NULL;
+        if($request->isPost()) {            
+            $posts = $request->getPost()->toArray();
+            if(isset($posts['pay_period']) && $posts['pay_period']!="All") $params['pay_period'] = $posts['pay_period'];
+            $selected_pay_period = $posts['pay_period'];
+        }
+
+        $result = $empTable->getPayslipList($params);
+        $pay_periods = $empTable->getPayPeriods();
+        
+      
+        $view = new ViewModel(array(
+            "pay_periods" => $pay_periods,
+            "data" => $result,
+            "selected_pay_period" => $selected_pay_period,
+        ));                    
+        return $view;     
+    }
+    
     public function mypayslipsAction(){
         $auth = $this->getServiceLocator()->get('AuthService');
         $empId = $auth->getIdentity()->employee_id;
@@ -412,6 +436,9 @@ class PayController extends AbstractActionController {
         
         $monthlyComp = $data['daily_rate']*20;
         $data['total_govt'] = 0;
+        $data['sss'] = 0;
+        $data['philhealth'] = 0;
+        $data['hdmf'] = 0;
         if($result['pay_period']==2){   
             $data['sss'] = $empTable->getSssContri($monthlyComp)*0.4;
             $data['philhealth'] = $empTable->getPhilhealthContri($monthlyComp);
@@ -432,7 +459,7 @@ class PayController extends AbstractActionController {
         $data['total_allowance'] = $totalAllowance;
         unset($data['allowance']);
         
-        $data['net_income'] = $data['income_less_tax']+$totalAllowance;
+        $data['net_income'] = $data['income_less_tax']+$totalAllowance;               
         
         $empTable->createPayslip($data);
         

@@ -378,7 +378,25 @@ class EmployeeJapTable {
             $sql.=" WHERE payslip.employee_id=:employeeid";
             $input['employeeid']=$params['employee_id'];
         }  
+        if(isset($params['pay_period'])){
+            $sql.=" WHERE pay_period=:payperiod";
+            $input['payperiod']=$params['pay_period'];
+        }  
+               
         
+        $statement = $adapter->createStatement($sql);
+        $statement->prepare();
+        $results = $statement->execute($input);
+        $resultSet = new ResultSet;
+        $resultSet->initialize($results);
+        $resultSet = $resultSet->toArray();
+        return $resultSet;
+    }
+    
+    public function getPayPeriods(){
+        $adapter = $this->_adapter;
+        $sql = "SELECT DISTINCT(pay_period) FROM payslip";
+                
         $statement = $adapter->createStatement($sql);
         $statement->prepare();
         $results = $statement->execute($input);
